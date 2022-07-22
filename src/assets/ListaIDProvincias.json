@@ -1,0 +1,127 @@
+[
+    {
+        "IDProvincia": "1",
+        "Provincia": "AZUAY",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "2",
+        "Provincia": "BOLIVAR",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "3",
+        "Provincia": "CAÑAR",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "4",
+        "Provincia": "CARCHI",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "5",
+        "Provincia": "COTOPAXI",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "6",
+        "Provincia": "CHIMBORAZO",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "7",
+        "Provincia": "EL ORO",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "8",
+        "Provincia": "ESMERALDA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "9",
+        "Provincia": "GUAYAS",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "10",
+        "Provincia": "IMBABURA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "11",
+        "Provincia": "LOJA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "12",
+        "Provincia": "LOS RIOS",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "13",
+        "Provincia": "MANABI",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "14",
+        "Provincia": "MORONA SANTIAGO",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "15",
+        "Provincia": "NAPO",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "16",
+        "Provincia": "PASTAZA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "17",
+        "Provincia": "PICHINCHA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "18",
+        "Provincia": "TUNGURAHUA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "19",
+        "Provincia": "ZAMORA CHINCHIPE",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "20",
+        "Provincia": "GALAPAGOS",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "21",
+        "Provincia": "SUCUMBIOS",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "22",
+        "Provincia": "ORELLANA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "23",
+        "Provincia": "SANTO DOMINGO DE LOS TSACHILAS",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "24",
+        "Provincia": "SANTA ELENA",
+        "IDNacionalidad": "0"
+    },
+    {
+        "IDProvincia": "90",
+        "Provincia": "ZONAS NO DELIMITADAS",
+        "IDNacionalidad": "0"
+    }
+]

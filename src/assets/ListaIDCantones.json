@@ -1,0 +1,1122 @@
+[
+    {
+        "IDCanton": "101",
+        "Canton": "Cuenca",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "102",
+        "Canton": "GIRON",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "103",
+        "Canton": "GUALACEO",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "104",
+        "Canton": "NABON",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "105",
+        "Canton": "PAUTE",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "106",
+        "Canton": "PUCARA",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "107",
+        "Canton": "SAN FERNANDO",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "108",
+        "Canton": "SANTA ISABEL",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "109",
+        "Canton": "SIGSIG",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "110",
+        "Canton": "OÑA",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "111",
+        "Canton": "CHORDELEG",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "112",
+        "Canton": "EL PAN",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "113",
+        "Canton": "SEVILLA DE ORO",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "114",
+        "Canton": "GUACHAPALA",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "115",
+        "Canton": "CAMILO PONCE ENRIQUEZ",
+        "IDProvincia": "1"
+    },
+    {
+        "IDCanton": "201",
+        "Canton": "GUARANDA",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "202",
+        "Canton": "CHILLANES",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "203",
+        "Canton": "CHIMBO",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "204",
+        "Canton": "ECHEANDIA",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "205",
+        "Canton": "SAN MIGUEL",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "206",
+        "Canton": "CALUMA ",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "207",
+        "Canton": "LAS NAVES",
+        "IDProvincia": "2"
+    },
+    {
+        "IDCanton": "301",
+        "Canton": "AZOGUES",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "302",
+        "Canton": "BIBLIAN",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "303",
+        "Canton": "CAÑAR",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "304",
+        "Canton": "LA TRONCAL",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "305",
+        "Canton": "EL TAMBO ",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "306",
+        "Canton": "DELEG",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "307",
+        "Canton": "SUSCAL",
+        "IDProvincia": "3"
+    },
+    {
+        "IDCanton": "401",
+        "Canton": "TULCAN",
+        "IDProvincia": "4"
+    },
+    {
+        "IDCanton": "402",
+        "Canton": "BOLIVAR",
+        "IDProvincia": "4"
+    },
+    {
+        "IDCanton": "403",
+        "Canton": "ESPEJO",
+        "IDProvincia": "4"
+    },
+    {
+        "IDCanton": "404",
+        "Canton": "MIRA",
+        "IDProvincia": "4"
+    },
+    {
+        "IDCanton": "405",
+        "Canton": "MONTUFAR",
+        "IDProvincia": "4"
+    },
+    {
+        "IDCanton": "406",
+        "Canton": "SAN PEDRO DE HUACA",
+        "IDProvincia": "4"
+    },
+    {
+        "IDCanton": "501",
+        "Canton": "LATACUNGA",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "502",
+        "Canton": "LA MANA",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "503",
+        "Canton": "PANGUA",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "504",
+        "Canton": "PUJILI",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "505",
+        "Canton": "SALCEDO",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "506",
+        "Canton": "SAQUISILI",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "507",
+        "Canton": "SIGCHOS",
+        "IDProvincia": "5"
+    },
+    {
+        "IDCanton": "601",
+        "Canton": "RIOBAMBA",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "602",
+        "Canton": "ALAUSI",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "603",
+        "Canton": "COLTA",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "604",
+        "Canton": "CHAMBO",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "605",
+        "Canton": "CHUNCHI",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "606",
+        "Canton": "GUAMOTE",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "607",
+        "Canton": "GUANO",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "608",
+        "Canton": "PALLATANGA",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "609",
+        "Canton": "PENIPE",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "610",
+        "Canton": "CUMANDA",
+        "IDProvincia": "6"
+    },
+    {
+        "IDCanton": "701",
+        "Canton": "MACHALA",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "702",
+        "Canton": "ARENILLAS",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "703",
+        "Canton": "ATAHUALPA",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "704",
+        "Canton": "BALSAS",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "705",
+        "Canton": "CHILLA",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "706",
+        "Canton": "EL GUABO",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "707",
+        "Canton": "HUAQUILLAS",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "708",
+        "Canton": "MARCABELI",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "709",
+        "Canton": "PASAJE",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "710",
+        "Canton": "PIÑAS",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "711",
+        "Canton": "PORTOVELO",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "712",
+        "Canton": "SANTA ROSA",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "713",
+        "Canton": "ZARUMA",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "714",
+        "Canton": "LAS LAJAS",
+        "IDProvincia": "7"
+    },
+    {
+        "IDCanton": "801",
+        "Canton": "ESMERALDAS",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "802",
+        "Canton": "ELOY ALFARO",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "803",
+        "Canton": "MUISNE",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "804",
+        "Canton": "QUININDE",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "805",
+        "Canton": "SAN LORENZO",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "806",
+        "Canton": "ATACAMES",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "807",
+        "Canton": "RIOVERDE",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "808",
+        "Canton": "LA CONCORDIA",
+        "IDProvincia": "8"
+    },
+    {
+        "IDCanton": "901",
+        "Canton": "GUAYAQUIL",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "902",
+        "Canton": "ALFREDO BAQUERIZO MORENO (JUJAN)",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "903",
+        "Canton": "BALAO",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "904",
+        "Canton": "BALZAR",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "905",
+        "Canton": "COLIMES",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "906",
+        "Canton": "DAULE",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "907",
+        "Canton": "DURAN",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "908",
+        "Canton": "EL EMPALME",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "909",
+        "Canton": "EL TRIUNFO",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "910",
+        "Canton": "MILAGRO",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "911",
+        "Canton": "NARANJAL",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "912",
+        "Canton": "NARANJITO",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "913",
+        "Canton": "PALESTINA",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "914",
+        "Canton": "PEDRO CARBO",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "916",
+        "Canton": "SAMBORONDON",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "918",
+        "Canton": "SANTA LUCIA",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "919",
+        "Canton": "SALITRE (URBINA JADO)",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "920",
+        "Canton": "SAN JACINTO DE YAGUACHI",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "921",
+        "Canton": "PLAYAS",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "922",
+        "Canton": "SIMON BOLIVAR",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "923",
+        "Canton": "CORONEL MARCELINO MARIDUEÑA",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "924",
+        "Canton": "LOMAS DE SARGENTILLO",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "925",
+        "Canton": "NOBOL",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "927",
+        "Canton": "GENERAL ANTONIO ELIZALDE ",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "928",
+        "Canton": "ISIDRO AYORA ",
+        "IDProvincia": "9"
+    },
+    {
+        "IDCanton": "1001",
+        "Canton": "IBARRA",
+        "IDProvincia": "10"
+    },
+    {
+        "IDCanton": "1002",
+        "Canton": "ANTONIO ANTE",
+        "IDProvincia": "10"
+    },
+    {
+        "IDCanton": "1003",
+        "Canton": "COTACACHI",
+        "IDProvincia": "10"
+    },
+    {
+        "IDCanton": "1004",
+        "Canton": "OTAVALO",
+        "IDProvincia": "10"
+    },
+    {
+        "IDCanton": "1005",
+        "Canton": "PIMAMPIRO",
+        "IDProvincia": "10"
+    },
+    {
+        "IDCanton": "1006",
+        "Canton": "SAN MIGUEL DE URCUQUI",
+        "IDProvincia": "10"
+    },
+    {
+        "IDCanton": "1101",
+        "Canton": "LOJA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1102",
+        "Canton": "CALVAS",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1103",
+        "Canton": "CATAMAYO",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1104",
+        "Canton": "CELICA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1105",
+        "Canton": "CHAGUARPAMBA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1106",
+        "Canton": "ESPINDOLA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1107",
+        "Canton": "GONZANAMA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1108",
+        "Canton": "MACARA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1109",
+        "Canton": "PALTAS",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1110",
+        "Canton": "PUYANGO",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1111",
+        "Canton": "SARAGURO",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1112",
+        "Canton": "SOZORANGA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1113",
+        "Canton": "ZAPOTILLO",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1114",
+        "Canton": "PINDAL",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1115",
+        "Canton": "QUILANGA",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1116",
+        "Canton": "OLMEDO",
+        "IDProvincia": "11"
+    },
+    {
+        "IDCanton": "1201",
+        "Canton": "BABAHOYO",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1202",
+        "Canton": "BABA",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1203",
+        "Canton": "MONTALVO",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1204",
+        "Canton": "PUEBLOVIEJO",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1205",
+        "Canton": "QUEVEDO",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1206",
+        "Canton": "URDANETA",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1207",
+        "Canton": "VENTANAS",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1208",
+        "Canton": "VINCES",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1209",
+        "Canton": "PALENQUE",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1210",
+        "Canton": "BUENA FE",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1211",
+        "Canton": "VALENCIA",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1212",
+        "Canton": "MOCACHE",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1213",
+        "Canton": "QUINSALOMA",
+        "IDProvincia": "12"
+    },
+    {
+        "IDCanton": "1301",
+        "Canton": "PORTOVIEJO",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1302",
+        "Canton": "BOLIVAR",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1303",
+        "Canton": "CHONE",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1304",
+        "Canton": "EL CARMEN",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1305",
+        "Canton": "FLAVIO ALFARO",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1306",
+        "Canton": "JIPIJAPA",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1307",
+        "Canton": "JUNIN",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1308",
+        "Canton": "MANTA",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1309",
+        "Canton": "MONTECRISTI ",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1310",
+        "Canton": "PAJAN",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1311",
+        "Canton": "PICHINCHA",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1312",
+        "Canton": "ROCAFUERTE",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1313",
+        "Canton": "SANTA ANA",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1314",
+        "Canton": "SUCRE",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1315",
+        "Canton": "TOSAGUA",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1316",
+        "Canton": "24 DE MAYO",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1317",
+        "Canton": "PEDERNALES",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1318",
+        "Canton": "OLMEDO",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1319",
+        "Canton": "PUERTO LOPEZ",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1320",
+        "Canton": "JAMA",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1321",
+        "Canton": "JARAMIJO",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1322",
+        "Canton": "SAN VICENTE",
+        "IDProvincia": "13"
+    },
+    {
+        "IDCanton": "1401",
+        "Canton": "MORONA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1402",
+        "Canton": "GUALAQUIZA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1403",
+        "Canton": "LIMON INDANZA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1404",
+        "Canton": "PALORA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1405",
+        "Canton": "SANTIAGO",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1406",
+        "Canton": "SUCUA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1407",
+        "Canton": "HUAMBOYA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1408",
+        "Canton": "SAN JUAN BOSCO ",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1409",
+        "Canton": "TAISHA ",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1410",
+        "Canton": "LOGROÑO ",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1411",
+        "Canton": "PABLO SEXTO",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1412",
+        "Canton": "CANTON TIWINTZA",
+        "IDProvincia": "14"
+    },
+    {
+        "IDCanton": "1501",
+        "Canton": "TENA",
+        "IDProvincia": "15"
+    },
+    {
+        "IDCanton": "1503",
+        "Canton": "ARCHIDONA",
+        "IDProvincia": "15"
+    },
+    {
+        "IDCanton": "1504",
+        "Canton": "EL CHACO",
+        "IDProvincia": "15"
+    },
+    {
+        "IDCanton": "1507",
+        "Canton": "QUIJOS",
+        "IDProvincia": "15"
+    },
+    {
+        "IDCanton": "1509",
+        "Canton": "CARLOS JULIO AROSEMENA TOLA",
+        "IDProvincia": "15"
+    },
+    {
+        "IDCanton": "1601",
+        "Canton": "PASTAZA",
+        "IDProvincia": "16"
+    },
+    {
+        "IDCanton": "1602",
+        "Canton": "MERA",
+        "IDProvincia": "16"
+    },
+    {
+        "IDCanton": "1603",
+        "Canton": "SANTA CLARA",
+        "IDProvincia": "16"
+    },
+    {
+        "IDCanton": "1604",
+        "Canton": "ARAJUNO",
+        "IDProvincia": "16"
+    },
+    {
+        "IDCanton": "1701",
+        "Canton": "QUITO",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1702",
+        "Canton": "CAYAMBE",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1703",
+        "Canton": "MEJIA",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1704",
+        "Canton": "PEDRO MONCAYO",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1705",
+        "Canton": "RUMIÑAHUI",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1707",
+        "Canton": "SAN MIGUEL DE LOS BANCOS",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1708",
+        "Canton": "PEDRO VICENTE MALDONADO",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1709",
+        "Canton": "PUERTO QUITO",
+        "IDProvincia": "17"
+    },
+    {
+        "IDCanton": "1801",
+        "Canton": "AMBATO",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1802",
+        "Canton": "BAÑOS DE AGUA SANTA",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1803",
+        "Canton": "CEVALLOS",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1804",
+        "Canton": "MOCHA",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1805",
+        "Canton": "PATATE",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1806",
+        "Canton": "QUERO",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1807",
+        "Canton": "SAN PEDRO DE PELILEO",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1808",
+        "Canton": "SANTIAGO DE PILLARO",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1809",
+        "Canton": "TISALEO",
+        "IDProvincia": "18"
+    },
+    {
+        "IDCanton": "1901",
+        "Canton": "ZAMORA",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1902",
+        "Canton": "CHINCHIPE",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1903",
+        "Canton": "NANGARITZA",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1904",
+        "Canton": "YACUAMBI",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1905",
+        "Canton": "YANTZAZA (YANZATZA)",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1906",
+        "Canton": "EL PANGUI",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1907",
+        "Canton": "CENTINELA DEL CONDOR",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1908",
+        "Canton": "PALANDA",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "1909",
+        "Canton": "PAQUISHA ",
+        "IDProvincia": "19"
+    },
+    {
+        "IDCanton": "2001",
+        "Canton": "SAN CRISTOBAL",
+        "IDProvincia": "20"
+    },
+    {
+        "IDCanton": "2002",
+        "Canton": "ISABELA",
+        "IDProvincia": "20"
+    },
+    {
+        "IDCanton": "2003",
+        "Canton": "SANTA CRUZ",
+        "IDProvincia": "20"
+    },
+    {
+        "IDCanton": "2101",
+        "Canton": "LAGO AGRIO",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2102",
+        "Canton": "GONZALO PIZARRO",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2103",
+        "Canton": "PUTUMAYO",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2104",
+        "Canton": "SHUSHUFINDI",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2105",
+        "Canton": "SUCUMBIOS",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2106",
+        "Canton": "CASCALES",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2107",
+        "Canton": "CUYABENO",
+        "IDProvincia": "21"
+    },
+    {
+        "IDCanton": "2201",
+        "Canton": "ORELLANA",
+        "IDProvincia": "22"
+    },
+    {
+        "IDCanton": "2202",
+        "Canton": "AGUARICO",
+        "IDProvincia": "22"
+    },
+    {
+        "IDCanton": "2203",
+        "Canton": "LA JOYA DE LOS SACHAS",
+        "IDProvincia": "22"
+    },
+    {
+        "IDCanton": "2204",
+        "Canton": "LORETO",
+        "IDProvincia": "22"
+    },
+    {
+        "IDCanton": "2301",
+        "Canton": "SANTO DOMINGO",
+        "IDProvincia": "23"
+    },
+    {
+        "IDCanton": "2401",
+        "Canton": "SANTA ELENA",
+        "IDProvincia": "24"
+    },
+    {
+        "IDCanton": "2402",
+        "Canton": "LA LIBERTAD",
+        "IDProvincia": "24"
+    },
+    {
+        "IDCanton": "2403",
+        "Canton": "SALINAS",
+        "IDProvincia": "24"
+    },
+    {
+        "IDCanton": "9001",
+        "Canton": "ZONA NO DELIMITADA",
+        "IDProvincia": "90"
+    },
+    {
+        "IDCanton": "9003",
+        "Canton": "ZONA NO DELIMITADA",
+        "IDProvincia": "90"
+    },
+    {
+        "IDCanton": "9004",
+        "Canton": "ZONA NO DELIMITADA",
+        "IDProvincia": "90"
+    }
+]

@@ -1,0 +1,390 @@
+<div class="mt-4"></div>
+<div class="card bg-light text-dark">
+    <div class="card-header">FICHA DE OBSERVARCIÓN Y ABORDAJE
+    </div>
+</div>
+<div class="mt-4"></div>
+<form #clienteForm="ngForm">
+    <!--FILA 1 -->
+    <div class="row">
+        <div class="col-6">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Información organización cooperante
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">Organización Cooperante</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-form-label col-sm-6">Zona</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-6">Provincia</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" (change)="filtrarCanton($event)" name="provincia"
+                                [(ngModel)]="provincia" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option [ngValue]="prov" *ngFor="let prov of listProvincia">{{prov.Provincia}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-6">Cantón</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option [value]="cant.IDCanton" *ngFor="let cant of filtrarCanton(0)">{{cant.Canton}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-6">Distrito</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2da columna-->
+        <div class="col-6">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Tipo de cooperante
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">GAD Provincial-Cantonal-Parroquial</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-form-label col-sm-6">OSC</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-6">Organización Religiosa</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-6">ONG</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-6">Otros</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4"></div>
+    <div class="card bg-light text-dark">
+        <div class="card-header">OBSERVACIÓN</div>
+    </div>
+    <div class="mt-4"></div>
+
+    <!------------------------------- FILA 2 -------------------->
+    <div class="row">
+        <div class="col-3">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Datos de personas observadas
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">Sexo</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenino</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-form-label col-sm-6">Se encuentra</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Solo</option>
+                                <option value="2">En Grupo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2da columna-->
+        <div class="col-4">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Grupo etáreo
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">Discapacidad</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="notiene">No Tiene</option>
+                                <option value="sitiene">Tiene</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-form-label col-sm-6">Años</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="5-11">05-11 años</option>
+                                <option value="5-11">12-14 años</option>
+                                <option value="5-11">15-17 años</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3ra columna-->
+        <div class="col-5">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Topología de la actividad
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-4">Actividad</label>
+                        <div class="col-sm-8">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Venta ambulante</option>
+                                <option value="2">Agricultura</option>
+                                <option value="2">Lustrado de calzado</option>
+                                <option value="2">Comercio informal</option>
+                                <option value="2">Construcción</option>
+                                <option value="2">Manufacturas</option>
+                                <option value="2">Act. No remunerada en el hogar</option>
+                                <option value="2">Mecánica</option>
+                                <option value="2">Minería</option>
+                                <option value="2">Reciclaje</option>
+                                <option value="2">Pesca</option>
+                                <option value="2">Trabajo en calle</option>
+                                <option value="2">Otros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-secondary">+</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------- FILA 3 -------------------->
+
+
+    <div class="row">
+        <div class="col-3">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Fisionomía
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">Cabello Color</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Negro</option>
+                                <option value="2">Rubio</option>
+                                <option value="2">Canoso</option>
+                                <option value="2">Castaño</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">Cabello Tipo</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="2">Lizo</option>
+                                <option value="2">Rizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-form-label col-sm-6">Contextura</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Delgada</option>
+                                <option value="2">Media</option>
+                                <option value="2">Gruesa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="apellido" class="col-form-label col-sm-6">Estatura</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Baja</option>
+                                <option value="2">Media</option>
+                                <option value="2">Alta</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2da columna-->
+        <div class="col-4">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Riesgos para el facilitador en aplicar el abordaje
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-6">Riesgos</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="notiene">Persona Agresiva</option>
+                                <option value="sitiene">Presunta víctima de algún delito (trata/explotación u otro)
+                                </option>
+                                <option value="sitiene">Consumo de alcohol</option>
+                                <option value="sitiene">Consumo de drogas</option>
+                                <option value="sitiene">Trastornos mentales</option>
+                                <option value="sitiene">Otros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-6">Años</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="5-11">05-11 años</option>
+                                <option value="5-11">12-14 años</option>
+                                <option value="5-11">15-17 años</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-form-label col-sm-12"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3ra columna-->
+        <div class="col-5">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Derivaciones y acciones
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-3">Acción</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4"></div>
+    <div class="card bg-light text-dark">
+        <div class="card-header">ABORDAJE</div>
+    </div>
+    <div class="mt-4"></div>
+    <div class="row">
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Croquis del lugar donde se observó a la NNA
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-9">
+                            <button type="button" class="btn btn-primary">Cargar Archivo</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Datos del NNA identificado
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-4">Nombres y Apellidos</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
+                        <div class="col-sm-2">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenino</option>
+                            </select>
+                        </div>
+
+                        <label for="nombre" class="col-form-label col-sm-2">Nacionalidad</label>
+                        <div class="col-sm-2">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Ecuatoriana</option>
+                                <option value="2">Extranjera</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">Doc. identificación</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-1">ONG</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text">
+                        </div>
+
+                        <label class="col-form-label col-sm-1">Otros</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
