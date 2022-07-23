@@ -35,4 +35,33 @@ export class FormularioComponent implements OnInit {
     }
 
   }
+
+  public addNuevoSelect() {
+    console.log('ojooo')
+    let row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = `
+    <br>
+    <label for="nombre" class="col-form-label col-sm-4">Actividad</label>
+    <div class="col-sm-8">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="1">Venta ambulante</option>
+                                <option value="2">Agricultura</option>
+                                <option value="2">Lustrado de calzado</option>
+                                <option value="2">Comercio informal</option>
+                                <option value="2">Construcción</option>
+                                <option value="2">Manufacturas</option>
+                                <option value="2">Act. No remunerada en el hogar</option>
+                                <option value="2">Mecánica</option>
+                                <option value="2">Minería</option>
+                                <option value="2">Reciclaje</option>
+                                <option value="2">Pesca</option>
+                                <option value="2">Trabajo en calle</option>
+                                <option value="2">Otros</option>
+                            </select>
+                        </div>`;
+    document.querySelector('.selectExtra')?.appendChild(row);
+  }
+
 }
