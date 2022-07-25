@@ -15,19 +15,23 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Organización Cooperante</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text">
+                            <select class="form-select" name="organizacion"
+                                [(ngModel)]="organizacion" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option [ngValue]="org" *ngFor="let org of listOrganizaciones">{{org.Organizacion}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-6">Zona</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text">
+                            <input disabled class="form-control" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Provincia</label>
                         <div class="col-sm-6">
-                            <select class="form-select" (change)="filtrarCanton($event)" name="provincia"
+                            <select  class="form-select" (change)="filtrarCanton($event)" name="provincia"
                                 [(ngModel)]="provincia" aria-label="Default select example">
                                 <option disabled selected>-</option>
                                 <option [ngValue]="prov" *ngFor="let prov of listProvincia">{{prov.Provincia}}</option>
@@ -63,7 +67,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">GAD Provincial-Cantonal-Parroquial</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text">
+                            <input   disabled class="form-control"  name="TipoOrganizacion"  [value]="organizacion.tipo.TipoOrganizacion" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -75,7 +79,8 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Organización Religiosa</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text">
+                            <input class="form-control"type="text" >
+                            
                         </div>
                     </div>
                     <div class="form-group row">

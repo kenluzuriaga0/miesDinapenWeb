@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Canton } from '../Models/Canton';
-import { Provincias } from '../Models/Provincias';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones } from '../Models/Lugares';
+import { ListasService } from '../services/listas.service';
 
 @Component({
   selector: 'app-formulario',
@@ -13,17 +12,34 @@ export class FormularioComponent implements OnInit {
 
   public listProvincia: Provincias[];
   public listCantones: Canton[];
+  public listOrganizaciones: Organizaciones[];
+
 
   public provincia: Provincias;
-  constructor(private httpClient: HttpClient) { }
+  public organizacion: Organizaciones;
 
-  ngOnInit(): void { //usar el servicio posteriormente
-    this.httpClient.get<Provincias[]>("assets/ListaIDProvincias.json").subscribe(data => {
+  constructor(private listasService: ListasService) { }
+  
+  ngOnInit(): void { //se llenan las listas cuando carga la vista
+    this.init();
+    this.listasService.loadProvincias().subscribe(data => {
       this.listProvincia = data;
     });
-    this.httpClient.get<Canton[]>("assets/ListaIDCantones.json").subscribe(data => {
+
+    this.listasService.loadCantones().subscribe(data => {
       this.listCantones = data;
     });
+
+    this.listasService.loadOrganizaciones().subscribe(data => {
+      this.listOrganizaciones = data;
+    });
+  }
+
+
+  private init(): void {
+    this.organizacion = new Organizaciones();
+    this.organizacion.tipo = new TipoOrganizaciones();
+    this.organizacion.tipo.TipoOrganizacion = "";
   }
 
 
@@ -37,7 +53,7 @@ export class FormularioComponent implements OnInit {
   }
 
   public addNuevoSelect() {
-    console.log('ojooo')
+    console.log(this.organizacion)
     let row = document.createElement('div');
     row.className = 'row';
     row.innerHTML = `
