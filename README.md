@@ -1,5 +1,5 @@
 # miesDinapenWeb
-Appilacion web para Mies - Dinapen
+Aplicación web para Mies - Dinapen (Proyecto Vinculación-UG)
 
 # Base de datos
 <span align="left">
@@ -21,7 +21,7 @@ create database miesdinapen_MiesDinapen;
 
 #### Instalar librerias
 ```sh
-pip install -r requirements.txt
+pip install -r miesDinapenApiRest/requirements.txt
 ```
 #### Levantar servidor
 ```sh
