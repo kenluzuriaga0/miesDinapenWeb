@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { TipoActividades } from '../Models/Listas';
 import { Provincias, Canton, Organizaciones, TipoOrganizaciones } from '../Models/Lugares';
 import { ListasService } from '../services/listas.service';
 
@@ -13,8 +14,8 @@ export class FormularioComponent implements OnInit {
   public listProvincia: Provincias[];
   public listCantones: Canton[];
   public listOrganizaciones: Organizaciones[];
-
-
+  public listTipoActividades: TipoActividades[];
+  
   public provincia: Provincias;
   public organizacion: Organizaciones;
 
@@ -33,6 +34,10 @@ export class FormularioComponent implements OnInit {
     this.listasService.loadOrganizaciones().subscribe(data => {
       this.listOrganizaciones = data;
     });
+
+    this.listasService.loadTipoActividades().subscribe(data => {
+      this.listTipoActividades = data;
+    });
   }
 
 
@@ -40,6 +45,13 @@ export class FormularioComponent implements OnInit {
     this.organizacion = new Organizaciones();
     this.organizacion.tipo = new TipoOrganizaciones();
     this.organizacion.tipo.TipoOrganizacion = "";
+
+    this.organizacion.provincia = new Provincias();
+    this.organizacion.provincia.Provincia='';
+
+    this.organizacion.canton = new Canton();
+    this.organizacion.canton.Canton = '';
+
   }
 
 
@@ -49,7 +61,6 @@ export class FormularioComponent implements OnInit {
     } else {
       return this.listCantones;
     }
-
   }
 
   public addNuevoSelect() {

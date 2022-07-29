@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TipoActividades } from '../Models/Listas';
 import { Provincias,Canton,Organizaciones} from '../Models/Lugares';
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class ListasService {
 
   loadOrganizaciones():Observable<Organizaciones[]> { //ORGANIZACIONES
     return this.http.get<Organizaciones[]>(this.urlEndPoint.concat('organizaciones'));
+  }
+
+  loadTipoActividades():Observable<TipoActividades[]> { //TIPO ACTIVIDADES
+    return this.http.get<TipoActividades[]>(this.urlEndPoint.concat('listactividades'));
   }
 }

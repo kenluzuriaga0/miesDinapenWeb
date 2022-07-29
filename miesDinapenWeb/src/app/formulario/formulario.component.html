@@ -7,7 +7,7 @@
 <form #clienteForm="ngForm">
     <!--FILA 1 -->
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="row card bg-light text-dark">
                 <div class="card-header">Información organización cooperante
                 </div>
@@ -25,77 +25,33 @@
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-6">Zona</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" type="text">
+                            <input   disabled class="form-control"  name="zona"  [value]="organizacion.Zona" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Provincia</label>
                         <div class="col-sm-6">
-                            <select  class="form-select" (change)="filtrarCanton($event)" name="provincia"
-                                [(ngModel)]="provincia" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option [ngValue]="prov" *ngFor="let prov of listProvincia">{{prov.Provincia}}</option>
-                            </select>
+                            <input disabled class="form-control" name="provincia" [value]="organizacion.provincia.Provincia" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Cantón</label>
                         <div class="col-sm-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option [value]="cant.IDCanton" *ngFor="let cant of filtrarCanton(0)">{{cant.Canton}}
-                                </option>
-                            </select>
+                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Distrito</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2da columna-->
-        <div class="col-6">
-            <div class="row card bg-light text-dark">
-                <div class="card-header">Tipo de cooperante
-                </div>
-                <div class="card-body">
-                    <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-6">GAD Provincial-Cantonal-Parroquial</label>
-                        <div class="col-sm-6">
-                            <input   disabled class="form-control"  name="TipoOrganizacion"  [value]="organizacion.tipo.TipoOrganizacion" type="text">
+                            <input disabled class="form-control" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="apellido" class="col-form-label col-sm-6">OSC</label>
+                        <label for="nombre" class="col-form-label col-sm-6">Tipo de Organizacion</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text">
+                            <input disabled class="form-control" name="TipoOrganizacion" [value]="organizacion.tipo.TipoOrganizacion" type="text">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-6">Organización Religiosa</label>
-                        <div class="col-sm-6">
-                            <input class="form-control"type="text" >
-                            
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-6">ONG</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-6">Otros</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text">
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -179,19 +135,8 @@
                         <div class="col-sm-8">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="1">Venta ambulante</option>
-                                <option value="2">Agricultura</option>
-                                <option value="2">Lustrado de calzado</option>
-                                <option value="2">Comercio informal</option>
-                                <option value="2">Construcción</option>
-                                <option value="2">Manufacturas</option>
-                                <option value="2">Act. No remunerada en el hogar</option>
-                                <option value="2">Mecánica</option>
-                                <option value="2">Minería</option>
-                                <option value="2">Reciclaje</option>
-                                <option value="2">Pesca</option>
-                                <option value="2">Trabajo en calle</option>
-                                <option value="2">Otros</option>
+                                <option [ngValue]="act" [value]="act.IDTipoActividad" *ngFor="let act of listTipoActividades">{{act.TipoActividad}}</option>
+                                
                             </select>
                         </div>
                     </div>

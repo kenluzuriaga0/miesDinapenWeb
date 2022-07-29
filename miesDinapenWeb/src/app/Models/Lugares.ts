@@ -12,9 +12,9 @@ export class Canton {
 export class Organizaciones {
    IDOrganizacion: number;
    Organizacion: string;
-   Zona: number;
-   IDProvincia:number;
-   IDCanton:number;
+   Zona: number = 0;
+   provincia:Provincias;
+   canton:Canton;
    IDParroquia:number;
    tipo:TipoOrganizaciones;
    
