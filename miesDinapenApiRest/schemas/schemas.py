@@ -44,3 +44,7 @@ class TipoActividad(BaseModel):
     TipoActividad:str
     class Config:
         orm_mode = True
+
+class CabelloTipo(BaseModel):
+    IDColorCabello:int
+    ColorCabello:str

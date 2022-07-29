@@ -7,6 +7,6 @@ from schemas.schemas import Parroquias
 router = APIRouter()
 
 @router.get('/api/parroquias', response_model=list[Parroquias])
-def addProvincias(db:Session = Depends(get_db)):
+def addParroquias(db:Session = Depends(get_db)):
     myparroquias = db.query(models.Parroquias).all()
     return myparroquias

@@ -7,6 +7,6 @@ from schemas.schemas import CantonesSchema
 router = APIRouter()
 
 @router.get('/api/cantones', response_model=list[CantonesSchema])
-def addProvincias(db:Session = Depends(get_db)):
+def addCantones(db:Session = Depends(get_db)):
     mycantones = db.query(models.Cantones).all()
     return mycantones

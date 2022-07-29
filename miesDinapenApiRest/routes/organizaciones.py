@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 @router.get('/api/organizaciones', response_model=list[Organizaciones])
-def addProvincias(db:Session = Depends(get_db)):
+def addOrganizaciones(db:Session = Depends(get_db)):
     myorganizaciones:models.Organizaciones = db.query(models.Organizaciones).all()
     return myorganizaciones
  
