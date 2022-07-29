@@ -37,14 +37,3 @@ class Organizaciones(BaseModel):
     tipo:TipoOrganizacion  #se usa el atributo que tiene el relationship()
     class Config:
         orm_mode = True
-
-
-class TipoActividad(BaseModel):
-    IDTipoActividad:int
-    TipoActividad:str
-    class Config:
-        orm_mode = True
-
-class CabelloTipo(BaseModel):
-    IDColorCabello:int
-    ColorCabello:str

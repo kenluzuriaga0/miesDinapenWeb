@@ -3,7 +3,6 @@ from fastapi import APIRouter,Depends
 from config.db import get_db
 from sqlalchemy.orm import Session
 from models import models
-from schemas.schemas import TipoActividad
 
 router = APIRouter()
 
@@ -12,8 +11,8 @@ class ListasP(str, Enum):
     cabelloColor = "cac"
     cabelloTipo = "cat"
     circunstancia = "cir"
-    condicionmedica = "con"
-    condicion = "cnd"
+    condicionmedica = "com"
+    condicion = "con"
     contextura = "cnt"
     discapacidad = "dis"
     estadocivil = "eci"
@@ -26,74 +25,56 @@ class ListasP(str, Enum):
     nacionalidad = "nac"
     parentesco = "par"
 
-
-@router.get('/api/listasprogramadas/{lista_id}', response_model=list[TipoActividad])
+@router.get('/api/listasprogramadas/{lista_id}')
 def addListasProgramadas(lista_id:ListasP,db:Session = Depends(get_db)):
 
     if lista_id == ListasP.actividadTipo:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.TipoActividad).all()
 
     elif lista_id == ListasP.cabelloColor:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.CabelloColor).all()
  
     elif lista_id == ListasP.cabelloTipo:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+       return db.query(models.CabelloTipo).all()
 
     elif lista_id == ListasP.circunstancia:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades    
+        return db.query(models.Circunstancias).all()
 
     elif lista_id == ListasP.condicionmedica:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.CondicionMedica).all()
 
     elif lista_id == ListasP.condicion:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Condiciones).all()
 
     elif lista_id == ListasP.contextura:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Contexturas).all()
 
     elif lista_id == ListasP.discapacidad:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Discapacidad).all()
 
     elif lista_id == ListasP.estadocivil:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.EstadoCivil).all()
 
     elif lista_id == ListasP.estatura:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Estatura).all()
 
     elif lista_id == ListasP.estudio:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Estudio).all()
 
     elif lista_id == ListasP.etnia:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Etnias).all()
 
     elif lista_id == ListasP.exposicion:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Exposiciones).all()
 
     elif lista_id == ListasP.genero:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Generos).all()
 
     elif lista_id == ListasP.instituciones:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Instituciones).all()
 
     elif lista_id == ListasP.nacionalidad:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades
+        return db.query(models.Nacionalidades).all()
 
     elif lista_id == ListasP.parentesco:
-        myTipoActividades:models.TipoActividad = db.query(models.TipoActividad).all()
-        return myTipoActividades  
+        return db.query(models.Parentezcos).all()

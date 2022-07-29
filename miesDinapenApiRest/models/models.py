@@ -48,7 +48,95 @@ class TipoOrganizacion(Base):
 
 # FIN de lugares
 
+# INICIO de LISTAS PROGRAMADAS
+
 class TipoActividad(Base):
     __tablename__ = "ListaIDTipoActividad"
     IDTipoActividad = Column(Integer, primary_key=True,index=True)
     TipoActividad = Column(String(100))
+
+class CabelloColor(Base):
+    __tablename__ = "ListaIDCabelloColor"
+    IDColorCabello = Column(Integer, primary_key=True,index=True)
+    ColorCabello = Column(String(20))
+
+class CabelloTipo(Base):
+    __tablename__ = "ListaIDCabelloTipo"
+    IDCabelloTipo = Column(Integer, primary_key=True,index=True)
+    CabelloTipo = Column(String(20))
+
+class Contexturas(Base):
+    __tablename__ = "ListaIDContexturas"
+    IDContextura = Column(Integer, primary_key=True,index=True)
+    Contextura = Column(String(100))
+
+class CondicionMedica(Base):
+    __tablename__ = "ListaIDCondicionMedica"
+    IDCondicionMedica = Column(Integer, primary_key=True,index=True)
+    CondicionMedica = Column(String(100))
+
+class Etnias(Base):
+    __tablename__ = "ListaIDEtnias"
+    IDEtnia = Column(Integer, primary_key=True,index=True)
+    Etnia = Column(String(20))
+
+class Estatura(Base):
+    __tablename__ = "ListaIDEstatura"
+    IDEstatura = Column(Integer, primary_key=True,index=True)
+    Estatura = Column(String(100))
+
+class Estudio(Base):
+    __tablename__ = "ListaIDEstudio"
+    IDEstudio = Column(Integer, primary_key=True,index=True)
+    NivelEstudio = Column(String(100))
+
+class Nacionalidades(Base):
+    __tablename__ = "ListaIDNacionalidades"
+    IDNacionalidad = Column(Integer, primary_key=True,index=True)
+    Nacionalidad = Column(String(100))
+
+class Generos(Base):
+    __tablename__ = "ListaIDGeneros"
+    IDGenero = Column(Integer, primary_key=True,index=True)
+    Genero = Column(String(100))
+
+class Exposiciones(Base):
+    __tablename__ = "ListaIDExposiciones"
+    IDExposicion = Column(Integer, primary_key=True,index=True)
+    Exposicion = Column(String(100))
+
+class Condiciones(Base):
+    __tablename__ = "ListaIDCondiciones"
+    IDCondicion = Column(Integer, primary_key=True,index=True)
+    Condicion = Column(String(100))
+
+class Circunstancias(Base):
+    __tablename__ = "ListaIDCircunstancias"
+    IDCircunstancia = Column(Integer, primary_key=True,index=True)
+    Circunstancia = Column(String(100))
+
+
+class Discapacidad(Base):
+    __tablename__ = "ListaIDDiscapacidad"
+    IDDiscapacidad = Column(Integer, primary_key=True,index=True)
+    Discapacidad = Column(String(100))
+
+
+class EstadoCivil(Base):
+    __tablename__ = "ListaIDEstadoCivil"
+    IDEstadoCivil = Column(Integer, primary_key=True,index=True)
+    EstadoCivil = Column(String(100))
+
+
+class Parentezcos(Base):
+    __tablename__ = "ListaIDParentezcos"
+    IDParentezco = Column(Integer, primary_key=True,index=True)
+    Parentezco = Column(String(100))
+    ParenGradoConsan = Column(Integer)
+
+class Instituciones(Base):
+    __tablename__ = "ListaIDInstituciones"
+    IDInstitucion = Column(Integer, primary_key=True,index=True)
+    InstiNombre = Column(String(100))
+    InstiDireccion = Column(String(100))
+    InstiTelefono = Column(String(100))
