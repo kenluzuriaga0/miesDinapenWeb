@@ -9,9 +9,10 @@
                         <input class="form-control" name="idSearch" placeholder="No. Identificacion" type="text">
                     </div>
                     <div class="col-sm-6">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Buscar Persona</button>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Buscar Persona</button>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -19,23 +20,7 @@
 </div>
 
 <!-- Modal (se debe clicar el boton de arriba para que se muestre) -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Datos NNA</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Aceptar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<app-modal-persona></app-modal-persona>
 
 <br>
 
@@ -59,29 +44,32 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Organización Cooperante</label>
                         <div class="col-sm-6">
-                            <select class="form-select" name="organizacion"
-                                [(ngModel)]="organizacion" aria-label="Default select example">
+                            <select class="form-select" name="organizacion" [(ngModel)]="organizacion"
+                                aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="org" *ngFor="let org of listOrganizaciones">{{org.Organizacion}}</option>
+                                <option [ngValue]="org" *ngFor="let org of listOrganizaciones">{{org.Organizacion}}
+                                </option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-6">Zona</label>
                         <div class="col-sm-6">
-                            <input   disabled class="form-control"  name="zona"  [value]="organizacion.Zona" type="text">
+                            <input disabled class="form-control" name="zona" [value]="organizacion.Zona" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Provincia</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" name="provincia" [value]="organizacion.provincia.Provincia" type="text">
+                            <input disabled class="form-control" name="provincia"
+                                [value]="organizacion.provincia.Provincia" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Cantón</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton" type="text">
+                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton"
+                                type="text">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -93,7 +81,8 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Tipo de Organizacion</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" name="TipoOrganizacion" [value]="organizacion.tipo.TipoOrganizacion" type="text">
+                            <input disabled class="form-control" name="TipoOrganizacion"
+                                [value]="organizacion.tipo.TipoOrganizacion" type="text">
                         </div>
                     </div>
                 </div>
@@ -179,7 +168,8 @@
                         <div class="col-sm-8">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDTipoActividad']" *ngFor="let act of oneList.get('act')">{{act['TipoActividad']}}</option>
+                                <option [ngValue]="act" [value]="act['IDTipoActividad']"
+                                    *ngFor="let act of oneList.get('act')">{{act['TipoActividad']}}</option>
                             </select>
                         </div>
                     </div>
@@ -209,7 +199,8 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDColorCabello']" *ngFor="let act of oneList.get('cac')">{{act['ColorCabello']}}</option>
+                                <option [ngValue]="act" [value]="act['IDColorCabello']"
+                                    *ngFor="let act of oneList.get('cac')">{{act['ColorCabello']}}</option>
                             </select>
                         </div>
                     </div>
@@ -218,7 +209,8 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDCabelloTipo']" *ngFor="let act of oneList.get('cat')">{{act['CabelloTipo']}}</option>
+                                <option [ngValue]="act" [value]="act['IDCabelloTipo']"
+                                    *ngFor="let act of oneList.get('cat')">{{act['CabelloTipo']}}</option>
                             </select>
                         </div>
                     </div>
@@ -227,7 +219,8 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDContextura']" *ngFor="let act of oneList.get('cnt')">{{act['Contextura']}}</option>
+                                <option [ngValue]="act" [value]="act['IDContextura']"
+                                    *ngFor="let act of oneList.get('cnt')">{{act['Contextura']}}</option>
                             </select>
                         </div>
                     </div>
@@ -236,7 +229,8 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDEstatura']" *ngFor="let act of oneList.get('eta')">{{act['Estatura']}}</option>
+                                <option [ngValue]="act" [value]="act['IDEstatura']"
+                                    *ngFor="let act of oneList.get('eta')">{{act['Estatura']}}</option>
                             </select>
                         </div>
                     </div>
@@ -345,7 +339,8 @@
                         <div class="col-sm-2">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDGenero']" *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
+                                <option [ngValue]="act" [value]="act['IDGenero']"
+                                    *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
 
                             </select>
                         </div>
@@ -354,7 +349,8 @@
                         <div class="col-sm-2">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDNacionalidad']" *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
+                                <option [ngValue]="act" [value]="act['IDNacionalidad']"
+                                    *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
 
                             </select>
                         </div>
@@ -385,11 +381,13 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Provincia</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="provincia" [value]="organizacion.provincia.Provincia" type="text">
+                            <input disabled class="form-control" name="provincia"
+                                [value]="organizacion.provincia.Provincia" type="text">
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Cantón</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton" type="text">
+                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton"
+                                type="text">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -402,7 +400,7 @@
                             <input class="form-control" type="text">
                         </div>
                     </div>
-                    
+
                     <br>
 
                     <div class="form-group row">
@@ -410,29 +408,34 @@
                         <div class="col-sm-3">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDEtnia']" *ngFor="let act of oneList.get('etn')">{{act['Etnia']}}</option>
-                            </select>                        </div>
+                                <option [ngValue]="act" [value]="act['IDEtnia']" *ngFor="let act of oneList.get('etn')">
+                                    {{act['Etnia']}}</option>
+                            </select>
+                        </div>
                         <label for="email" class="col-form-label col-sm-3">Estado Civil</label>
                         <div class="col-sm-3">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDEstadoCivil']" *ngFor="let act of oneList.get('eci')">{{act['EstadoCivil']}}</option>
-                            </select>                          </div>
+                                <option [ngValue]="act" [value]="act['IDEstadoCivil']"
+                                    *ngFor="let act of oneList.get('eci')">{{act['EstadoCivil']}}</option>
+                            </select>
+                        </div>
                     </div>
-                    
+
                     <br>
 
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Tiene Discapacidad</label>
                         <div class="form-check form-switch col-sm-3">
                             <input class="form-check-input" type="checkbox" id="tieneDiscpacidadCheck">
-                          </div>
+                        </div>
                         <label for="email" class="col-form-label col-sm-3">Tipo Discapacidad</label>
                         <div class="col-sm-3">
                             <select disabled class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDDiscapacidad']" *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
-                            </select>                          
+                                <option [ngValue]="act" [value]="act['IDDiscapacidad']"
+                                    *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
+                            </select>
                         </div>
                     </div>
                 </div>
