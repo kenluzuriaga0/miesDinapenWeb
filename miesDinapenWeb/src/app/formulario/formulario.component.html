@@ -1,10 +1,54 @@
 <div class="mt-4"></div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="row card bg-light text-dark">
+            <div class="card-body">
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <input class="form-control" name="idSearch" placeholder="No. Identificacion" type="text">
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Buscar Persona</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal (se debe clicar el boton de arriba para que se muestre) -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Datos NNA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<br>
+
 <div class="card bg-light text-dark">
     <div class="card-header">FICHA DE OBSERVARCIÓN Y ABORDAJE
     </div>
 </div>
 <div class="mt-4"></div>
 <form #clienteForm="ngForm">
+
+
+
+
     <!--FILA 1 -->
     <div class="row">
         <div class="col-12">
@@ -135,8 +179,7 @@
                         <div class="col-sm-8">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act.IDTipoActividad" *ngFor="let act of listTipoActividades">{{act.TipoActividad}}</option>
-                                
+                                <option [ngValue]="act" [value]="act['IDTipoActividad']" *ngFor="let act of oneList.get('act')">{{act['TipoActividad']}}</option>
                             </select>
                         </div>
                     </div>
@@ -166,10 +209,7 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="1">Negro</option>
-                                <option value="2">Rubio</option>
-                                <option value="2">Canoso</option>
-                                <option value="2">Castaño</option>
+                                <option [ngValue]="act" [value]="act['IDColorCabello']" *ngFor="let act of oneList.get('cac')">{{act['ColorCabello']}}</option>
                             </select>
                         </div>
                     </div>
@@ -178,8 +218,7 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="2">Lizo</option>
-                                <option value="2">Rizado</option>
+                                <option [ngValue]="act" [value]="act['IDCabelloTipo']" *ngFor="let act of oneList.get('cat')">{{act['CabelloTipo']}}</option>
                             </select>
                         </div>
                     </div>
@@ -188,9 +227,7 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="1">Delgada</option>
-                                <option value="2">Media</option>
-                                <option value="2">Gruesa</option>
+                                <option [ngValue]="act" [value]="act['IDContextura']" *ngFor="let act of oneList.get('cnt')">{{act['Contextura']}}</option>
                             </select>
                         </div>
                     </div>
@@ -199,9 +236,7 @@
                         <div class="col-sm-6">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="1">Baja</option>
-                                <option value="2">Media</option>
-                                <option value="2">Alta</option>
+                                <option [ngValue]="act" [value]="act['IDEstatura']" *ngFor="let act of oneList.get('eta')">{{act['Estatura']}}</option>
                             </select>
                         </div>
                     </div>
@@ -293,18 +328,25 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-4">Nombres y Apellidos</label>
-                        <div class="col-sm-8">
+                        <label class="col-form-label col-sm-3">Nombres y Apellidos</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text">
+                        </div>
+                        <label class="col-form-label col-sm-3">Doc. identificación</label>
+                        <div class="col-sm-3">
                             <input class="form-control" type="text">
                         </div>
                     </div>
+
+                    <br>
+
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
                         <div class="col-sm-2">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="1">Masculino</option>
-                                <option value="2">Femenino</option>
+                                <option [ngValue]="act" [value]="act['IDGenero']" *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
+
                             </select>
                         </div>
 
@@ -312,24 +354,85 @@
                         <div class="col-sm-2">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
-                                <option value="1">Ecuatoriana</option>
-                                <option value="2">Extranjera</option>
+                                <option [ngValue]="act" [value]="act['IDNacionalidad']" *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
+
                             </select>
                         </div>
-                        <label class="col-form-label col-sm-2">Doc. identificación</label>
+                        <label class="col-form-label col-sm-2">Estatus migratorio</label>
+                        <div class="col-sm-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option value="act"> Pasaporte</option>
+                                <option value="act"> Documento de refugio</option>
+                                <option value="act"> Visa MERCOSUR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text">
+                        </div>
+                        <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="text">
                         </div>
                     </div>
+
+                    <br>
+
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-1">ONG</label>
-                        <div class="col-sm-5">
+                        <label for="email" class="col-form-label col-sm-3">Provincia</label>
+                        <div class="col-sm-3">
+                            <input disabled class="form-control" name="provincia" [value]="organizacion.provincia.Provincia" type="text">
+                        </div>
+                        <label for="email" class="col-form-label col-sm-3">Cantón</label>
+                        <div class="col-sm-3">
+                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-3">Parroquia</label>
+                        <div class="col-sm-3">
+                            <input disabled class="form-control" type="text">
+                        </div>
+                        <label for="email" class="col-form-label col-sm-3">Barrio</label>
+                        <div class="col-sm-3">
                             <input class="form-control" type="text">
                         </div>
+                    </div>
+                    
+                    <br>
 
-                        <label class="col-form-label col-sm-1">Otros</label>
-                        <div class="col-sm-5">
-                            <input class="form-control" type="text">
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-3">Etnia</label>
+                        <div class="col-sm-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option [ngValue]="act" [value]="act['IDEtnia']" *ngFor="let act of oneList.get('etn')">{{act['Etnia']}}</option>
+                            </select>                        </div>
+                        <label for="email" class="col-form-label col-sm-3">Estado Civil</label>
+                        <div class="col-sm-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option [ngValue]="act" [value]="act['IDEstadoCivil']" *ngFor="let act of oneList.get('eci')">{{act['EstadoCivil']}}</option>
+                            </select>                          </div>
+                    </div>
+                    
+                    <br>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-3">Tiene Discapacidad</label>
+                        <div class="form-check form-switch col-sm-3">
+                            <input class="form-check-input" type="checkbox" id="tieneDiscpacidadCheck">
+                          </div>
+                        <label for="email" class="col-form-label col-sm-3">Tipo Discapacidad</label>
+                        <div class="col-sm-3">
+                            <select disabled class="form-select" aria-label="Default select example">
+                                <option disabled selected>-</option>
+                                <option [ngValue]="act" [value]="act['IDDiscapacidad']" *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
+                            </select>                          
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ export class ListasService {
     return this.http.get<Organizaciones[]>(this.urlEndPoint.concat('organizaciones'));
   }
 
-  loadTipoActividades():Observable<TipoActividades[]> { //TIPO ACTIVIDADES
-    return this.http.get<TipoActividades[]>(this.urlEndPoint.concat('listactividades'));
+  loadListasProgramadas(param:string):Observable<any[]> { //LISTAS PROGRAMADAS
+    return this.http.get<any>(this.urlEndPoint.concat('listasprogramadas/'+param));
   }
 }
