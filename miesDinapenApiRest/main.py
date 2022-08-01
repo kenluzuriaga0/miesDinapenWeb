@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import organizaciones, provincias,cantones, parroquias, listas
+from routes import organizaciones, provincias,cantones, parroquias, listas, personas
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="MiesDinapen API", version="0.0.1")
@@ -12,6 +12,8 @@ app.include_router(cantones.router)
 app.include_router(parroquias.router) 
 app.include_router(organizaciones.router) 
 app.include_router(listas.router) 
+app.include_router(personas.router) 
+
 
 app.add_middleware( #configuracion de CORS
     CORSMiddleware,
