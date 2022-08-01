@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ModalPersonaComponent } from './modal-persona/modal-persona.component';
+import { ModalBusquedaComponent } from './modal-busqueda/modal-busqueda.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModalPersonaComponent } from './modal-persona/modal-persona.component';
     FooterComponent,
     FormularioComponent,
     HomeComponent,
-    ModalPersonaComponent
+    ModalPersonaComponent,
+    ModalBusquedaComponent
   ],
   imports: [
     BrowserModule,

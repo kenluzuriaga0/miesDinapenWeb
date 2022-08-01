@@ -5,14 +5,15 @@
         <div class="row card bg-light text-dark">
             <div class="card-body">
                 <div class="form-group row">
+                   
                     <div class="col-sm-2">
-                        <input class="form-control" name="idSearch" placeholder="No. Identificacion" type="text">
-                    </div>
-                    <div class="col-sm-6">
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Buscar Persona</button>
+                        data-bs-target="#modalBusqueda">Buscar Persona</button>
                     </div>
-
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalPersona">Registrar Persona</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
 
 <!-- Modal (se debe clicar el boton de arriba para que se muestre) -->
 <app-modal-persona></app-modal-persona>
-
+<app-modal-busqueda></app-modal-busqueda>
 <br>
 
 <div class="card bg-light text-dark">
@@ -30,10 +31,6 @@
 </div>
 <div class="mt-4"></div>
 <form #clienteForm="ngForm">
-
-
-
-
     <!--FILA 1 -->
     <div class="row">
         <div class="col-12">
@@ -307,9 +304,11 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <div class="col-sm-9">
-                            <button type="button" class="btn btn-primary">Cargar Archivo</button>
-                        </div>
+                        el mapa
+                        <!--iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.224302342344!2d-79.91261368475065!3d-2.066193998493791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8f8a955d698a2335!2zMsKwMDMnNTguMyJTIDc5wrA1NCczNy41Ilc!5e0!3m2!1ses-419!2sec!4v1659294337962!5m2!1ses-419!2sec"
+                            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe-->
                     </div>
 
                 </div>
