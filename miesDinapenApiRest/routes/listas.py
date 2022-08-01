@@ -26,7 +26,7 @@ class ListasP(str, Enum):
     parentesco = "par"
 
 @router.get('/api/listasprogramadas/{lista_id}')
-def addListasProgramadas(lista_id:ListasP,db:Session = Depends(get_db)):
+def addListasProgramadas(lista_id:ListasP,db:Session = Depends(get_db)): #parametro es un Enum
 
     if lista_id == ListasP.actividadTipo:
         return db.query(models.TipoActividad).all()
