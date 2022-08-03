@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Personas } from '../Models/Modelos';
+import { ListasService } from '../services/listas.service';
+import { SeleccionService } from './seleccion.service';
 
 @Component({
   selector: 'app-modal-busqueda',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalBusquedaComponent implements OnInit {
 
-  constructor() { }
+  apellido1:string;
+  nombre1:string;
+  identificacion:string;
+
+  listPersonas:Personas[];
+
+  constructor(private listasService: ListasService,private seleccionService:SeleccionService) { }
 
   ngOnInit(): void {
   }
 
+  buscarPersona():void{
+    this.listasService.loadPersonasFiltered(this.apellido1,this.nombre1).subscribe(data=>{
+      this.listPersonas=data;
+    });
+  }
+
+  selectPersona(p:Personas):void{
+    this.seleccionService.seleccionador.emit(p); //emite para enviar el obj al componente Formulario
+    
+  }
 }

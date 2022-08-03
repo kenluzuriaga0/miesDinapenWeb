@@ -9,21 +9,17 @@
             <div class="modal-body">
                 <div class="card-body">
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-1">Primer Apellido</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text">
+                        <div class="col-sm-3">
+                            <input class="form-control" placeholder="Primer Apellido" type="text" [(ngModel)]="apellido1">
                         </div>
-                        <label class="col-form-label col-sm-1">Segundo Apellido</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text">
+                        <div class="col-sm-3">
+                            <input class="form-control" placeholder="Primer Nombre" type="text" [(ngModel)]="nombre1">
                         </div>
-                        <label class="col-form-label col-sm-2">Identificación</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text">
+                        <div class="col-sm-3">
+                            <input class="form-control" placeholder="Identificación" type="text" [(ngModel)]="identificacion">
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                                data-bs-target="#modalPersona">Buscar</button>
+                            <button type="button" class="btn btn-secondary" (click)="buscarPersona()" >Buscar</button>
                         </div>
                     </div>
 
@@ -39,17 +35,16 @@
                                     <th scope="col">Identificacion</th>
                                     <th scope="col">Parroquia</th>
                                     <th scope="col">-</th>
-
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td><button type="button" name="button" class="btn btn-primary"><span class="oi oi-pencil"></span></button>
+                                <tr *ngFor="let p of listPersonas">
+                                    <td>{{p.IDPersona}}</td>
+                                    <td>{{p.Nombre1 + " "+p.Nombre2}}</td>
+                                    <td>{{p.Apellido1+ " "+p.Apellido2}}</td>
+                                    <td>{{p.Cedula}}</td>
+                                    <td>{{p.parroquia?.Parroquia}}</td>
+                                    <td><button type="button" name="button" data-bs-dismiss="modal"  class="btn btn-primary" (click)="selectPersona(p)"><span class="oi oi-pencil"></span></button>
                                     </td>
                                 </tr>
                             </tbody>
