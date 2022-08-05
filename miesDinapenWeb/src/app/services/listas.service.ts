@@ -43,4 +43,9 @@ export class ListasService {
       params: params
     });
   }
+
+  loadPersonaByCedula(param: string): Observable<Personas[]> { //PERSONAS BY CEDULA
+    return this.http.get<Personas[]>(this.urlEndPoint.concat('personas/' + param));
+  }
+
 }

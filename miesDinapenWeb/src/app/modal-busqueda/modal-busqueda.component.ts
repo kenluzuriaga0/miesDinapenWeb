@@ -22,9 +22,16 @@ export class ModalBusquedaComponent implements OnInit {
   }
 
   buscarPersona():void{
-    this.listasService.loadPersonasFiltered(this.apellido1,this.nombre1).subscribe(data=>{
-      this.listPersonas=data;
-    });
+    if(typeof this.identificacion != 'undefined' && this.identificacion){
+      console.log("nooo")
+      this.listasService.loadPersonaByCedula(this.identificacion).subscribe(data => this.listPersonas=data)
+    }else{
+      if(this.apellido1||this.nombre1){
+        this.listasService.loadPersonasFiltered(this.apellido1,this.nombre1).subscribe(data=> this.listPersonas=data);
+
+      }
+    }
+ 
   }
 
   selectPersona(p:Personas):void{

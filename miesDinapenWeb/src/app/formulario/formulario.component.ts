@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class FormularioComponent implements OnInit {
   public listOrganizaciones: Organizaciones[];
   public listasProgramadas: any[];
   public listPersonas: Personas[];
-  public personaSelected?: Personas;
+  public perSelect: Personas;
 
   public provincia: Provincias;
   public organizacion: Organizaciones;
@@ -41,41 +41,17 @@ export class FormularioComponent implements OnInit {
       this.listOrganizaciones = data;
     });
 
-    this.loadAllLista();
 
     this.seleccionService.seleccionador.subscribe(data => {
-      this.personaSelected = data;
+      this.perSelect = data;
       this.unirNombres();
       console.log(data)
-      
     });
 
     if(typeof this.nombreCompleto === "undefined"){
       this.nombreCompleto=""; //al cargar la pagina x 1ra vez, no debe salir undefined en el campo "nombres"
     }
   }
-
-  loadAllLista(): any {
-    this.oneList = new Map<string, any[]>();
-    this.listasService.loadListasProgramadas("act").subscribe(data => this.oneList.set("act", data));
-    this.listasService.loadListasProgramadas("cac").subscribe(data => this.oneList.set("cac", data));
-    this.listasService.loadListasProgramadas("cat").subscribe(data => this.oneList.set("cat", data));
-    this.listasService.loadListasProgramadas("cir").subscribe(data => this.oneList.set("cir", data));
-    this.listasService.loadListasProgramadas("com").subscribe(data => this.oneList.set("com", data));
-    this.listasService.loadListasProgramadas("con").subscribe(data => this.oneList.set("con", data));
-    this.listasService.loadListasProgramadas("cnt").subscribe(data => this.oneList.set("cnt", data));
-    this.listasService.loadListasProgramadas("dis").subscribe(data => this.oneList.set("dis", data));
-    this.listasService.loadListasProgramadas("eci").subscribe(data => this.oneList.set("eci", data));
-    this.listasService.loadListasProgramadas("eta").subscribe(data => this.oneList.set("eta", data));
-    this.listasService.loadListasProgramadas("est").subscribe(data => this.oneList.set("est", data));
-    this.listasService.loadListasProgramadas("etn").subscribe(data => this.oneList.set("etn", data));
-    this.listasService.loadListasProgramadas("exp").subscribe(data => this.oneList.set("exp", data));
-    this.listasService.loadListasProgramadas("gen").subscribe(data => this.oneList.set("gen", data));
-    this.listasService.loadListasProgramadas("ins").subscribe(data => this.oneList.set("ins", data));
-    this.listasService.loadListasProgramadas("nac").subscribe(data => this.oneList.set("nac", data));
-    this.listasService.loadListasProgramadas("par").subscribe(data => this.oneList.set("par", data));
-  }
-
 
   private init(): void {
     this.organizacion = new Organizaciones();
@@ -88,6 +64,8 @@ export class FormularioComponent implements OnInit {
     this.organizacion.canton = new Canton();
     this.organizacion.canton.Canton = '';
 
+    this.loadAllLista();
+    this.initPersona();
   }
 
 
@@ -102,11 +80,23 @@ export class FormularioComponent implements OnInit {
   public nombreCompleto: any;
 
   private unirNombres(): void {
-    this.nombreCompleto = this.personaSelected?.Apellido1.concat(" ")
-                          .concat(this.personaSelected?.Apellido2).concat(" ")
-                          .concat(this.personaSelected?.Nombre1).concat(" ")
-                          .concat(this.personaSelected?.Nombre2);
-    
+    this.nombreCompleto = this.perSelect?.Apellido1.concat(" ")
+                          .concat(this.perSelect?.Apellido2).concat(" ")
+                          .concat(this.perSelect?.Nombre1).concat(" ")
+                          .concat(this.perSelect?.Nombre2);
+  }
+
+  private initPersona():void{
+    this.perSelect = new Personas();
+    this.perSelect.Cedula='';
+    this.perSelect.FechaNacim=new Date();
+
+    this.perSelect.estadoCivil=new EstadoCivil();
+    this.perSelect.etnia=new Etnia();
+    this.perSelect.nacionalidad=new Nacionalidad();
+    this.perSelect.genero=new Genero();
+
+
   }
 
   public addNuevoSelect() {
@@ -135,5 +125,24 @@ export class FormularioComponent implements OnInit {
                         </div>`;
     document.querySelector('.selectExtra')?.appendChild(row);
   }
-
+  loadAllLista(): any {
+    this.oneList = new Map<string, any[]>();
+    this.listasService.loadListasProgramadas("act").subscribe(data => this.oneList.set("act", data));
+    this.listasService.loadListasProgramadas("cac").subscribe(data => this.oneList.set("cac", data));
+    this.listasService.loadListasProgramadas("cat").subscribe(data => this.oneList.set("cat", data));
+    this.listasService.loadListasProgramadas("cir").subscribe(data => this.oneList.set("cir", data));
+    this.listasService.loadListasProgramadas("com").subscribe(data => this.oneList.set("com", data));
+    this.listasService.loadListasProgramadas("con").subscribe(data => this.oneList.set("con", data));
+    this.listasService.loadListasProgramadas("cnt").subscribe(data => this.oneList.set("cnt", data));
+    this.listasService.loadListasProgramadas("dis").subscribe(data => this.oneList.set("dis", data));
+    this.listasService.loadListasProgramadas("eci").subscribe(data => this.oneList.set("eci", data));
+    this.listasService.loadListasProgramadas("eta").subscribe(data => this.oneList.set("eta", data));
+    this.listasService.loadListasProgramadas("est").subscribe(data => this.oneList.set("est", data));
+    this.listasService.loadListasProgramadas("etn").subscribe(data => this.oneList.set("etn", data));
+    this.listasService.loadListasProgramadas("exp").subscribe(data => this.oneList.set("exp", data));
+    this.listasService.loadListasProgramadas("gen").subscribe(data => this.oneList.set("gen", data));
+    this.listasService.loadListasProgramadas("ins").subscribe(data => this.oneList.set("ins", data));
+    this.listasService.loadListasProgramadas("nac").subscribe(data => this.oneList.set("nac", data));
+    this.listasService.loadListasProgramadas("par").subscribe(data => this.oneList.set("par", data));
+  }
 }

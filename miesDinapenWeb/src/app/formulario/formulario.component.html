@@ -14,6 +14,12 @@
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#modalPersona">Registrar Persona</button>
                     </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" disabled type="text" [value]="nombreCompleto">
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" disabled type="text" [value]="perSelect?.Cedula">
+                    </div>
                 </div>
             </div>
         </div>
@@ -317,7 +323,7 @@
                         </div>
                         <label class="col-form-label col-sm-3">Doc. identificación</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" [value]="personaSelected?.Cedula">
+                            <input class="form-control" type="text" [value]="perSelect?.Cedula">
                         </div>
                     </div>
 
@@ -326,9 +332,9 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
                         <div class="col-sm-2">
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select"  name="sexo" [ngModel]="perSelect.genero.IDGenero">
                                 <option disabled >-</option>
-                                <option [ngValue]="act" [value]="personaSelected?.genero?.Genero"
+                                <option [value]="act['IDGenero']"
                                     *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
 
                             </select>
@@ -336,9 +342,8 @@
 
                         <label for="nombre" class="col-form-label col-sm-2">Nacionalidad</label>
                         <div class="col-sm-2">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="personaSelected?.nacionalidad?.Nacionalidad"
+                            <select class="form-select" name="nacionalidad" [ngModel]="perSelect.nacionalidad.IDNacionalidad">
+                                <option [value]="act['IDNacionalidad']" 
                                     *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
 
                             </select>
@@ -357,7 +362,9 @@
                     <div class="form-group row">
                         <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" [value]="personaSelected?.FechaNacim">
+                            <input class="form-control" name="fechaNacim" 
+                            type="date" pattern="\d{4}-\d{2}-\d{2}"
+                            [value]="perSelect?.FechaNacim">
                         </div>
                         <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
@@ -371,18 +378,18 @@
                         <label for="email" class="col-form-label col-sm-3">Provincia</label>
                         <div class="col-sm-3">
                             <input disabled class="form-control" name="provincia"
-                                [value]="organizacion.provincia.Provincia" type="text" [value]="personaSelected?.provincia?.Provincia">
+                                type="text" [value]="perSelect?.provincia?.Provincia">
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Cantón</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="canton" [value]="personaSelected?.canton?.Canton"
+                            <input disabled class="form-control" name="canton" [value]="perSelect?.canton?.Canton"
                                 type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Parroquia</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" type="text" [value]="personaSelected?.parroquia?.Parroquia">
+                            <input disabled class="form-control" type="text" [value]="perSelect?.parroquia?.Parroquia">
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Barrio</label>
                         <div class="col-sm-3">
@@ -395,22 +402,21 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Etnia</label>
                         <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDEtnia']" *ngFor="let act of oneList.get('etn')">
+                            <select class="form-select" name="estadocivil" [(ngModel)]="perSelect.etnia.IDEtnia">
+                                <option [value]="act['IDEtnia']" *ngFor="let act of oneList.get('etn')">
                                     {{act['Etnia']}}</option>
                             </select>
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Estado Civil</label>
                         <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option [ngValue]="act" [value]="act['IDEstadoCivil']"
+                            <select class="form-select" name="estadocivil" [(ngModel)]="perSelect.estadoCivil.IDEstadoCivil">
+                                <option [value]="act['IDEstadoCivil']" 
                                     *ngFor="let act of oneList.get('eci')">{{act['EstadoCivil']}}</option>
+
                             </select>
+                            
                         </div>
                     </div>
-
                     <br>
 
                     <div class="form-group row">
