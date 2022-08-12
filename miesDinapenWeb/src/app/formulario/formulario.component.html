@@ -8,23 +8,45 @@
                    
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#modalBusqueda">Buscar Persona</button>
+                        data-bs-target="#modalBusqueda" title="Buscar persona existente">Buscar Persona</button>
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modalPersona">Registrar Persona</button>
+                            data-bs-target="#modalPersona" title="Crear nueva persona">Registrar Persona</button>
                     </div>
                     <div class="col-sm-3">
                         <input class="form-control" disabled type="text" [value]="nombreCompleto">
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <input class="form-control" disabled type="text" [value]="perSelect?.Cedula">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#confirmSaveModal" title="Guardar intervención"><span class="oi oi-box"></span></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="confirmSaveModal" tabindex="-1" aria-labelledby="confirmSaveModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Está seguro que desea guardar?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="saveIntervencion()">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- Modal (se debe clicar el boton de arriba para que se muestre) -->
 <app-modal-persona></app-modal-persona>

@@ -99,6 +99,11 @@ export class FormularioComponent implements OnInit {
 
   }
 
+  saveIntervencion():void{
+    console.log("Guardado")
+  }
+
+
   public addNuevoSelect() {
     let row = document.createElement('div');
     row.className = 'row';
