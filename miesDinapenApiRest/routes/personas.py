@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends,status
 from config.db import get_db
 from sqlalchemy.orm import Session
 from models.models import Personas
@@ -37,3 +37,21 @@ def getPersonasQuery(apellido1: str = None, nombre1: str = None, db: Session = D
 def getPersonasByCedula(cedula: str, db: Session = Depends(get_db)):
     if cedula is not None:
         return db.query(Personas).filter(Personas.Cedula == cedula).all()
+
+@router.post('/api/personas',status_code=status.HTTP_201_CREATED)
+def addPersona(p:PersonasSchema,db:Session = Depends(get_db)):
+    
+    new_persona = Personas(IDPersona = p.IDPersona,
+    Apellido1=p.Apellido1,
+    Apellido2=p.Apellido2,
+    Nombre1=p.Nombre1,
+    Nombre2=p.Nombre2,
+    Cedula=p.Cedula,
+    IDGenero=p.genero.IDGenero,
+    NacIDNacionalidad=p.nacionalidad.IDNacionalidad
+    )
+
+    db.add(new_persona)
+    db.commit()
+    db.refresh(new_persona)
+    return new_persona
