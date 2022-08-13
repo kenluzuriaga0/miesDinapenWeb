@@ -38,19 +38,18 @@ def getPersonasByCedula(cedula: str, db: Session = Depends(get_db)):
     if cedula is not None:
         return db.query(Personas).filter(Personas.Cedula == cedula).all()
 
-@router.post('/api/personas',status_code=status.HTTP_201_CREATED)
+@router.post('/api/personas/',status_code=status.HTTP_201_CREATED)
 def addPersona(p:PersonasSchema,db:Session = Depends(get_db)):
-    
-    new_persona = Personas(IDPersona = p.IDPersona,
+    new_persona = Personas(
     Apellido1=p.Apellido1,
     Apellido2=p.Apellido2,
     Nombre1=p.Nombre1,
     Nombre2=p.Nombre2,
     Cedula=p.Cedula,
     IDGenero=p.genero.IDGenero,
-    NacIDNacionalidad=p.nacionalidad.IDNacionalidad
+    NacIDNacionalidad=p.nacionalidad.IDNacionalidad,
+    FechaNacim=p.FechaNacim
     )
-
     db.add(new_persona)
     db.commit()
     db.refresh(new_persona)

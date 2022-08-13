@@ -103,7 +103,7 @@ class DiscapacidadSchema(BaseModel):
         orm_mode = True
 
 class PersonasSchema(BaseModel):
-    IDPersona:int
+    IDPersona:Optional[int]
     Apellido1:str
     Apellido2: Optional[str]
     Nombre1: str

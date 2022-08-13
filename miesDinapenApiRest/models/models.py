@@ -104,7 +104,7 @@ class Estudio(Base):
 class Nacionalidades(Base):
     __tablename__ = "ListaIDNacionalidades"
     IDNacionalidad = Column(Integer, primary_key=True,index=True)
-    Nacionalidad = Column(String(100))
+    Nacionalidad = Column(String(100),nullable=True)
     personas = relationship("Personas",back_populates="nacionalidad")
 
 class Generos(Base):
@@ -159,7 +159,7 @@ class Instituciones(Base):
 
 class Personas(Base):
     __tablename__ = "ListaIDPersonas"
-    IDPersona = Column(Integer, primary_key=True,index=True)
+    IDPersona = Column(Integer, primary_key=True,index=True,)
     Apellido1= Column(String(50))
     Apellido2= Column(String(50))
     Nombre1= Column(String(50))
@@ -167,7 +167,7 @@ class Personas(Base):
     Cedula= Column(String(10))
     FechaNacim= Column(Date)
     NacIDNacionalidad= Column(Integer, ForeignKey("ListaIDNacionalidades.IDNacionalidad"))
-    NacIDProvincia= Column(Integer, ForeignKey("ListaIDProvincias.IDProvincia"))
+    NacIDProvincia= Column(Integer, ForeignKey("ListaIDProvincias.IDProvincia"),nullable=True)
     NacIDCanton= Column(Integer, ForeignKey("ListaIDCantones.IDCanton"))
     NacIDParroquia= Column(Integer, ForeignKey("ListaIDParroquias.IDParroquia"))
     IDGenero= Column(Integer, ForeignKey("ListaIDGeneros.IDGenero"))
