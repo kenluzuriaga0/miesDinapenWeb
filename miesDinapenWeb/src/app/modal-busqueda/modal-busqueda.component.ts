@@ -22,6 +22,7 @@ export class ModalBusquedaComponent implements OnInit {
   }
 
   buscarPersona():void{
+    this.listPersonas = [];
     if(typeof this.identificacion != 'undefined' && this.identificacion){
       console.log("nooo")
       this.listasService.loadPersonaByCedula(this.identificacion).subscribe(data => this.listPersonas=data)

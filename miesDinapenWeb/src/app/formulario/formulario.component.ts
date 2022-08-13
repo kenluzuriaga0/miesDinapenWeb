@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
+
 
 @Component({
   selector: 'app-formulario',
@@ -18,6 +18,7 @@ export class FormularioComponent implements OnInit {
   public listasProgramadas: any[];
   public listPersonas: Personas[];
   public perSelect: Personas;
+  //public perSelect: Personas;
 
   public provincia: Provincias;
   public organizacion: Organizaciones;
@@ -101,6 +102,7 @@ export class FormularioComponent implements OnInit {
 
   saveIntervencion():void{
     console.log("Guardado")
+    console.log(this.perSelect)
   }
 
 
@@ -150,4 +152,10 @@ export class FormularioComponent implements OnInit {
     this.listasService.loadListasProgramadas("nac").subscribe(data => this.oneList.set("nac", data));
     this.listasService.loadListasProgramadas("par").subscribe(data => this.oneList.set("par", data));
   }
+
+  pasarObjetosLlenos():void{
+    this.seleccionService.seleccionadorList.emit(this.oneList);
+  }
+
+
 }

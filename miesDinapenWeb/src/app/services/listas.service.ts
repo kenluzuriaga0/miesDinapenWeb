@@ -48,4 +48,8 @@ export class ListasService {
     return this.http.get<Personas[]>(this.urlEndPoint.concat('personas/' + param));
   }
 
+  savePersona(persona:Personas): Observable<Personas> { //PERSONAS BY CEDULA
+    return this.http.post<Personas>(this.urlEndPoint.concat('personas/'),persona);
+  }
+
 }

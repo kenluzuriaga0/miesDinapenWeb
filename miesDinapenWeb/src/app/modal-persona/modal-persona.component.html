@@ -1,4 +1,4 @@
-<div class="modal fade modal-xl" id="modalPersona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modal-lg" id="modalPersona" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,34 +8,57 @@
             <div class="modal-body">
                 <div class="card-body">
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-3">Nombres y Apellidos</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text">
+                        <label for="ape1" class="col-form-label col-sm-2">Apellido 1 *</label>
+                        <div class="col-sm-4">
+                            <input id="ape1" class="form-control" placeholder="Primer Apellido" type="text"
+                                [(ngModel)]="person.Apellido1">
                         </div>
-                        <label class="col-form-label col-sm-3">Doc. identificación</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text">
+                        <label for="ape2" class="col-form-label col-sm-2">Apellido 2</label>
+                        <div class="col-sm-4">
+                            <input id="ape2" class="form-control" placeholder="Segundo Apellido" type="text"
+                                [(ngModel)]="person.Apellido2">
                         </div>
                     </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="nom1" class="col-form-label col-sm-2">Nombre 1 *</label>
+                        <div class="col-sm-4">
+                            <input id="nom1" class="form-control" placeholder="Primer Nombre" type="text"
+                                [(ngModel)]="person.Nombre1">
+                        </div>
+                        <label for="nom2" class="col-form-label col-sm-2">Nombre 2</label>
+                        <div class="col-sm-4">
+                            <input id="nom2" class="form-control" placeholder="Segundo Nombre" type="text"
+                                [(ngModel)]="person.Nombre2">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-3">Doc. identificación *</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="text" [(ngModel)]="person.Cedula">
+                        </div>
+                        <label for="nombre" class="col-form-label col-sm-3">Sexo *</label>
+                        <div class="col-sm-3">
+                            <select class="form-select"  name="sexo" [(ngModel)]="person.genero">
+                                <option [ngValue]="act"
+                                    *ngFor="let act of oneList?.get('gen')">{{act['Genero']}}</option>
 
+                            </select>
+                        </div>
+                    </div>
                     <br>
 
                     <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
-                        <div class="col-sm-2">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                            </select>
-                        </div>
-
-                        <label for="nombre" class="col-form-label col-sm-2">Nacionalidad</label>
-                        <div class="col-sm-2">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
+                        <label for="nombre" class="col-form-label col-sm-3">Nacionalidad</label>
+                        <div class="col-sm-3">
+                            <select class="form-select" name="nacionalidad" [(ngModel)]="person.nacionalidad">
+                                <option [ngValue]="act" 
+                                    *ngFor="let act of oneList?.get('nac')">{{act['Nacionalidad']}}</option>
 
                             </select>
                         </div>
-                        <label class="col-form-label col-sm-2">Estatus migratorio</label>
+                        <label class="col-form-label col-sm-3">Estatus migratorio</label>
                         <div class="col-sm-3">
                             <select class="form-select" aria-label="Default select example">
                                 <option disabled selected>-</option>
@@ -47,9 +70,11 @@
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
+                        <label class="col-form-label col-sm-3">Fecha de nacimiento *</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text">
+                            <input class="form-control" name="fechaNacim"  
+                            type="date" 
+                            [(ngModel)]="person.FechaNacim">
                         </div>
                         <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
@@ -67,6 +92,7 @@
                         <div class="col-sm-3">
                         </div>
                     </div>
+                    <br>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Parroquia</label>
                         <div class="col-sm-3">
@@ -83,14 +109,17 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Etnia</label>
                         <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
+                            <select class="form-select" name="estadocivil" [(ngModel)]="person.etnia">
+                                <option [ngValue]="act" *ngFor="let act of oneList?.get('etn')">
+                                    {{act['Etnia']}}</option>
                             </select>
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Estado Civil</label>
                         <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
+                            <select class="form-select" name="estadocivil" [(ngModel)]="person.estadoCivil">
+                                <option [ngValue]="act" 
+                                    *ngFor="let act of oneList?.get('eci')">{{act['EstadoCivil']}}</option>
+
                             </select>
                         </div>
                     </div>
@@ -113,7 +142,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Aceptar</button>
+                <button type="button" class="btn btn-primary" (click)="savePerson()">Aceptar</button>
             </div>
         </div>
     </div>
