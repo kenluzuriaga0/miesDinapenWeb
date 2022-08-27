@@ -2,16 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Provincias, Canton, Organizaciones, Personas } from '../Models/Modelos';
+import { environment } from "../../environments/environment"
+
 @Injectable({
   providedIn: 'root'
 })
 export class ListasService {
+  baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
   private urlEndPoint: string = "http://localhost:8000/api/";
 
-
+  getTest():Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}/getAll.php`);
+  }
   loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
     return this.http.get<Provincias[]>(this.urlEndPoint.concat('provincias'));
   }
