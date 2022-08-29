@@ -1,22 +1,14 @@
 <?php
-
             //header("Access-Control-Allow-Origin: https://miesdinapen.cf");
+            header("Access-Control-Allow-Origin: http://localhost:4200");
             $bd = include_once "db.php";
+            header("Access-Control-Allow-Headers: X-API-KEY, Origin,  Content-Type, Accept, Access-Control-Request-Method");
 
-            $sentencia = $bd->query("select IDTipoActividad, TipoActividad from ListaIDTipoActividad");
-            $datos = [];
-            echo $sentencia->num_rows;
-            echo "Hola";
-            if($sentencia->num_rows){
-                while($row = $sentencia->fetch_assoc()){
-                    $datos[]=[
-                        'idTipoActividad' => $row['IDTipoActividad'],
-                        'tipoActividad' => $row['TipoActividad']
-                    ];
-                    echo "AAAA";
-                }
-            }
-            $datos = $sentencia->fetchAll(PDO::FETCH_OBJ);
-            echo json_encode($datos);
+            require_once "ListasDinamicas.php";
 
-        
+            if(isset($_GET['id'])) {
+                echo json_encode(ListasDinamicas::getWhere($_GET['id']));
+            }//end if
+            else {
+                echo json_encode(ListasDinamicas::getAllTipoActividad());
+            }//end else

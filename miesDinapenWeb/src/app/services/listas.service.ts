@@ -15,7 +15,7 @@ export class ListasService {
   private urlEndPoint: string = "http://localhost:8000/api/";
 
   getTest():Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}/getAll.php`);
+    return this.http.get<any>(`${this.baseUrl}/test.php`);
   }
   loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
     return this.http.get<Provincias[]>(this.urlEndPoint.concat('provincias'));
