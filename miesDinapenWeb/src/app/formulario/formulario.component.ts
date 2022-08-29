@@ -39,9 +39,10 @@ export class FormularioComponent implements OnInit {
     });
 
     this.listasService.loadOrganizaciones().subscribe(data => {
+      console.log(data);
       this.listOrganizaciones = data;
     });
-
+    console.log(this.listOrganizaciones);
 
     this.seleccionService.seleccionador.subscribe(data => {
       this.perSelect = data;

@@ -14,8 +14,11 @@ export class ListasService {
 
   private urlEndPoint: string = "http://localhost:8000/api/";
 
-  loadListasProgramadas(idList:string):Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}/api_listas.php?idLista=${idList}`);
+  loadListasProgramadas(idList:string):Observable<any[]> { // LISTAS PROGRAMADAS
+    return this.http.get<any>(`${this.baseUrl}/listasSelect.php?idLista=${idList}`);
+  }
+  loadOrganizaciones(): Observable<Organizaciones[]> { //ORGANIZACIONES
+    return this.http.get<Organizaciones[]>(`${this.baseUrl}/Lugares/organizacionSelect.php`);
   }
   loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
     return this.http.get<Provincias[]>(this.urlEndPoint.concat('provincias'));
@@ -23,10 +26,6 @@ export class ListasService {
 
   loadCantones(): Observable<Canton[]> { //CANTONES
     return this.http.get<Canton[]>(this.urlEndPoint.concat('cantones'));
-  }
-
-  loadOrganizaciones(): Observable<Organizaciones[]> { //ORGANIZACIONES
-    return this.http.get<Organizaciones[]>(this.urlEndPoint.concat('organizaciones'));
   }
 
 
