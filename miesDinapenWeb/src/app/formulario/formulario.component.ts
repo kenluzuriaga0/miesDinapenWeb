@@ -67,8 +67,6 @@ export class FormularioComponent implements OnInit {
 
     this.loadAllLista();
     this.initPersona();
-    console.log("HOLAAAA")
-    console.log(this.oneList.get("test"))
   }
 
 
@@ -154,10 +152,6 @@ export class FormularioComponent implements OnInit {
     this.listasService.loadListasProgramadas("nac").subscribe(data => this.oneList.set("nac", data));
     this.listasService.loadListasProgramadas("par").subscribe(data => this.oneList.set("par", data));
   
-    this.listasService.getTest().subscribe(data => this.oneList.set("test", data));
-    console.log("HOLAAAA 2")
-    console.log(this.oneList.get("test")) 
-
   }
 
   pasarObjetosLlenos():void{

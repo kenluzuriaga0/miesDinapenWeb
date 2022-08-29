@@ -14,8 +14,8 @@ export class ListasService {
 
   private urlEndPoint: string = "http://localhost:8000/api/";
 
-  getTest():Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}/test.php`);
+  loadListasProgramadas(idList:string):Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}/api_listas.php?idLista=${idList}`);
   }
   loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
     return this.http.get<Provincias[]>(this.urlEndPoint.concat('provincias'));
@@ -29,9 +29,6 @@ export class ListasService {
     return this.http.get<Organizaciones[]>(this.urlEndPoint.concat('organizaciones'));
   }
 
-  loadListasProgramadas(param: string): Observable<any[]> { //LISTAS PROGRAMADAS
-    return this.http.get<any>(this.urlEndPoint.concat('listasprogramadas/' + param));
-  }
 
   loadPersonasFiltered(apellido1?: string, nombre1?: string): Observable<Personas[]> { //PERSONAS
     let params: any;
