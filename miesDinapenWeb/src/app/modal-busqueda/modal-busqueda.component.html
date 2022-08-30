@@ -30,20 +30,20 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Nombres</th>
                                     <th scope="col">Apellidos</th>
+                                    <th scope="col">Nombres</th>
                                     <th scope="col">Identificacion</th>
-                                    <th scope="col">Parroquia</th>
+                                    <th scope="col">Fecha Nac</th>
                                     <th scope="col">-</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let p of listPersonas">
                                     <td>{{p.IDPersona}}</td>
-                                    <td>{{p.Nombre1 + " "+p.Nombre2}}</td>
                                     <td>{{p.Apellido1+ " "+p.Apellido2}}</td>
+                                    <td>{{p.Nombre1 + " "+p.Nombre2}}</td>
                                     <td>{{p.Cedula}}</td>
-                                    <td>{{p.parroquia?.Parroquia}}</td>
+                                    <td>{{p.FechaNacim}}</td>
                                     <td><button type="button" name="button" data-bs-dismiss="modal"  class="btn btn-primary" (click)="selectPersona(p)"><span class="oi oi-pencil"></span></button>
                                     </td>
                                 </tr>

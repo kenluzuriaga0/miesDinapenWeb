@@ -10,8 +10,8 @@ import { SeleccionService } from './seleccion.service';
 })
 export class ModalBusquedaComponent implements OnInit {
 
-  apellido1:string;
-  nombre1:string;
+  apellido1:string="";
+  nombre1:string="";
   identificacion:string;
 
   listPersonas:Personas[];
@@ -24,15 +24,12 @@ export class ModalBusquedaComponent implements OnInit {
   buscarPersona():void{
     this.listPersonas = [];
     if(typeof this.identificacion != 'undefined' && this.identificacion){
-      console.log("nooo")
       this.listasService.loadPersonaByCedula(this.identificacion).subscribe(data => this.listPersonas=data)
     }else{
-      if(this.apellido1||this.nombre1){
+      if(this.apellido1.trim()||this.nombre1.trim()){
         this.listasService.loadPersonasFiltered(this.apellido1,this.nombre1).subscribe(data=> this.listPersonas=data);
-
       }
     }
- 
   }
 
   selectPersona(p:Personas):void{

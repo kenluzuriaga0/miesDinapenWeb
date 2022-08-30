@@ -2,7 +2,7 @@
     //require_once "db.php";
     class Cantones{
 
-        public static function getAllCantones($id_act) {
+        public static function getAllParroquias($id_act) {
             $db = new Connection();
             $query = "SELECT * FROM ListaIDCantones";
             $resultado = $db->query($query);

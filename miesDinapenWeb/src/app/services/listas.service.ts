@@ -20,36 +20,27 @@ export class ListasService {
   loadOrganizaciones(): Observable<Organizaciones[]> { //ORGANIZACIONES
     return this.http.get<Organizaciones[]>(`${this.baseUrl}/Lugares/organizacionSelect.php`);
   }
-  loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
+  /*loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
     return this.http.get<Provincias[]>(this.urlEndPoint.concat('provincias'));
   }
 
   loadCantones(): Observable<Canton[]> { //CANTONES
     return this.http.get<Canton[]>(this.urlEndPoint.concat('cantones'));
+  }*/
+
+
+  loadPersonasFiltered(apellido1?: string, nombre1?: string): Observable<Personas[]> { //PERSONAS BY NOMBRES
+    return this.http.get<Personas[]>(`${this.baseUrl}/Personas/select.php?last=${apellido1}&name=${nombre1}`);
   }
 
-
-  loadPersonasFiltered(apellido1?: string, nombre1?: string): Observable<Personas[]> { //PERSONAS
-    let params: any;
-    if (nombre1 && !apellido1) {
-      params = { nombre1: nombre1 };
-    } else if (!nombre1 && apellido1) {
-      params = { apellido1: apellido1 };
-    }
-    else {
-      params = { apellido1: apellido1, nombre1: nombre1 };
-    }
-
-    return this.http.get<Personas[]>(this.urlEndPoint.concat('personas/'), { // con Params
-      params: params
-    });
+  loadPersonaByCedula(cedula: string): Observable<Personas[]> { //PERSONAS BY CEDULA
+    return this.http.get<Personas[]>(`${this.baseUrl}/Personas/select.php?cedula=${cedula}`);
+  }
+  loadAllPersonas(): Observable<Personas[]> { // ALL PERSONAS
+    return this.http.get<Personas[]>(`${this.baseUrl}/Personas/select.php`);
   }
 
-  loadPersonaByCedula(param: string): Observable<Personas[]> { //PERSONAS BY CEDULA
-    return this.http.get<Personas[]>(this.urlEndPoint.concat('personas/' + param));
-  }
-
-  savePersona(persona:Personas): Observable<Personas> { //PERSONAS BY CEDULA
+  savePersona(persona:Personas): Observable<Personas> { //SAVE PERSONAS
     return this.http.post<Personas>(this.urlEndPoint.concat('personas/'),persona);
   }
 

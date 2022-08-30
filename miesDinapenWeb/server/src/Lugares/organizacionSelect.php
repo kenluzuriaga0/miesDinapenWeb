@@ -4,7 +4,7 @@
     header('Content-Type: application/json;charset=utf-8');  
     header("Access-Control-Allow-Headers: X-API-KEY, Origin,  Content-Type, Accept, Access-Control-Request-Method");
 
-    $bd = include_once "../db.php";
+    include_once "../db.php";
     require_once "Organizaciones.php";
 
     echo json_encode(Organizacion::getAllOrganizaciones());

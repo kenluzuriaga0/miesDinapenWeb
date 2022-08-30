@@ -30,24 +30,22 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void { //se llenan las listas cuando carga la vista
     this.init();
-    this.listasService.loadProvincias().subscribe(data => {
+    /*this.listasService.loadProvincias().subscribe(data => {
       this.listProvincia = data;
     });
 
     this.listasService.loadCantones().subscribe(data => {
       this.listCantones = data;
-    });
+    });*/
 
     this.listasService.loadOrganizaciones().subscribe(data => {
       console.log(data);
       this.listOrganizaciones = data;
     });
-    console.log(this.listOrganizaciones);
 
     this.seleccionService.seleccionador.subscribe(data => {
       this.perSelect = data;
       this.unirNombres();
-      console.log(data)
     });
 
     if(typeof this.nombreCompleto === "undefined"){

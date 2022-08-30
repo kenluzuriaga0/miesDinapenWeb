@@ -1,5 +1,5 @@
 <?php
-    require_once "../Lugares.php";
+    require_once "../Modelos.php";
     class Organizacion{
 
         public static function getAllOrganizaciones() {
