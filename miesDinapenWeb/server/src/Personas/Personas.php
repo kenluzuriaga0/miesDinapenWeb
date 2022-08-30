@@ -72,4 +72,15 @@
             }
             return $datos;
         }
+
+        public static function insert($last1, $last2, $name1, $name2, $cedula, $fecnac, $genero) {
+            $db = new Connection();
+            $query = "INSERT INTO ListaIDPersonas (Apellido1,Apellido2,Nombre1,Nombre2,Cedula,FechaNacim,IDGenero)
+            VALUES('".$last1."', '".$last2."', '".$name1."', '".$name2."', '".$cedula."', '".$fecnac."', ".$genero->IDGenero.")";
+            if($db->query($query)=== TRUE) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }

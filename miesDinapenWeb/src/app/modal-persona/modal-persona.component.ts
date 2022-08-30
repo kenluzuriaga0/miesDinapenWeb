@@ -17,7 +17,6 @@ export class ModalPersonaComponent implements OnInit {
 
   private initPersona():void{
     this.person = new Personas();
-    this.person.IDPersona=16;
 
     this.person.Cedula='';
     this.person.FechaNacim=new Date();
@@ -46,8 +45,6 @@ export class ModalPersonaComponent implements OnInit {
   ngOnInit(): void {
     this.seleccionService.seleccionadorList.subscribe(data => {
       this.oneList = data;
-      console.log(data)
-      console.log(this.oneList.get('gen'))
     });
     this.initPersona();
 
@@ -55,8 +52,7 @@ export class ModalPersonaComponent implements OnInit {
   savePerson():void{
     console.log(this.person)
     this.listasService.savePersona(this.person).subscribe(data=> {
-      swal.fire('Registrado con exito', `Persona ${this.person.Apellido1} registrado con exito`, 'success')
-      console.log(data)
+      swal.fire('Registrado con exito', `Persona "${this.person.Apellido1}" registrado con éxito`, 'success')
     },error =>{
       swal.fire('Alerta de Error', `No se registró la persona`, 'error')
     }    );

@@ -41,7 +41,7 @@ export class ListasService {
   }
 
   savePersona(persona:Personas): Observable<Personas> { //SAVE PERSONAS
-    return this.http.post<Personas>(this.urlEndPoint.concat('personas/'),persona);
+    return this.http.post<Personas>(`${this.baseUrl}/Personas/insert.php`,persona);
   }
 
 }
