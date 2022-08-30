@@ -5,11 +5,13 @@
 
         public static function getAllPersonas() {
             $db = new Connection();
-            $query = "SELECT * FROM ListaIDPersonas";
+            $query = "SELECT * FROM ListaIDPersonas as p INNER JOIN ListaIDGeneros as g ON p.IDGenero = g.IDGenero";
             $resultado = $db->query($query);
             $datos = [];
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()) {
+                    $genero = new GeneroModel($row['IDGenero'],$row['Genero']);
+
                     $datos[]=[
                         'IDPersona' => $row['IDPersona'],
                         'Apellido1' => $row['Apellido1'],
@@ -17,7 +19,8 @@
                         'Nombre1' => $row['Nombre1'],
                         'Nombre2' => $row['Nombre2'],
                         'Cedula' => $row['Cedula'],
-                        'FechaNacim' => $row['FechaNacim']
+                        'FechaNacim' => $row['FechaNacim'],
+                        'genero'=> $genero
                     ];
                 }
                 return $datos;
@@ -27,7 +30,11 @@
 
         public static function getPersonaByCedula($cedula) {
             $db = new Connection();
-            $query = "SELECT * FROM ListaIDPersonas where Cedula = ?";
+            $query = "SELECT * FROM ListaIDPersonas as p 
+            INNER JOIN ListaIDGeneros as g ON p.IDGenero = g.IDGenero
+            LEFT JOIN ListaIDNacionalidades as n ON p.NacIDNacionalidad = n.IDNacionalidad
+            LEFT JOIN ListaIDEstadoCivil as e ON p.IDEstadoCivil = e.IDEstadoCivil
+            where Cedula = ?";
             $stmt = $db->prepare($query); // evitar SQL Injections
             $stmt->bind_param('s', $cedula);
             $stmt->execute();
@@ -36,6 +43,9 @@
             $datos = [];
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()) {
+                    $genero = new GeneroModel($row['IDGenero'],$row['Genero']);
+                    $nacionalidad = new NacionalidadModel($row['IDNacionalidad'],$row['Nacionalidad']);
+                    $estadoCivil = new EstadoCivilModel($row['IDEstadoCivil'],$row['EstadoCivil']);
                     $datos[]=[
                         'IDPersona' => $row['IDPersona'],
                         'Apellido1' => $row['Apellido1'],
@@ -43,7 +53,10 @@
                         'Nombre1' => $row['Nombre1'],
                         'Nombre2' => $row['Nombre2'],
                         'Cedula' => $row['Cedula'],
-                        'FechaNacim' => $row['FechaNacim']
+                        'FechaNacim' => $row['FechaNacim'],
+                        'genero'=> $genero,
+                        'nacionalidad'=> $nacionalidad,
+                        'estadoCivil'=> $estadoCivil
                     ];
                 }
                 return $datos;
@@ -53,11 +66,18 @@
 
         public static function getPersonaByName($apellido1, $nombre1) {
             $db = new Connection();
-            $query = "SELECT * FROM ListaIDPersonas where Apellido1 LIKE '%$apellido1%' AND Nombre1 LIKE '%$nombre1%'";
+            $query = "SELECT * FROM ListaIDPersonas as p 
+            INNER JOIN ListaIDGeneros as g ON p.IDGenero = g.IDGenero
+            LEFT JOIN ListaIDNacionalidades as n ON p.NacIDNacionalidad = n.IDNacionalidad
+            LEFT JOIN ListaIDEstadoCivil as e ON p.IDEstadoCivil = e.IDEstadoCivil
+            where Apellido1 LIKE '%$apellido1%' AND Nombre1 LIKE '%$nombre1%'";
             $resultado = $db->query($query);
             $datos = [];
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()) {
+                    $genero = new GeneroModel($row['IDGenero'],$row['Genero']);
+                    $nacionalidad = new NacionalidadModel($row['IDNacionalidad'],$row['Nacionalidad']);
+                    $estadoCivil = new EstadoCivilModel($row['IDEstadoCivil'],$row['EstadoCivil']);
                     $datos[]=[
                         'IDPersona' => $row['IDPersona'],
                         'Apellido1' => $row['Apellido1'],
@@ -65,7 +85,10 @@
                         'Nombre1' => $row['Nombre1'],
                         'Nombre2' => $row['Nombre2'],
                         'Cedula' => $row['Cedula'],
-                        'FechaNacim' => $row['FechaNacim']
+                        'FechaNacim' => $row['FechaNacim'],
+                        'genero'=> $genero,
+                        'nacionalidad'=> $nacionalidad,
+                        'estadoCivil'=> $estadoCivil
                     ];
                 }
                 return $datos;
