@@ -26,81 +26,81 @@ export class Personas {
 export class CabelloColor {
    IDColorCabello: number;
    ColorCabello:   string;
-   constructor(){this.IDColorCabello=1;this.ColorCabello=""}
+   constructor(){this.ColorCabello=""}
 }
 
 export class CabelloTipo {
    IDCabelloTipo: number;
    CabelloTipo:   string;
-   constructor(){this.IDCabelloTipo=1;this.CabelloTipo=""}
+   constructor(){this.CabelloTipo=""}
 }
 
 export class CondicionMedica {
    IDCondicionMedica: number;
    CondicionMedica:   string;
-   constructor(){this.IDCondicionMedica=1;this.CondicionMedica=""}
+   constructor(){this.CondicionMedica=""}
 }
 
 export class Contextura {
    IDContextura: number;
    Contextura:   string;
-   constructor(){this.IDContextura=1;this.Contextura=""}
+   constructor(){this.Contextura="";}
 }
 
 export class Discapacidad {
    IDDiscapacidad: number;
    Discapacidad:   string;
-   constructor(){this.IDDiscapacidad=1;this.Discapacidad=""}
+   constructor(){this.Discapacidad=""}
 }
 
 export class EstadoCivil {
    IDEstadoCivil: number;
    EstadoCivil:   string;
-   constructor(){this.IDEstadoCivil=1;this.EstadoCivil=""}
+   constructor(){this.EstadoCivil=""}
 }
 
 export class Estatura {
    IDEstatura: number;
    Estatura:   string;
-   constructor(){this.IDEstatura=1;this.Estatura=""}
+   constructor(){this.Estatura=""}
 }
 
 export class Etnia {
    IDEtnia: number;
    Etnia:   string;
-   constructor(){this.IDEtnia=1;this.Etnia=""}
+   constructor(){this.Etnia=""}
 }
 
 export class Genero {
    IDGenero: number;
    Genero:   string;
-   constructor(){this.IDGenero=1;this.Genero=""}
+   constructor(){this.Genero=""}
 }
 
 export class Nacionalidad {
    IDNacionalidad: number;
    Nacionalidad:   string;
-   constructor(){this.IDNacionalidad=1;this.Nacionalidad=""}
+   constructor(){this.Nacionalidad=""}
 }
 
 export class Parroquia {
    IDParroquia: number;
    Parroquia:   string;
    IDCanton:    number;
-   constructor(){this.IDParroquia=1;this.Parroquia="";this.IDCanton=0}
+   constructor(){this.Parroquia="";this.IDCanton=0}
 }
 
 export class Provincias{
    IDProvincia: number;
    Provincia: string;
    IDNacionalidad: number;
-   constructor(){this.IDProvincia=1;this.Provincia="";this.IDNacionalidad=0}
+   constructor(){this.Provincia="";this.IDNacionalidad=0}
 }
 export class Canton {
    IDCanton: number;
    Canton: string;
    IDProvincia: number;
-   constructor(){this.IDCanton=1;this.Canton="";this.IDProvincia=0}
+   constructor(){this.Canton="";this.IDProvincia=0}
 }
 export class Organizaciones {
    IDOrganizacion: number;
@@ -108,7 +108,7 @@ export class Organizaciones {
    Zona: number = 0;
    provincia:Provincias;
    canton:Canton;
-   IDParroquia:number;
+   parroquia:Parroquia;
    tipo:TipoOrganizaciones;
    
 }
@@ -116,5 +116,7 @@ export class Organizaciones {
 export class TipoOrganizaciones {
    IDTipoOrganizacion: number;
    TipoOrganizacion: string;
+
+   constructor(){this.TipoOrganizacion="";}
 }
 

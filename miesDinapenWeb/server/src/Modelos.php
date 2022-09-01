@@ -6,7 +6,7 @@ class ProvinciaModel{
     public  $IDNacionalidad;
     
 
-    public function __construct(string $iDProvincia, string $provincia, string $IDNacionalidad) {
+    public function __construct( $iDProvincia,  $provincia, $IDNacionalidad) {
         $this->IDProvincia = $iDProvincia;
         $this->Provincia = $provincia;
         $this->IDNacionalidad = $IDNacionalidad;
@@ -18,9 +18,22 @@ class CantonModel{
     public  $IDCanton;
     public  $Canton;
 
-    public function __construct(string $x, string $y ) {
+    public function __construct($x,  $y ) {
         $this->IDCanton = $x;
         $this->Canton = $y;
+    }
+
+}
+
+class ParroquiaModel{
+    public  $IDParroquia;
+    public  $Parroquia;
+    public  $IDCanton;
+
+    public function __construct($x,  $y,$z ) {
+        $this->IDParroquia = $x;
+        $this->Parroquia = $y;
+        $this->IDCanton = $z;
     }
 
 }
@@ -29,7 +42,7 @@ class TipoOrganizacionesModel {
     public $IDTipoOrganizacion;
     public $TipoOrganizacion;
 
-    public function __construct(string $x, string $y ) {
+    public function __construct($x,  $y ) {
         $this->IDTipoOrganizacion = $x;
         $this->TipoOrganizacion = $y;
     }
@@ -77,7 +90,7 @@ class TipoOrganizacionesModel {
     public $IDGenero;
     public $Genero;
 
-    public function __construct(string $x, string $y ) {
+    public function __construct($x, $y ) {
         $this->IDGenero = $x;
         $this->Genero = $y;
     } 
@@ -88,7 +101,7 @@ class CabelloColorModel {
     public $IDColorCabello;
     public $ColorCabello;
 
-    public function __construct(string $x, string $y ) {
+    public function __construct($x, $y ) {
         $this->IDColorCabello = $x;
         $this->ColorCabello = $y;
     } 
@@ -97,7 +110,7 @@ class CabelloColorModel {
  class CabelloTipoModel {
     public $IDCabelloTipo;
     public $CabelloTipo;
-    public function __construct(string $x, string $y ) {
+    public function __construct($x, $y ) {
         $this->IDCabelloTipo = $x;
         $this->CabelloTipo = $y;
     } 
@@ -107,7 +120,7 @@ class CabelloColorModel {
  class CondicionMedicaModel {
     public $IDCondicionMedica;
     public $CondicionMedica;
-    public function __construct(string $x, string $y ) {
+    public function __construct($x, $y ) {
         $this->IDCondicionMedica = $x;
         $this->CondicionMedica = $y;
     } 
@@ -118,7 +131,7 @@ class CabelloColorModel {
     public $IDContextura;
     public $Contextura;
     
-    public function __construct(string $x, string $y ) {
+    public function __construct($x,$y ) {
         $this->IDContextura = $x;
         $this->Contextura = $y;
     } 
@@ -128,7 +141,7 @@ class CabelloColorModel {
     public $IDDiscapacidad;
     public $Discapacidad;    
     
-    public function __construct(string $x, string $y ) {
+    public function __construct($x, $y ) {
         $this->IDDiscapacidad = $x;
         $this->Discapacidad = $y;
     } 
@@ -147,7 +160,7 @@ class CabelloColorModel {
  class EstaturaModel {
     public $IDEstatura;
     public $Estatura;    
-    public function __construct(string $x, string $y ) {
+    public function __construct($x, $y ) {
         $this->IDEstatura = $x;
         $this->Estatura = $y;
     } 
@@ -157,7 +170,7 @@ class CabelloColorModel {
     public $IDEtnia;
     public $Etnia;  
 
-    public function __construct(string $x, string $y ) {
+    public function __construct( $x,  $y ) {
         $this->IDEtnia = $x;
         $this->Etnia = $y;
     } 

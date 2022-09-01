@@ -51,11 +51,11 @@ export class ModalPersonaComponent implements OnInit {
   }
   savePerson():void{
     console.log(this.person)
-    this.listasService.savePersona(this.person).subscribe(data=> {
+  /*  this.listasService.savePersona(this.person).subscribe(data=> {
       swal.fire('Registrado con exito', `Persona "${this.person.Apellido1}" registrado con éxito`, 'success')
     },error =>{
       swal.fire('Alerta de Error', `No se registró la persona`, 'error')
-    }    );
+    }    );*/
   }
 
 }

@@ -1,17 +1,17 @@
 <?php
     //require_once "db.php";
-    class Cantones{
+    class Parroquias{
 
         public static function getAllParroquias($id_act) {
             $db = new Connection();
-            $query = "SELECT * FROM ListaIDCantones";
+            $query = "SELECT * FROM ListaIDParroquias";
             $resultado = $db->query($query);
             $datos = [];
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()) {
                     $datos[]=[
-                        'IDCanton' => $row['IDCanton'],
-                        'Canton' => $row['Canton']
+                        'IDParroquia' => $row['IDParroquia'],
+                        'Parroquia' => $row['Parroquia']
                     ];
                 }
                 return $datos;

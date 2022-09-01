@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 
 
@@ -56,13 +56,9 @@ export class FormularioComponent implements OnInit {
   private init(): void {
     this.organizacion = new Organizaciones();
     this.organizacion.tipo = new TipoOrganizaciones();
-    this.organizacion.tipo.TipoOrganizacion = "";
-
     this.organizacion.provincia = new Provincias();
-    this.organizacion.provincia.Provincia = '';
-
     this.organizacion.canton = new Canton();
-    this.organizacion.canton.Canton = '';
+    this.organizacion.parroquia = new Parroquia();
 
     this.loadAllLista();
     this.initPersona();
@@ -95,7 +91,13 @@ export class FormularioComponent implements OnInit {
     this.perSelect.etnia=new Etnia();
     this.perSelect.nacionalidad=new Nacionalidad();
     this.perSelect.genero=new Genero();
-
+    this.perSelect.cabelloColor=new CabelloColor();
+    this.perSelect.cabelloTipo=new CabelloTipo();
+    this.perSelect.contextura=new Contextura();
+    this.perSelect.estatura=new Estatura();
+    this.perSelect.provincia=new Provincias();
+    this.perSelect.canton=new Canton();
+    this.perSelect.discapacidad=new Discapacidad();
 
   }
 
@@ -157,5 +159,15 @@ export class FormularioComponent implements OnInit {
     this.seleccionService.seleccionadorList.emit(this.oneList);
   }
 
+  calcularEdad(): number {
+    const today: Date = new Date();
+    const birthDate: Date = new Date(this.perSelect.FechaNacim);
+    let age: number = today.getFullYear() - birthDate.getFullYear();
+    const month: number = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 
 }

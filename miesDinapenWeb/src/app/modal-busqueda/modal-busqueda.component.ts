@@ -33,6 +33,7 @@ export class ModalBusquedaComponent implements OnInit {
   }
 
   selectPersona(p:Personas):void{
+    console.log(p);
     this.seleccionService.seleccionador.emit(p); //emite para enviar el obj al componente Formulario
     
   }
