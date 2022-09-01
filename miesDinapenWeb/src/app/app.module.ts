@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ModalPersonaComponent } from './modal-persona/modal-persona.component';
 import { ModalBusquedaComponent } from './modal-busqueda/modal-busqueda.component';
+import { ProvinciaComponent } from './provincia/provincia.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ModalBusquedaComponent } from './modal-busqueda/modal-busqueda.componen
     FormularioComponent,
     HomeComponent,
     ModalPersonaComponent,
-    ModalBusquedaComponent
+    ModalBusquedaComponent,
+    ProvinciaComponent
   ],
   imports: [
     BrowserModule,
