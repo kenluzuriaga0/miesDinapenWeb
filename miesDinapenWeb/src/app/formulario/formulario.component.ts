@@ -67,7 +67,7 @@ export class FormularioComponent implements OnInit {
 
   public filtrarCanton(e: any): Canton[] {
     if (typeof this.provincia !== 'undefined') {
-      return this.listCantones.filter(x => x.IDProvincia == this.provincia.IDProvincia);
+      return this.listCantones.filter(x => x.provincia.IDProvincia == this.provincia.IDProvincia);
     } else {
       return this.listCantones;
     }

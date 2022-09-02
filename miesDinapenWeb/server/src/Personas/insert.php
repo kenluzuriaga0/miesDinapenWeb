@@ -9,7 +9,9 @@
     
     $datos = json_decode(file_get_contents('php://input'));
     if($datos != NULL) {
-        if(Personas::insert($datos->Apellido1, $datos->Apellido2, $datos->Nombre1, $datos->Nombre2, $datos->Cedula, $datos->FechaNacim, $datos->genero)) {
+        if(Personas::insert($datos->Apellido1, $datos->Apellido2, $datos->Nombre1, 
+        $datos->Nombre2, $datos->Cedula, $datos->FechaNacim, $datos->genero,$datos->nacionalidad,$datos->parroquia,
+        $datos->etnia,$datos->estadoCivil)) {
             echo json_encode(['insert' => TRUE]);
         }else {
             echo json_encode(['insert' => FALSE]);

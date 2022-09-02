@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -12,22 +12,23 @@ export class ListasService {
 
   constructor(private http: HttpClient) { }
 
-  private urlEndPoint: string = "http://localhost:8000/api/";
-
   loadListasProgramadas(idList:string):Observable<any[]> { // LISTAS PROGRAMADAS
     return this.http.get<any>(`${this.baseUrl}/listasSelect.php?idLista=${idList}`);
   }
   loadOrganizaciones(): Observable<Organizaciones[]> { //ORGANIZACIONES
-    return this.http.get<Organizaciones[]>(`${this.baseUrl}/Lugares/organizacionSelect.php`);
+    return this.http.get<Organizaciones[]>(`${this.baseUrl}/Organizaciones/organizacionSelect.php`);
   }
-  /*loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
-    return this.http.get<Provincias[]>(this.urlEndPoint.concat('provincias'));
+  loadProvincias(): Observable<Provincias[]> { //PROVINCIAS
+    return this.http.get<Provincias[]>(`${this.baseUrl}/Provincias/select.php`);
   }
 
   loadCantones(): Observable<Canton[]> { //CANTONES
-    return this.http.get<Canton[]>(this.urlEndPoint.concat('cantones'));
-  }*/
+    return this.http.get<Canton[]>(`${this.baseUrl}/Cantones/select.php`);
+  }
 
+  loadParroquias(): Observable<Parroquia[]> { //PARROQUIAS
+    return this.http.get<Parroquia[]>(`${this.baseUrl}/Parroquias/select.php`);
+  }
 
   loadPersonasFiltered(apellido1?: string, nombre1?: string): Observable<Personas[]> { //PERSONAS BY NOMBRES
     return this.http.get<Personas[]>(`${this.baseUrl}/Personas/select.php?last=${apellido1}&name=${nombre1}`);

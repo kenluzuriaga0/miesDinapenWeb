@@ -14,7 +14,7 @@
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()) {
                     $provincia = new ProvinciaModel($row['IDProvincia'],$row['Provincia'],$row['IDNacionalidad']);
-                    $canton = new CantonModel($row['IDCanton'],$row['Canton']);
+                    $canton = new CantonModel($row['IDCanton'],$row['Canton'],null);
                     $parroquia = new ParroquiaModel($row['IDParroquia'],$row['Parroquia'],$row['IDCanton']);
                     $tipo = new TipoOrganizacionesModel($row['IDTipoOrganizacion'],$row['TipoOrganizacion']);
 

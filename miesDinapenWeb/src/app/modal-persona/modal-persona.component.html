@@ -78,26 +78,33 @@
                         </div>
                         <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text">
+                            <input class="form-control" readonly type="text" [value]="calcularEdad()">
                         </div>
                     </div>
 
                     <br>
 
-                    <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-3">Provincia</label>
-                        <div class="col-sm-3">
-                        </div>
-                        <label for="email" class="col-form-label col-sm-3">Cantón</label>
-                        <div class="col-sm-3">
-                        </div>
-                    </div>
-                    <br>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Parroquia</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" type="text">
+                            <select  class="form-select" name="parroquia" [(ngModel)]="person.parroquia">
+                                <option [ngValue]="parr" *ngFor="let parr of listParroquia">
+                                    {{parr.Parroquia}} - {{parr.canton.Canton}} </option>
+                            </select>
                         </div>
+                        <label for="email" class="col-form-label col-sm-3">Cantón</label>
+                        <div class="col-sm-3">
+                            <input disabled class="form-control" name="canton" [value]="person.parroquia?.canton?.Canton"
+                                type="text">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-3">Provincia</label>
+                        <div class="col-sm-3">
+                            <input disabled class="form-control" name="provincia" [value]="person.parroquia?.canton?.provincia?.Provincia"
+                            type="text">                       
+                         </div>
                         <label for="email" class="col-form-label col-sm-3">Barrio</label>
                         <div class="col-sm-3">
                             <input class="form-control" type="text">

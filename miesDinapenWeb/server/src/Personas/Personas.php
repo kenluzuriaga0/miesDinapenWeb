@@ -62,7 +62,7 @@
                     $etnia = new EtniaModel($row['IDEtnia'],$row['Etnia']);
                     $discapacidad = new DiscapacidadModel($row['IDDiscapacidad'],$row['Discapacidad']);
                     $provincia = new ProvinciaModel($row['NacIDProvincia'],$row['Provincia'],$row['IDNacionalidad']);
-                    $canton = new CantonModel($row['NacIDCanton'],$row['Canton']);
+                    $canton = new CantonModel($row['NacIDCanton'],$row['Canton'],null);
                     $parroquia = new ParroquiaModel($row['NacIDParroquia'],$row['Parroquia'],$row['IDCanton']);
 
                     $datos[]=[
@@ -122,7 +122,7 @@
                     $etnia = new EtniaModel($row['IDEtnia'],$row['Etnia']);
                     $discapacidad = new DiscapacidadModel($row['IDDiscapacidad'],$row['Discapacidad']);
                     $provincia = new ProvinciaModel($row['NacIDProvincia'],$row['Provincia'],$row['IDNacionalidad']);
-                    $canton = new CantonModel($row['NacIDCanton'],$row['Canton']);
+                    $canton = new CantonModel($row['NacIDCanton'],$row['Canton'],null);
                     $parroquia = new ParroquiaModel($row['NacIDParroquia'],$row['Parroquia'],$row['IDCanton']);
 
                     $datos[]=[
@@ -152,10 +152,14 @@
             return $datos;
         }
 
-        public static function insert($last1, $last2, $name1, $name2, $cedula, $fecnac, $genero) {
+        public static function insert($last1, $last2, $name1, $name2, $cedula, $fecnac, $genero, $nacionalidad ,$parroquia,$etnia,$estadoCivil) {
             $db = new Connection();
-            $query = "INSERT INTO ListaIDPersonas (Apellido1,Apellido2,Nombre1,Nombre2,Cedula,FechaNacim,IDGenero)
-            VALUES('".$last1."', '".$last2."', '".$name1."', '".$name2."', '".$cedula."', '".$fecnac."', ".$genero->IDGenero.")";
+            $query = "INSERT INTO ListaIDPersonas (Apellido1,Apellido2,Nombre1,Nombre2,Cedula,FechaNacim,IDGenero,
+            NacIDNacionalidad,NacIDParroquia, NacIDCanton,NacIDProvincia,IDEtnia,IDEstadoCivil)
+            VALUES('".$last1."', '".$last2."', '".$name1."', '".$name2."', '".$cedula."'
+            , '".$fecnac."',".$genero->IDGenero.",".$nacionalidad->IDNacionalidad.",".$parroquia->IDParroquia."
+            ,".$parroquia->canton->IDCanton.",".$parroquia->canton->provincia->IDProvincia."
+            ,".$etnia->IDEtnia.",".$estadoCivil->IDEstadoCivil.")";
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }

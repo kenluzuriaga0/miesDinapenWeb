@@ -86,21 +86,21 @@ export class Nacionalidad {
 export class Parroquia {
    IDParroquia: number;
    Parroquia:   string;
-   IDCanton:    number;
-   constructor(){this.Parroquia="";this.IDCanton=0}
+   canton:    Canton;
+   constructor(){this.Parroquia="";}
 }
 
 export class Provincias{
    IDProvincia: number;
    Provincia: string;
    IDNacionalidad: number;
-   constructor(){this.Provincia="";this.IDNacionalidad=0}
+   constructor(){this.Provincia="";this.IDNacionalidad=0;}
 }
 export class Canton {
    IDCanton: number;
    Canton: string;
-   IDProvincia: number;
-   constructor(){this.Canton="";this.IDProvincia=0}
+   provincia: Provincias;
+   constructor(){this.Canton="";}
 }
 export class Organizaciones {
    IDOrganizacion: number;

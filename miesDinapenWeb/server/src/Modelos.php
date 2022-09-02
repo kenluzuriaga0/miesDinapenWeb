@@ -17,10 +17,12 @@ class ProvinciaModel{
 class CantonModel{
     public  $IDCanton;
     public  $Canton;
+    public  $provincia;
 
-    public function __construct($x,  $y ) {
+    public function __construct($x,  $y,$z) {
         $this->IDCanton = $x;
         $this->Canton = $y;
+        $this->provincia = $z;
     }
 
 }
