@@ -14,6 +14,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ModalPersonaComponent } from './modal-persona/modal-persona.component';
 import { ModalBusquedaComponent } from './modal-busqueda/modal-busqueda.component';
 import { ProvinciaComponent } from './provincia/provincia.component';
+import { ActividadesComponent } from './actividades/actividades.component';
+import { CantonesComponent } from './cantones/cantones.component';
+import { OrganizacionesComponent } from './organizaciones/organizaciones.component';
+import { ParroquiasComponent } from './parroquias/parroquias.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { ProvinciaComponent } from './provincia/provincia.component';
     HomeComponent,
     ModalPersonaComponent,
     ModalBusquedaComponent,
-    ProvinciaComponent
+    ProvinciaComponent,
+    ActividadesComponent,
+    CantonesComponent,
+    OrganizacionesComponent,
+    ParroquiasComponent
   ],
   imports: [
     BrowserModule,
