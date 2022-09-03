@@ -10,10 +10,9 @@
     $datos = json_decode(file_get_contents('php://input'));
     if($datos != NULL) {
         if(Incidencia::insert($datos->IDOperador, $datos->IDOrganCooperante, $datos->IDPersonaIntervenida, $datos->Latitud, $datos->Longitud, $datos->FechaRegistro)) {
-            echo json_encode(['insert' => TRUE]);
         }else {
-            echo json_encode(['insert' => FALSE]);
+            echo json_encode(['Error' => FALSE]);
         }
     }else {
-        echo json_encode(['insert' => FALSE]);
+        echo json_encode(['Error' => FALSE]);
     }
