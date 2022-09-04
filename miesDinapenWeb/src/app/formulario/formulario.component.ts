@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -105,8 +106,14 @@ export class FormularioComponent implements OnInit {
   }
 
   saveIntervencion():void{
-    console.log("Guardado")
-    console.log(this.intervencion)
+    if(typeof this.intervencion.organizacion.IDOrganizacion !=='undefined'){
+      console.log("Guardado")
+      this.intervencion.FechaIntervencion= new Date();
+      console.log(this.intervencion)
+      this.listasService.updateIntervencion(this.intervencion);
+    }else{
+      swal.fire('Alerta de Error', `Faltan campos por completar`, 'error')
+    }
   }
 
 

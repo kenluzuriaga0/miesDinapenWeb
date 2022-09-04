@@ -60,7 +60,6 @@ export class ModalPersonaComponent implements OnInit {
   savePerson():void{
     this.person.provincia = this.person.parroquia?.canton?.provincia;
     this.person.canton = this.person.parroquia?.canton;
-    console.log(this.person)
     this.listasService.savePersona(this.person).subscribe(data=> {
       swal.fire('Registrado con exito', `Persona "${this.person.Apellido1}" registrado con éxito`, 'success')
     },error =>{

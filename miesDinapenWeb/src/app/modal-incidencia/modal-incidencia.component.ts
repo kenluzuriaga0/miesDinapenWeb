@@ -21,7 +21,6 @@ export class ModalIncidenciaComponent implements OnInit {
     });
   }
   selectIncidencia(inci:Intervenciones):void{
-    console.log(inci);
     this.seleccionService.seleccionador.emit(inci); //emite para enviar el obj al componente Formulario
   }
 

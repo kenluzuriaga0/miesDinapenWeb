@@ -60,4 +60,23 @@
             }
             return $datos;
         }
+
+
+        public static function update($IDOperador, $IDPersonaIntervenida, $IDOrganCooperante, $FechaIntervencion, $ID) {
+            $FechaIntervencionFormat = date("Y-m-d H:i:s", strtotime($FechaIntervencion));
+
+            
+            $db = new Connection();
+            $query = "UPDATE Intervenciones SET 
+            IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat'
+            WHERE IDIntervencion=$ID";
+            echo $query.'\n';
+            $db->query($query);
+            if($db->affected_rows>0) {
+                echo "Actualizado";
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }

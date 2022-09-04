@@ -39,8 +39,11 @@ export class ModalBusquedaComponent implements OnInit {
   }
 
   selectPersona(p:Personas):void{
-    this.intervencionSelect.persona = p;
     console.log(this.intervencionSelect);
+    if(typeof this.intervencionSelect === 'undefined'){
+      this.intervencionSelect = new Intervenciones();
+    }
+    this.intervencionSelect.persona = p;
     this.seleccionService.seleccionadorToForm.emit(this.intervencionSelect); //emite para enviar el obj al componente Formulario
     
   }

@@ -48,5 +48,8 @@ export class ListasService {
   loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
     return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);
   }
+  updateIntervencion(intervencion:Intervenciones): Observable<Intervenciones> { //UPDATE INTERVENCIONES
+    return this.http.post<Intervenciones>(`${this.baseUrl}/Incidencias/update.php`,intervencion);
+  }
 
 }
