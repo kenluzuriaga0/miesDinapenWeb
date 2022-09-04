@@ -189,3 +189,39 @@ class CabelloColorModel {
     } 
  }
  
+  
+ class OperadorModel {
+    public $IDOperador;
+    public $IDInstitucion;   
+    public $OperaCargo;   
+    public $OperaNCedula;   
+    public $OperaApellido1;   
+    public $OperaApellido2;   
+    public $OperaNombres;   
+
+    public function __construct($x, $y,$z,$a,$b,$c,$d ) {
+        $this->IDOperador = $x;
+        $this->IDInstitucion = $y;
+        $this->OperaNCedula = $z;
+        $this->OperaCargo = $a;
+        $this->OperaApellido1 = $b;
+        $this->OperaApellido2 = $c;
+        $this->OperaNombres = $d;
+    } 
+ }
+
+
+class OrganizacionModel {
+    public $IDOrganizacion;
+    public $Organizacion;
+    public $Zona;
+    public $provincia;
+    public $canton;
+    public $parroquia;
+    public $tipo;
+
+    public function __construct($x,  $y ) {
+        $this->IDOrganizacion = $x;
+        $this->Organizacion = $y;
+    }
+ }

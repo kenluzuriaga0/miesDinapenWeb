@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import { CabelloColor, CabelloTipo, Canton, CondicionMedica, Contextura, Discapacidad,
    EstadoCivil, Estatura, Etnia, Genero, Nacionalidad, Parroquia, Personas, Provincias } from '../Models/Modelos';
@@ -13,7 +13,7 @@ import swal from 'sweetalert2';
 export class ModalPersonaComponent implements OnInit {
 
   public person: Personas;
-  public oneList: Map<string, any[]>;
+  @Input() public oneList: Map<string, any[]>;
   public listProvincia: Provincias[];
   public listParroquia: Parroquia[];
 

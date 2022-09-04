@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
@@ -18,7 +18,6 @@ export class FormularioComponent implements OnInit {
   public listasProgramadas: any[];
   public listPersonas: Personas[];
   public perSelect: Personas;
-  //public perSelect: Personas;
 
   public provincia: Provincias;
   public organizacion: Organizaciones;
@@ -30,13 +29,6 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void { //se llenan las listas cuando carga la vista
     this.init();
-    /*this.listasService.loadProvincias().subscribe(data => {
-      this.listProvincia = data;
-    });
-
-    this.listasService.loadCantones().subscribe(data => {
-      this.listCantones = data;
-    });*/
 
     this.listasService.loadOrganizaciones().subscribe(data => {
       console.log(data);

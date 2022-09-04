@@ -7,12 +7,12 @@
                 <div class="form-group row">
                    
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                        data-bs-target="#modalBusqueda" title="Buscar persona existente">Buscar Persona</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modalIntervencion" title="Cargar Intervencion de la app movil">Cargar Intervención</button>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modalPersona" title="Crear nueva persona" (click)="pasarObjetosLlenos()">Registrar Persona</button>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#modalBusqueda" title="Crear una nueva intervencion de una persona">Nueva Intervención</button>
                     </div>
                     <div class="col-sm-3">
                         <input class="form-control" disabled type="text" [value]="nombreCompleto">
@@ -49,8 +49,9 @@
   </div>
 
 <!-- Modal (se debe clicar el boton de arriba para que se muestre) -->
-<app-modal-persona></app-modal-persona>
-<app-modal-busqueda></app-modal-busqueda>
+<app-modal-busqueda [oneList]="oneList" ></app-modal-busqueda> <!-- Input Componente Padre a Hijo -->
+<app-modal-incidencia></app-modal-incidencia>
+
 <br>
 
 <div class="card bg-light text-dark">

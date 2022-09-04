@@ -1,0 +1,44 @@
+<div class="modal fade modal-lg" id="modalIntervencion" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Listas de Intervenciones</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <br>
+                    <div class="form-group row table-responsive ">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Organizacion</th>
+                                    <th scope="col">Operador</th>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">-</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let inci of listIntervenciones">
+                                    <td>{{inci.IDIntervencion}}</td>
+                                    <td>{{inci.organizacion.Organizacion}}</td>
+                                    <td>{{inci.operador.OperaApellido1}} {{inci.operador.OperaNombres}}</td>
+                                    <td>{{inci.Referencia}}</td>
+                                    <td>{{inci.FechaRegistro}}</td>
+                                    <td><button type="button" name="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalBusqueda" title="Crear nueva persona"  class="btn btn-primary" ><span class="oi oi-pencil"></span></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

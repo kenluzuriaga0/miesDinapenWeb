@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -43,6 +43,10 @@ export class ListasService {
 
   savePersona(persona:Personas): Observable<Personas> { //SAVE PERSONAS
     return this.http.post<Personas>(`${this.baseUrl}/Personas/insert.php`,persona);
+  }
+
+  loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
+    return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);
   }
 
 }

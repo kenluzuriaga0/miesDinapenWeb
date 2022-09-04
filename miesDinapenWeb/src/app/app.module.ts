@@ -18,6 +18,7 @@ import { ActividadesComponent } from './actividades/actividades.component';
 import { CantonesComponent } from './cantones/cantones.component';
 import { OrganizacionesComponent } from './organizaciones/organizaciones.component';
 import { ParroquiasComponent } from './parroquias/parroquias.component';
+import { ModalIncidenciaComponent } from './modal-incidencia/modal-incidencia.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ParroquiasComponent } from './parroquias/parroquias.component';
     ActividadesComponent,
     CantonesComponent,
     OrganizacionesComponent,
-    ParroquiasComponent
+    ParroquiasComponent,
+    ModalIncidenciaComponent
   ],
   imports: [
     BrowserModule,

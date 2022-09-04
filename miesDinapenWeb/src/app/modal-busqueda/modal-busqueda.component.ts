@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Personas } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import { SeleccionService } from './seleccion.service';
@@ -15,7 +15,7 @@ export class ModalBusquedaComponent implements OnInit {
   identificacion:string;
 
   listPersonas:Personas[];
-
+  @Input() public oneList: Map<string, any[]>;
   constructor(private listasService: ListasService,private seleccionService:SeleccionService) { }
 
   ngOnInit(): void {
