@@ -32,7 +32,7 @@
                         'IDIntervencion' => $row['IDIntervencion'],
                         'operador' => $operador,
                         'organizacion' => $organizacion,
-                        'IDPersonaIntervenida' => $row['IDPersonaIntervenida'],
+                        'persona' => null, // La incidencia  de origen appmovil no trae persona incluida
                         'Latitud' => $row['Latitud'],
                         'Longitud' => $row['Longitud'],
                         'NumPerGrupo' => $row['NumPerGrupo'],

@@ -134,7 +134,7 @@ export class Intervenciones {
    IDIntervencion: number;
    operador: Operadores;
    organizacion: Organizaciones;
-   IDPersonaIntervenida: string;
+   persona: Personas;
    Latitud: number;
    Longitud: number;
    NumPerGrupo: number;

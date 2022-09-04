@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Personas } from '../Models/Modelos';
+import { Intervenciones, Personas } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import { SeleccionService } from './seleccion.service';
 
@@ -13,12 +13,18 @@ export class ModalBusquedaComponent implements OnInit {
   apellido1:string="";
   nombre1:string="";
   identificacion:string;
+  public intervencionSelect: Intervenciones;
 
   listPersonas:Personas[];
   @Input() public oneList: Map<string, any[]>;
   constructor(private listasService: ListasService,private seleccionService:SeleccionService) { }
 
   ngOnInit(): void {
+    console.log("Estoy en modal-busqueda");
+    this.seleccionService.seleccionador.subscribe(data => {
+      this.intervencionSelect = data;
+    });
+
   }
 
   buscarPersona():void{
@@ -33,8 +39,9 @@ export class ModalBusquedaComponent implements OnInit {
   }
 
   selectPersona(p:Personas):void{
-    console.log(p);
-    this.seleccionService.seleccionador.emit(p); //emite para enviar el obj al componente Formulario
+    this.intervencionSelect.persona = p;
+    console.log(this.intervencionSelect);
+    this.seleccionService.seleccionadorToForm.emit(this.intervencionSelect); //emite para enviar el obj al componente Formulario
     
   }
 }

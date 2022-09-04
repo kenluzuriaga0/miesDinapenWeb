@@ -18,7 +18,7 @@
                         <input class="form-control" disabled type="text" [value]="nombreCompleto">
                     </div>
                     <div class="col-sm-2">
-                        <input class="form-control" disabled type="text" [value]="perSelect?.Cedula">
+                        <input class="form-control" disabled type="text" [value]="intervencion.persona?.Cedula">
                     </div>
                     <div class="col-sm-2">
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -70,7 +70,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Organización Cooperante</label>
                         <div class="col-sm-6">
-                            <select class="form-select" name="organizacion" [(ngModel)]="organizacion"
+                            <select class="form-select" name="organizacion" [(ngModel)]="intervencion.organizacion"
                                 aria-label="Default select example">
                                 <option disabled selected>-</option>
                                 <option [ngValue]="org" *ngFor="let org of listOrganizaciones">{{org.Organizacion}}
@@ -81,34 +81,34 @@
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-6">Zona</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" name="zona" [value]="organizacion.Zona" type="text">
+                            <input disabled class="form-control" name="zona" [(ngModel)]="intervencion.organizacion.Zona" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Provincia</label>
                         <div class="col-sm-6">
                             <input disabled class="form-control" name="provincia"
-                                [value]="organizacion.provincia.Provincia" type="text">
+                            [(ngModel)]="intervencion.organizacion.provincia.Provincia" type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Cantón</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" name="canton" [value]="organizacion.canton.Canton"
+                            <input disabled class="form-control" name="canton" [(ngModel)]="intervencion.organizacion.canton.Canton"
                                 type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-6">Parroquia</label>
                         <div class="col-sm-6">
-                            <input disabled class="form-control" name="arroquia" type="text" [value]="organizacion.parroquia.Parroquia">
+                            <input disabled class="form-control" name="arroquia" type="text" [(ngModel)]="intervencion.organizacion.parroquia.Parroquia">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Tipo de Organizacion</label>
                         <div class="col-sm-6">
                             <input disabled class="form-control" name="TipoOrganizacion"
-                                [value]="organizacion.tipo.TipoOrganizacion" type="text">
+                            [(ngModel)]="intervencion.organizacion.tipo.TipoOrganizacion" type="text">
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Cabello Color</label>
                         <div class="col-sm-6">
-                            <select class="form-select"  name="cabelloColor" [(ngModel)]="perSelect.cabelloColor.IDColorCabello">
+                            <select class="form-select"  name="cabelloColor" [(ngModel)]="intervencion.persona.cabelloColor.IDColorCabello">
                                 <option [value]="act['IDColorCabello']"
                                     *ngFor="let act of oneList.get('cac')">{{act['ColorCabello']}}</option>
                             </select>
@@ -231,7 +231,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Cabello Tipo</label>
                         <div class="col-sm-6">
-                            <select class="form-select" name="cabelloTipo" [(ngModel)]="perSelect.cabelloTipo.IDCabelloTipo">
+                            <select class="form-select" name="cabelloTipo" [(ngModel)]="intervencion.persona.cabelloTipo.IDCabelloTipo">
                                 <option [value]="act['IDCabelloTipo']"
                                     *ngFor="let act of oneList.get('cat')">{{act['CabelloTipo']}}</option>
                             </select>
@@ -240,7 +240,7 @@
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-6">Contextura</label>
                         <div class="col-sm-6">
-                            <select class="form-select" name="contextura" [(ngModel)]="perSelect.contextura.IDContextura">
+                            <select class="form-select" name="contextura" [(ngModel)]="intervencion.persona.contextura.IDContextura">
                                 <option [value]="act['IDContextura']"
                                     *ngFor="let act of oneList.get('cnt')">{{act['Contextura']}}</option>
                             </select>
@@ -249,7 +249,7 @@
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-6">Estatura</label>
                         <div class="col-sm-6">
-                            <select class="form-select"  name="Estatura" [(ngModel)]="perSelect.estatura.IDEstatura">
+                            <select class="form-select"  name="Estatura" [(ngModel)]="intervencion.persona.estatura.IDEstatura">
                                 <option  [value]="act['IDEstatura']"
                                     *ngFor="let act of oneList.get('eta')">{{act['Estatura']}}</option>
                             </select>
@@ -339,7 +339,7 @@
                         </div>
                         <label class="col-form-label col-sm-3">Doc. identificación</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" [value]="perSelect?.Cedula">
+                            <input class="form-control" type="text" [value]="intervencion.persona?.Cedula">
                         </div>
                     </div>
 
@@ -348,7 +348,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
                         <div class="col-sm-2">
-                            <select class="form-select"  name="sexo"  [(ngModel)]="perSelect.genero.IDGenero">
+                            <select class="form-select"  name="sexo"  [(ngModel)]="intervencion.persona.genero.IDGenero">
                                 <option [value]="act['IDGenero']"
                                     *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
 
@@ -357,7 +357,7 @@
 
                         <label for="nombre" class="col-form-label col-sm-2">Nacionalidad</label>
                         <div class="col-sm-2">
-                            <select class="form-select" name="nacionalidad" [(ngModel)]="perSelect.nacionalidad.IDNacionalidad">
+                            <select class="form-select" name="nacionalidad" [(ngModel)]="intervencion.persona.nacionalidad.IDNacionalidad">
                                 <option [value]="act['IDNacionalidad']" 
                                     *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
 
@@ -378,7 +378,7 @@
                         <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
                         <div class="col-sm-3">
                             <input class="form-control" name="fechaNacim"  type="date" pattern="\d{4}-\d{2}-\d{2}"
-                            [(ngModel)]="perSelect.FechaNacim">
+                            [(ngModel)]="intervencion.persona.FechaNacim">
                         </div>
                         <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
@@ -391,19 +391,19 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Provincia</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="provincia"
-                                type="text" [value]="perSelect?.provincia?.Provincia">
+                            <input disabled class="form-control" name="provinciaPersona"
+                                type="text" [value]="intervencion.persona?.provincia?.Provincia">
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Cantón</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="canton" [value]="perSelect?.canton?.Canton"
+                            <input disabled class="form-control" name="canton" [value]="intervencion.persona?.canton?.Canton"
                                 type="text">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Parroquia</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="parroquiaper" type="text" [value]="perSelect?.parroquia?.Parroquia">
+                            <input disabled class="form-control" name="parroquiaper" type="text" [value]="intervencion.persona?.parroquia?.Parroquia">
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Barrio</label>
                         <div class="col-sm-3">
@@ -416,14 +416,14 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Etnia</label>
                         <div class="col-sm-3">
-                            <select class="form-select" name="etnia" [(ngModel)]="perSelect.etnia.IDEtnia">
+                            <select class="form-select" name="etnia" [(ngModel)]="intervencion.persona.etnia.IDEtnia">
                                 <option [value]="act['IDEtnia']" *ngFor="let act of oneList?.get('etn')">
                                     {{act['Etnia']}}</option>
                             </select>
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Estado Civil</label>
                         <div class="col-sm-3">
-                            <select class="form-select" name="estadoCivil" [(ngModel)]="perSelect.estadoCivil.IDEstadoCivil">
+                            <select class="form-select" name="estadoCivil" [(ngModel)]="intervencion.persona.estadoCivil.IDEstadoCivil">
                                 <option [value]="act['IDEstadoCivil']" 
                                     *ngFor="let act of oneList.get('eci')">{{act['EstadoCivil']}}</option>
 
@@ -436,13 +436,13 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Tiene Discapacidad</label>
                         <div class="form-check form-switch col-sm-3">
-                            <select  class="form-select" name="discapacidad" [(ngModel)]="perSelect.discapacidad.IDDiscapacidad">
+                            <select  class="form-select" name="discapacidad" [(ngModel)]="intervencion.persona.discapacidad.IDDiscapacidad">
                                 <option [ngValue]="act" [value]="act['IDDiscapacidad']"
                                     *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
                             </select>                        </div>
                         <label for="email" class="col-form-label col-sm-3">Nivel Discapacidad</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text"  name="nivelDiscapacidad" [(ngModel)]="perSelect.DiscapacidadNivel">
+                            <input class="form-control" type="text"  name="nivelDiscapacidad" [(ngModel)]="intervencion.persona.DiscapacidadNivel">
                         </div>
                     </div>
                 </div>
