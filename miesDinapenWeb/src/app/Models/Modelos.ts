@@ -144,7 +144,7 @@ export class Intervenciones {
    IDCondicion: number;
    IDEstudio: number;
    NoEstudio: string;
-   UltAñoEstudio: number;
+   UltAnioEstudio: number;
    InsEduEstudio: string;
    RefIDProvincia: number;
    RefIDCanton: number;

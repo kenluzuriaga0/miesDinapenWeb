@@ -15,7 +15,6 @@ export class ModalIncidenciaComponent implements OnInit {
   constructor(private listasService:ListasService,private seleccionService:SeleccionService) { }
 
   ngOnInit(): void {
-    console.log("Estoy en modal-incidencia");
     this.listasService.loadAllIntervenciones().subscribe(data=>{
       this.listIntervenciones = data;
     });

@@ -20,7 +20,6 @@ export class ModalBusquedaComponent implements OnInit {
   constructor(private listasService: ListasService,private seleccionService:SeleccionService) { }
 
   ngOnInit(): void {
-    console.log("Estoy en modal-busqueda");
     this.seleccionService.seleccionador.subscribe(data => {
       this.intervencionSelect = data;
     });
@@ -39,7 +38,6 @@ export class ModalBusquedaComponent implements OnInit {
   }
 
   selectPersona(p:Personas):void{
-    console.log(this.intervencionSelect);
     if(typeof this.intervencionSelect === 'undefined'){
       this.intervencionSelect = new Intervenciones();
     }

@@ -42,7 +42,7 @@
                         'IDCondicion' => $row['IDCondicion'],
                         'IDEstudio' => $row['IDEstudio'],
                         'NoEstudio' => $row['NoEstudio'],
-                        'UltAñoEstudio' => $row['UltAñoEstudio'],
+                        'UltAnioEstudio' => $row['UltAñoEstudio'],
                         'InsEduEstudio' => $row['InsEduEstudio'],
                         'RefIDProvincia' => $row['RefIDProvincia'],
                         'RefIDCanton' => $row['RefIDCanton'],

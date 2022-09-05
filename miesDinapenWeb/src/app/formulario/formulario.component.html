@@ -140,13 +140,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="apellido" class="col-form-label col-sm-6">Se encuentra</label>
+                        <label for="apellido" class="col-form-label col-sm-6">N. personas en grupo</label>
                         <div class="col-sm-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option value="1">Solo</option>
-                                <option value="2">En Grupo</option>
-                            </select>
+                                <input type="number" class="form-control" name="numPerGrupo" [(ngModel)]="intervencion.NumPerGrupo"
+                                 id="floatingInput" min="0" max="20">
                         </div>
                     </div>
                 </div>
@@ -199,13 +196,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="selectExtra"></div>
-                        <div class="col-sm-6">
-                            <!--button type="button" (click)="addNuevoSelect()" class="btn btn-secondary">+</button-->
-
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -277,8 +268,13 @@
                     </div>
                    
                     <div class="form-group row">
-                        <div class="col-form-label col-sm-12"></div>
-
+                        <label for="nombre" class="col-form-label col-sm-6">Circunstancias</label>
+                        <div class="col-sm-6">  
+                            <select class="form-select" name="Estatura" >
+                                <option  [value]="act['IDCircunstancia']"
+                                    *ngFor="let act of oneList.get('cir')">{{act['Circunstancia']}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -287,13 +283,12 @@
         <!-- 3ra columna-->
         <div class="col-sm-6 col-md-5">
             <div class="row card bg-light text-dark">
-                <div class="card-header">Derivaciones y acciones
-                </div>
+                <div class="card-header">Derivaciones y acciones</div>
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-3">Acción</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="" cols="30" rows="3"></textarea>
+                            <textarea class="form-control" name="DerivEspecifi" [(ngModel)]="intervencion.DerivEspecifi" cols="30" rows="3"></textarea>
                         </div>
                     </div>
 
@@ -301,10 +296,14 @@
             </div>
         </div>
     </div>
-    <div class="mt-4"></div>
-    <div class="card bg-light text-dark">
-        <div class="card-header">ABORDAJE</div>
+
+    <div class="row">
+        <div class="mt-4"></div>
+        <div class="card bg-light text-dark">
+            <div class="card-header">ABORDAJE</div>
+        </div>
     </div>
+
     <div class="mt-4"></div>
     <div class="row">
         <div class="col-12">
@@ -312,16 +311,11 @@
                 <div class="card-header">Croquis del lugar donde se observó a la NNA
                 </div>
                 <div class="card-body">
-                    <div class="form-group row">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d323.1573700370791!2d-79.91192285638078!3d-2.1481906628086134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d6d317167f5c5%3A0xaea93d8114bef7c7!2sing%20industrial%20facultad!5e0!3m2!1ses-419!2sec!4v1662021213759!5m2!1ses-419!2sec" 
-                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    
+                    Lugar Intervención: <a [href]="linkMapa" target="_blank">{{linkMapa}}</a>
                 </div>
             </div>
         </div>
-
+    
         <div class="col-12">
             <div class="row card bg-light text-dark">
                 <div class="card-header">Datos del NNA identificado
@@ -343,7 +337,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
                         <div class="col-sm-2">
-                            <select class="form-select"  name="sexo"  [(ngModel)]="intervencion.persona.genero.IDGenero">
+                            <select class="form-select"  name="IDGenero" [(ngModel)]="intervencion.persona.genero.IDGenero">
                                 <option [value]="act['IDGenero']"
                                     *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
 
@@ -443,6 +437,66 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Situación familiar
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-3">Con quién vive ahora</label>
+                        <div class="col-sm-4">
+                            <select class="form-select" multiple >
+                                <option [ngValue]="act" [value]="act['IDParentezco']"
+                                    *ngFor="let act of oneList.get('par')">{{act['Parentezco']}}</option>
+                            </select>
+                        </div>
+
+                        <label class="col-form-label col-sm-2">No. hijos</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="NumHijos"
+                                type="number" min="0" [(ngModel)]="intervencion.NumHijos">
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Datos de educación
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-1">Nivel de estudio</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="sexo"  [(ngModel)]="intervencion.IDEstudio">
+                                <option [value]="act['IDEstudio']"
+                                    *ngFor="let act of oneList.get('est')">{{act['NivelEstudio']}}</option>
+
+                            </select>
+                        </div>
+
+                        <label class="col-form-label col-sm-2">Último año de estudios aprobados</label>
+                        <div class="col-sm-1">
+                            <input class="form-control" name="provinciaPersona"
+                                type="number" min="0" [value]="intervencion.UltAnioEstudio">
+                        </div>
+                        <label class="col-form-label col-sm-2">Nombre y dirección de Institución Educativa</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" name="InsEduEstudio"
+                                type="text" [value]="intervencion.InsEduEstudio">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </form>

@@ -66,7 +66,7 @@ export class ModalPersonaComponent implements OnInit {
       this.person.IDPersona = data['insert']; //Se agrega el ID creado recientemente
       swal.fire('Registrado con exito', `Persona "${this.person.Apellido1}" registrado con éxito`, 'success')
     }, error => {
-      swal.fire('Alerta de Error', `No se registró la persona`, 'error')
+      swal.fire('Alerta de Error', `Por favor, llene todos los campos`, 'error')
     });
 
     //se Inicializa si no proviene de una intervencio elegida previamente

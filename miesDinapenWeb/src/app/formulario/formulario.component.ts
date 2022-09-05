@@ -18,6 +18,7 @@ export class FormularioComponent implements OnInit {
   public listOrganizaciones: Organizaciones[];
   public listasProgramadas: any[];
   public listPersonas: Personas[];
+  public linkMapa: string;
  // public perSelect: Personas;
   public intervencion: Intervenciones;
 
@@ -30,7 +31,6 @@ export class FormularioComponent implements OnInit {
     private seleccionService: SeleccionService) { }
 
   ngOnInit(): void { //se llenan las listas cuando carga la vista
-    console.log("Estoy en formulario")
     this.init();
 
     this.listasService.loadOrganizaciones().subscribe(data => {
@@ -38,10 +38,12 @@ export class FormularioComponent implements OnInit {
     });
 
     this.seleccionService.seleccionadorToForm.subscribe(data => {
-      console.log(data);
       this.intervencion = data;
       this.unirNombres();
       this.initOrganizacion();
+      if(typeof this.intervencion.Latitud !== 'undefined'){
+        this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
+      }else{this.linkMapa='';}
     });
 
     if(typeof this.nombreCompleto === "undefined"){
@@ -62,6 +64,7 @@ export class FormularioComponent implements OnInit {
   }
   private init(): void {
     this.intervencion = new Intervenciones();
+    this.intervencion.InsEduEstudio='';
     this.initOrganizacion();
     this.loadAllLista();
     this.initPersona();
@@ -107,10 +110,10 @@ export class FormularioComponent implements OnInit {
 
   saveIntervencion():void{
     if(typeof this.intervencion.organizacion.IDOrganizacion !=='undefined'){
-      console.log("Guardado")
       this.intervencion.FechaIntervencion= new Date();
       console.log(this.intervencion)
       this.listasService.updateIntervencion(this.intervencion);
+      console.log("Guardado")
     }else{
       swal.fire('Alerta de Error', `Faltan campos por completar`, 'error')
     }
