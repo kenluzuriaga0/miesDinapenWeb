@@ -161,6 +161,7 @@
             ,".$parroquia->canton->IDCanton.",".$parroquia->canton->provincia->IDProvincia."
             ,".$etnia->IDEtnia.",".$estadoCivil->IDEstadoCivil.")";
             if($db->query($query)=== TRUE) {
+                echo json_encode(['insert' => $db->insert_id]);
                 return TRUE;
             }
             echo $db->error."\n";

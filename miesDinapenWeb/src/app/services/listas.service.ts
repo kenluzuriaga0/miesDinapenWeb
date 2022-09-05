@@ -41,9 +41,9 @@ export class ListasService {
     return this.http.get<Personas[]>(`${this.baseUrl}/Personas/select.php`);
   }
 
-  savePersona(persona:Personas): Observable<Personas> { //SAVE PERSONAS
-    return this.http.post<Personas>(`${this.baseUrl}/Personas/insert.php`,persona);
-  }
+  savePersona(persona:Personas): Observable<any> { //SAVE PERSONAS
+    return this.http.post<any>(`${this.baseUrl}/Personas/insert.php`,persona);
+  }// es tipo any para obtener el id creador del response
 
   loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
     return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);

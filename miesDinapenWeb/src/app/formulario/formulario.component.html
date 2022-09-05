@@ -56,7 +56,7 @@
 <br>
 
 <div class="card bg-light text-dark">
-    <div class="card-header">FICHA DE OBSERVARCIÓN Y ABORDAJE
+    <div class="card-header">FICHA DE OBSERVARCIÓN Y ABORDAJE - <strong style="color:blue"> {{intervencion.FechaRegistro}}</strong>
     </div>
 </div>
 <div class="mt-4"></div>
@@ -118,7 +118,7 @@
     </div>
     <div class="mt-4"></div>
     <div class="card bg-light text-dark">
-        <div class="card-header">OBSERVACIÓN</div>
+        <div class="card-header">OBSERVACIÓN </div>
     </div>
     <div class="mt-4"></div>
 
@@ -268,16 +268,10 @@
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-6">Riesgos</label>
-                        <div class="col-sm-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option value="notiene">Persona Agresiva</option>
-                                <option value="sitiene">Presunta víctima de algún delito (trata/explotación u otro)
-                                </option>
-                                <option value="sitiene">Consumo de alcohol</option>
-                                <option value="sitiene">Consumo de drogas</option>
-                                <option value="sitiene">Trastornos mentales</option>
-                                <option value="sitiene">Otros</option>
+                        <div class="col-sm-6">  
+                            <select class="form-select"  name="Estatura" >
+                                <option  [value]="act['IDExposicion']"
+                                    *ngFor="let act of oneList.get('exp')">{{act['Exposicion']}}</option>
                             </select>
                         </div>
                     </div>
