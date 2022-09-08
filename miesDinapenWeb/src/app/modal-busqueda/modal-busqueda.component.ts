@@ -23,7 +23,10 @@ export class ModalBusquedaComponent implements OnInit {
     this.seleccionService.seleccionador.subscribe(data => {
       this.intervencionSelect = data;
     });
-
+    //se Inicializa si no proviene de una intervencio elegida previamente
+    if (typeof this.intervencionSelect === 'undefined') {
+      this.intervencionSelect = new Intervenciones();
+    }
   }
 
   buscarPersona():void{
