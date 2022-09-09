@@ -14,6 +14,7 @@ export class ModalBusquedaComponent implements OnInit {
   nombre1:string="";
   identificacion:string;
   public intervencionSelect: Intervenciones;
+  conIntervension:boolean;
 
   listPersonas:Personas[];
   @Input() public oneList: Map<string, any[]>;
@@ -22,9 +23,11 @@ export class ModalBusquedaComponent implements OnInit {
   ngOnInit(): void {
     this.seleccionService.seleccionador.subscribe(data => {
       this.intervencionSelect = data;
+      this.conIntervension = true;
     });
-    //se Inicializa si no proviene de una intervencio elegida previamente
+    //se Inicializa si no proviene de una intervencion elegida previamente
     if (typeof this.intervencionSelect === 'undefined') {
+      this.conIntervension = false;
       this.intervencionSelect = new Intervenciones();
     }
   }

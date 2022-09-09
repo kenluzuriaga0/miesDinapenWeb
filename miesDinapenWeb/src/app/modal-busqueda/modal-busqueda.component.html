@@ -3,7 +3,12 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Buscar persona intervenida para la intervencion: <b style="color:blue">{{intervencionSelect.IDIntervencion}} </b></h5>
+                <h5 class="modal-title" *ngIf="conIntervension ;else noMuestra">
+                    Buscar persona intervenida para la intervencion: <b style="color:blue">{{intervencionSelect.IDIntervencion}} </b>
+                </h5>
+                <ng-template #noMuestra>
+                    <h5>Busque o registre persona Intervenida para nueva intervención</h5>
+                </ng-template>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

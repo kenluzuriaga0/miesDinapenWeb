@@ -27,4 +27,14 @@
             return $datos;
         }
 
+        public static function insert($Parroquia, $IDCanton) {
+            $db = new Connection();
+            $query = "INSERT INTO ListaIDParroquias (Parroquia,IDCanton)
+            VALUES('$Parroquia, $IDCanton')";
+            if($db->query($query)=== TRUE) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }

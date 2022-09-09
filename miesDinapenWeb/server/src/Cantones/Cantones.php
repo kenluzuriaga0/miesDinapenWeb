@@ -22,4 +22,15 @@
             }
             return $datos;
         }
+
+        public static function insert($Canton, $provincia) {
+            $db = new Connection();
+            $query = "INSERT INTO ListaIDCantones (Canton,provincia)
+            VALUES('$Canton, $provincia')";
+            if($db->query($query)=== TRUE) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }
