@@ -26,6 +26,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngFor="let parro of listParroquia" >
+                        <td>{{parro.IDParroquia}}</td>
+                        <td>{{parro.Parroquia}}</td>
+                        <td>{{parro.canton.Canton}}</td>
+                    </tr>
                     <!--<tr *ngFor="let prrq of listCantones">-->
                         <!--<td>{{prrq.IDParroquia}}</td>-->
                         <!--<td>{{prrq.Parroquia}}</td>-->

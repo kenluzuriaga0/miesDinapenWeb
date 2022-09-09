@@ -42,6 +42,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngFor="let orga of listOrganizacion" >
+                        <td>{{orga.IDOrganizacion}}</td>
+                        <td>{{orga.Organizacion}}</td>
+                        <td>{{orga.Zona}}</td>
+                        <td>{{orga.provincia.Provincia}}</td>
+                        <td>{{orga.canton.Canton}}</td>
+                        <td>{{orga.parroquia.Parroquia}}</td>
+                        <td>{{orga.tipo.TipoOrganizacion}}</td>
+                    </tr>
                     <!--<tr *ngFor="let org of listCantones">-->
                         <!--<td>{{org.IDOrganizacion}}</td>-->
                         <!--<td>{{org.Organizacion}}</td>-->
