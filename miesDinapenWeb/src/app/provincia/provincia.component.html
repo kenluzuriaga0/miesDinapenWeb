@@ -22,10 +22,13 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Provincia</th>
-                        <th scope="col">Nacionalidad</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr *ngFor="let provincy of listProvincia" >
+                        <td>{{provincy.IDProvincia}}</td>
+                        <td>{{provincy.Provincia}}</td>
+                    </tr>
                     <!--<tr *ngFor="let pr of listProvincias">-->
                         <!--<td>{{pr.IDProvincia}}</td>-->
                         <!--<td>{{pr.Provincia}}</td>-->

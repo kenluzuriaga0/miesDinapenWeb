@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SeleccionService } from '../modal-busqueda/seleccion.service';
+import { Canton, Parroquia, Provincias } from '../Models/Modelos';
+import { ListasService } from '../services/listas.service';
 
 @Component({
   selector: 'app-parroquias',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParroquiasComponent implements OnInit {
 
-  constructor() { }
+  public parroquia: Parroquia;
+  public listParroquia: Parroquia[];
+  public listCanton:Canton[];
+
+  private initParroquia():void{
+    this.parroquia = new Parroquia();
+    
+    this.parroquia.Parroquia;
+    this.parroquia.canton = new Canton();
+
+
+  }
+  
+
+  constructor(private listasService: ListasService, private seleccionService: SeleccionService) { }
 
   ngOnInit(): void {
+    this.initParroquia();
+    this.listasService.loadCantones().subscribe(data => this.listCanton = data);
+
+    this.listasService.loadParroquias().subscribe(data => {
+      
+      this.listParroquia = data;
+      console.log(this.listParroquia);
+      });
+
   }
 
 }
