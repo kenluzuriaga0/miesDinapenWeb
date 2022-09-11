@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +19,9 @@ import { CantonesComponent } from './cantones/cantones.component';
 import { OrganizacionesComponent } from './organizaciones/organizaciones.component';
 import { ParroquiasComponent } from './parroquias/parroquias.component';
 import { ModalIncidenciaComponent } from './modal-incidencia/modal-incidencia.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
+import {  MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -34,12 +37,13 @@ import { ModalIncidenciaComponent } from './modal-incidencia/modal-incidencia.co
     CantonesComponent,
     OrganizacionesComponent,
     ParroquiasComponent,
-    ModalIncidenciaComponent
+    ModalIncidenciaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,HttpClientModule
+    FormsModule,HttpClientModule, BrowserAnimationsModule,MatSelectModule,
+    ReactiveFormsModule, MatFormFieldModule, 
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

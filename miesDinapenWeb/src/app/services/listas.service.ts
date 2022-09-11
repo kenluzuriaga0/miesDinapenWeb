@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -51,5 +51,7 @@ export class ListasService {
   updateIntervencion(intervencion:Intervenciones): Observable<Intervenciones> { //UPDATE INTERVENCIONES
     return this.http.post<Intervenciones>(`${this.baseUrl}/Incidencias/update.php`,intervencion);
   }
-
+  loadIntervencionActividadById(id: number): Observable<IntervencionesTipoActividad[]> { //INTERVENCION-ACTIVIDAD BY IDINTERVENCION
+    return this.http.get<IntervencionesTipoActividad[]>(`${this.baseUrl}/Incidencias/Actividad/select.php?idIntervencion=${id}`);
+  }
 }

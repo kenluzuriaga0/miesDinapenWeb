@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { FormControl} from '@angular/forms';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
@@ -22,9 +23,8 @@ export class FormularioComponent implements OnInit {
   public intervencion: Intervenciones;
   public provincia: Provincias;
   public oneList: Map<string, any[]>;
-
-  public selectTiposActividades: number[]=[1,4];
-
+  
+  public selectActividadesIds :string[];
 
   constructor(private listasService: ListasService,
     private seleccionService: SeleccionService) { }
@@ -35,21 +35,35 @@ export class FormularioComponent implements OnInit {
     this.listasService.loadOrganizaciones().subscribe(data => {
       this.listOrganizaciones = data;
     });
-
-    this.seleccionService.seleccionadorToForm.subscribe(data => {
+    
+    this.seleccionService.seleccionadorToForm.subscribe(data => { //llega del modal-incidencia
+      this.selectActividadesIds = ["4","3"]
       this.intervencion = data;
       this.unirNombres();
       this.initOrganizacion();
+      this.cargarActividadesByIntervencion(); // no funciona, no subscribe dentro de un subscribe
       if(typeof this.intervencion.Latitud !== 'undefined'){
         this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
+        
       }else{this.linkMapa='';}
     });
-
+    
+   
     if(this.isUndefined(this.nombreCompleto)){
       this.nombreCompleto=""; //al cargar la pagina x 1ra vez, no debe salir undefined en el campo "nombres"
     }
   }
-
+cargarActividadesByIntervencion(){
+  this.selectActividadesIds = []
+  let selectTiposActividades:IntervencionesTipoActividad[]=[];
+  this.listasService.loadIntervencionActividadById(this.intervencion.IDIntervencion).subscribe(data2=>{
+    selectTiposActividades=data2;
+    console.log(selectTiposActividades)
+    selectTiposActividades.forEach(x=>this.selectActividadesIds.push(String(x.IDTipoActividad)));
+    console.log(this.selectActividadesIds);
+});
+  
+}
   private initOrganizacion():void{
     /** Metodo que inicializa objetos internos de Organizacion porque en el
      * seleccionadorService me trae como null todos estos objetos 
@@ -115,13 +129,13 @@ export class FormularioComponent implements OnInit {
       this.intervencion.FechaIntervencion= new Date();
     
       console.log(this.intervencion)
-      console.log(this.selectTiposActividades)
+      //console.log(this.selectTiposActividades)
       this.listasService.updateIntervencion(this.intervencion);
 
       let intervencionesTipoActividad: IntervencionesTipoActividad[]=[];
-      for(let act of this.selectTiposActividades){
+     /* for(let act of this.selectTiposActividades){
         intervencionesTipoActividad.push(new IntervencionesTipoActividad(this.intervencion.IDIntervencion,Number(act)))
-      }
+      }*/
       console.log(intervencionesTipoActividad)
 
 

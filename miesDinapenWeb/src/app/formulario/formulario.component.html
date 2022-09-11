@@ -169,13 +169,12 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-4">Actividad</label>
-                        <div class="col-sm-8">
-                            <select class="form-select" multiple name="selectTiposActividades" [(ngModel)]="selectTiposActividades">
-                                <option  [value]="act['IDTipoActividad']"  selected
-                                    *ngFor="let act of oneList.get('act')">{{act['TipoActividad']}}</option>
-                            </select>
-                        </div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Actividades</mat-label>
+                            <mat-select [(value)]="selectActividadesIds" multiple>
+                              <mat-option *ngFor="let act of  oneList.get('act')" [value]="act['IDTipoActividad']">{{act['TipoActividad']}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                     </div>
                     
                 </div>
