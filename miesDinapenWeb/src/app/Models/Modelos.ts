@@ -160,3 +160,10 @@ export class Intervenciones {
    FechaRegistro: Date;
 
 }
+
+export class IntervencionesTipoActividad{
+   IDIntervencion: number;
+   IDTipoActividad: number;
+   constructor(x:number,y:number) { this.IDIntervencion = x; this.IDTipoActividad = y; }
+
+}

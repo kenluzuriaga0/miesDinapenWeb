@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import swal from 'sweetalert2';
 
@@ -19,13 +19,12 @@ export class FormularioComponent implements OnInit {
   public listasProgramadas: any[];
   public listPersonas: Personas[];
   public linkMapa: string;
- // public perSelect: Personas;
   public intervencion: Intervenciones;
-
   public provincia: Provincias;
- // public organizacion: Organizaciones;
-
   public oneList: Map<string, any[]>;
+
+  public selectTiposActividades: number[]=[1,4];
+
 
   constructor(private listasService: ListasService,
     private seleccionService: SeleccionService) { }
@@ -46,7 +45,7 @@ export class FormularioComponent implements OnInit {
       }else{this.linkMapa='';}
     });
 
-    if(typeof this.nombreCompleto === "undefined"){
+    if(this.isUndefined(this.nombreCompleto)){
       this.nombreCompleto=""; //al cargar la pagina x 1ra vez, no debe salir undefined en el campo "nombres"
     }
   }
@@ -72,7 +71,7 @@ export class FormularioComponent implements OnInit {
 
 
   public filtrarCanton(e: any): Canton[] {
-    if (typeof this.provincia !== 'undefined') {
+    if (!this.isUndefined(this.provincia)) {
       return this.listCantones.filter(x => x.provincia.IDProvincia == this.intervencion.organizacion.provincia.IDProvincia);
     } else {
       return this.listCantones;
@@ -93,7 +92,6 @@ export class FormularioComponent implements OnInit {
     this.intervencion.persona = new Personas();
     this.intervencion.persona.Cedula='';
     this.intervencion.persona.FechaNacim=new Date();
-
     this.intervencion.persona.estadoCivil=new EstadoCivil();
     this.intervencion.persona.etnia=new Etnia();
     this.intervencion.persona.nacionalidad=new Nacionalidad();
@@ -111,11 +109,22 @@ export class FormularioComponent implements OnInit {
   private isUndefined(object:any):boolean{
     return typeof object =='undefined';
   }
+
   saveIntervencion():void{
     if(!this.isUndefined(this.intervencion.organizacion.IDOrganizacion)){ // TODO: evaluar tambien el IDPersona
       this.intervencion.FechaIntervencion= new Date();
+    
       console.log(this.intervencion)
-      //this.listasService.updateIntervencion(this.intervencion);
+      console.log(this.selectTiposActividades)
+      this.listasService.updateIntervencion(this.intervencion);
+
+      let intervencionesTipoActividad: IntervencionesTipoActividad[]=[];
+      for(let act of this.selectTiposActividades){
+        intervencionesTipoActividad.push(new IntervencionesTipoActividad(this.intervencion.IDIntervencion,Number(act)))
+      }
+      console.log(intervencionesTipoActividad)
+
+
       console.log("Guardado")
     }else{
       swal.fire('Alerta de Error', `Faltan campos por completar`, 'error')
@@ -123,32 +132,6 @@ export class FormularioComponent implements OnInit {
   }
 
 
-  public addNuevoSelect() {
-    let row = document.createElement('div');
-    row.className = 'row';
-    row.innerHTML = `
-    <br>
-    <label for="nombre" class="col-form-label col-sm-4">Actividad</label>
-    <div class="col-sm-8">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option value="1">Venta ambulante</option>
-                                <option value="2">Agricultura</option>
-                                <option value="2">Lustrado de calzado</option>
-                                <option value="2">Comercio informal</option>
-                                <option value="2">Construcción</option>
-                                <option value="2">Manufacturas</option>
-                                <option value="2">Act. No remunerada en el hogar</option>
-                                <option value="2">Mecánica</option>
-                                <option value="2">Minería</option>
-                                <option value="2">Reciclaje</option>
-                                <option value="2">Pesca</option>
-                                <option value="2">Trabajo en calle</option>
-                                <option value="2">Otros</option>
-                            </select>
-                        </div>`;
-    document.querySelector('.selectExtra')?.appendChild(row);
-  }
   loadAllLista(): any {
     this.oneList = new Map<string, any[]>();
     this.listasService.loadListasProgramadas("act").subscribe(data => this.oneList.set("act", data));

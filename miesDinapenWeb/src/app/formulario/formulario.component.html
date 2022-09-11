@@ -171,8 +171,8 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-4">Actividad</label>
                         <div class="col-sm-8">
-                            <select class="form-select" multiple >
-                                <option [ngValue]="act" [value]="act['IDTipoActividad']"
+                            <select class="form-select" multiple name="selectTiposActividades" [(ngModel)]="selectTiposActividades">
+                                <option  [value]="act['IDTipoActividad']"  selected
                                     *ngFor="let act of oneList.get('act')">{{act['TipoActividad']}}</option>
                             </select>
                         </div>

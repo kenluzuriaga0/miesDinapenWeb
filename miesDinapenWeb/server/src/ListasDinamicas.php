@@ -26,7 +26,7 @@
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()){
                     $datos[]=[
-                        'IdTipoActividad' => $row['IDTipoActividad'],
+                        'IDTipoActividad' => $row['IDTipoActividad'],
                         'TipoActividad' => $row['TipoActividad']
                     ];
                 }
