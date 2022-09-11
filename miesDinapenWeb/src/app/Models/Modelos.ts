@@ -21,6 +21,7 @@ export class Personas {
    discapacidad: Discapacidad;
    DiscapacidadNivel: string;
    IngresosAprox: number;
+   GrupoEtario:string;
 }
 
 export class CabelloColor {
@@ -140,7 +141,7 @@ export class Intervenciones {
    NumPerGrupo: number;
    Referencia: string;
    DerivEspecifi: string;
-   IDCircunstancia: string;
+   IDCircunstancia: number;
    IDCondicion: number;
    IDEstudio: number;
    NoEstudio: string;
@@ -153,6 +154,7 @@ export class Intervenciones {
    DireccionNumero: string;
    DireccionCalleInterseccion: string;
    NumHijos: number;
+   IDViveCon: number;
    NumTelefono: string;
    FechaIntervencion: Date;
    FechaRegistro: Date;

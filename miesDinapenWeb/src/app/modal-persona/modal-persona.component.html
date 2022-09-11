@@ -58,19 +58,18 @@
 
                             </select>
                         </div>
-                        <label class="col-form-label col-sm-3">Estatus migratorio</label>
+                        <label for="apellido" class="col-form-label col-sm-3">Grupo etário</label>
                         <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option value="act"> Pasaporte</option>
-                                <option value="act"> Documento de refugio</option>
-                                <option value="act"> Visa MERCOSUR</option>
+                            <select class="form-select" name="GrupoEtario" [(ngModel)]="person.GrupoEtario">
+                                <option value="05-11 años">05-11 años</option>
+                                <option value="12-14 años">12-14 años</option>
+                                <option value="15-17 años">15-17 años</option>
                             </select>
                         </div>
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label class="col-form-label col-sm-3">Fecha de nacimiento *</label>
+                        <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
                         <div class="col-sm-3">
                             <input class="form-control" name="fechaNacim"  
                             type="date" 

@@ -40,6 +40,7 @@
                         'DerivEspecifi' => $row['DerivEspecifi'],
                         'IDCircunstancia' => $row['IDCircunstancia'],
                         'IDCondicion' => $row['IDCondicion'],
+                        'IDViveCon' => $row['IDViveCon'],
                         'IDEstudio' => $row['IDEstudio'],
                         'NoEstudio' => $row['NoEstudio'],
                         'UltAnioEstudio' => $row['UltAñoEstudio'],
@@ -62,13 +63,16 @@
         }
 
 
-        public static function update($IDOperador, $IDPersonaIntervenida, $IDOrganCooperante, $FechaIntervencion, $ID) {
+        public static function update($IDOperador, $IDPersonaIntervenida, $IDOrganCooperante, $FechaIntervencion, $ID,
+                                    $NumPerGrupo, $DerivEspecifi,$IDEstudio, $NoEstudio,$UltAnioEstudio, $InsEduEstudio, $NumHijos,$IDViveCon,$IDCircunstancia,$IDCondicion) {
+
             $FechaIntervencionFormat = date("Y-m-d H:i:s", strtotime($FechaIntervencion));
 
-            
             $db = new Connection();
             $query = "UPDATE Intervenciones SET 
-            IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat'
+            IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat',
+            NumPerGrupo=$NumPerGrupo,DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=$UltAnioEstudio,InsEduEstudio='$InsEduEstudio'
+            ,NumHijos=$NumHijos,IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
             WHERE IDIntervencion=$ID";
             echo $query.'\n';
             $db->query($query);

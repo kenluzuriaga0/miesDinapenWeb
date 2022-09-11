@@ -108,11 +108,14 @@ export class FormularioComponent implements OnInit {
 
   }
 
+  private isUndefined(object:any):boolean{
+    return typeof object =='undefined';
+  }
   saveIntervencion():void{
-    if(typeof this.intervencion.organizacion.IDOrganizacion !=='undefined'){
+    if(!this.isUndefined(this.intervencion.organizacion.IDOrganizacion)){ // TODO: evaluar tambien el IDPersona
       this.intervencion.FechaIntervencion= new Date();
       console.log(this.intervencion)
-      this.listasService.updateIntervencion(this.intervencion);
+      //this.listasService.updateIntervencion(this.intervencion);
       console.log("Guardado")
     }else{
       swal.fire('Alerta de Error', `Faltan campos por completar`, 'error')

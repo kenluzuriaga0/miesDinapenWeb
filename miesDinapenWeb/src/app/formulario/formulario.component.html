@@ -39,11 +39,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>¿Está seguro que desea guardar?</p>
+          <p>¿Está seguro que desea guardar la intervención?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" (click)="saveIntervencion()">Confirmar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveIntervencion()">Confirmar</button>
         </div>
       </div>
     </div>
@@ -144,27 +144,17 @@
         <!-- 2da columna-->
         <div class="col-sm-6 col-md-4">
             <div class="row card bg-light text-dark">
-                <div class="card-header">Grupo etáreo
+                <div class="card-header">Grupo etário
                 </div>
                 <div class="card-body">
+                    
                     <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-6">Discapacidad</label>
-                        <div class="col-sm-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option value="notiene">No Tiene</option>
-                                <option value="sitiene">Tiene</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="apellido" class="col-form-label col-sm-6">Años</label>
-                        <div class="col-sm-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                                <option value="5-11">05-11 años</option>
-                                <option value="5-11">12-14 años</option>
-                                <option value="5-11">15-17 años</option>
+                        <label for="apellido" class="col-form-label col-sm-3">Grupo etário</label>
+                        <div class="col-sm-8">
+                            <select class="form-select" name="GrupoEtario" [(ngModel)]="intervencion.persona.GrupoEtario">
+                                <option value="05-11 años">05-11 años</option>
+                                <option value="12-14 años">12-14 años</option>
+                                <option value="15-17 años">15-17 años</option>
                             </select>
                         </div>
                     </div>
@@ -249,19 +239,19 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-6">Riesgos</label>
-                        <div class="col-sm-6">  
-                            <select class="form-select"  name="Estatura" >
-                                <option  [value]="act['IDExposicion']"
-                                    *ngFor="let act of oneList.get('exp')">{{act['Exposicion']}}</option>
+                        <label for="nombre" class="col-form-label col-sm-5">Riesgos</label>
+                        <div class="col-sm-7">  
+                            <select class="form-select"  name="IDCondicion" [(ngModel)]="intervencion.IDCondicion">
+                                <option  [value]="act['IDCondicion']"
+                                    *ngFor="let act of oneList.get('con')">{{act['Condicion']}}</option>
                             </select>
                         </div>
                     </div>
                    
                     <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-6">Circunstancias</label>
-                        <div class="col-sm-6">  
-                            <select class="form-select" name="Estatura" >
+                        <label for="nombre" class="col-form-label col-sm-5">Circunstancias</label>
+                        <div class="col-sm-7">  
+                            <select class="form-select" name="IDCircunstancia"  [(ngModel)]="intervencion.IDCircunstancia">
                                 <option  [value]="act['IDCircunstancia']"
                                     *ngFor="let act of oneList.get('cir')">{{act['Circunstancia']}}</option>
                             </select>
@@ -417,7 +407,7 @@
                         <label for="email" class="col-form-label col-sm-3">Tiene Discapacidad</label>
                         <div class="form-check form-switch col-sm-3">
                             <select  class="form-select" name="discapacidad" [(ngModel)]="intervencion.persona.discapacidad.IDDiscapacidad">
-                                <option [ngValue]="act" [value]="act['IDDiscapacidad']"
+                                <option [value]="act['IDDiscapacidad']"
                                     *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
                             </select>                        </div>
                         <label for="email" class="col-form-label col-sm-3">Nivel Discapacidad</label>
@@ -439,8 +429,8 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-3">Con quién vive ahora</label>
                         <div class="col-sm-4">
-                            <select class="form-select" multiple >
-                                <option [ngValue]="act" [value]="act['IDParentezco']"
+                            <select class="form-select"  name="IDviveCon" [(ngModel)]="intervencion.IDViveCon">
+                                <option [value]="act['IDParentezco']"
                                     *ngFor="let act of oneList.get('par')">{{act['Parentezco']}}</option>
                             </select>
                         </div>
@@ -466,23 +456,29 @@
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-1">Nivel de estudio</label>
-                        <div class="col-sm-2">
-                            <select class="form-select"  name="sexo"  [(ngModel)]="intervencion.IDEstudio">
+                        <div class="col-sm-3">
+                            <select class="form-select"  name="IdEstudio"  [(ngModel)]="intervencion.IDEstudio">
                                 <option [value]="act['IDEstudio']"
-                                    *ngFor="let act of oneList.get('est')">{{act['NivelEstudio']}}</option>
-
+                                *ngFor="let act of oneList.get('est')">{{act['NivelEstudio']}}</option>
+                                
                             </select>
                         </div>
-
-                        <label class="col-form-label col-sm-2">Último año de estudios aprobados</label>
-                        <div class="col-sm-1">
-                            <input class="form-control" name="provinciaPersona"
-                                type="number" min="0" [value]="intervencion.UltAnioEstudio">
+                        <label for="nombre" class="col-form-label col-sm-3">SI no estudia, ¿Por qué?</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" name="NoEstudio"
+                            type="text" [(ngModel)]="intervencion.NoEstudio">
                         </div>
-                        <label class="col-form-label col-sm-2">Nombre y dirección de Institución Educativa</label>
-                        <div class="col-sm-4">
+                    </div>   
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Último año de estudios aprobados</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="UltAnioEstudio"
+                                type="number" min="0" max="2030" [(ngModel)]="intervencion.UltAnioEstudio">
+                        </div>
+                        <label class="col-form-label col-sm-3">Nombre y dirección de Institución Educativa</label>
+                        <div class="col-sm-5">
                             <input class="form-control" name="InsEduEstudio"
-                                type="text" [value]="intervencion.InsEduEstudio">
+                                type="text" [(ngModel)]="intervencion.InsEduEstudio">
                         </div>
                     </div>
                     
