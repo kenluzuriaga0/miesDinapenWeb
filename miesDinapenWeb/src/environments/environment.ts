@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //baseUrl: "https://miesdinapen.cf/api",
-  baseUrl: "http://localhost:8080/DB_DINAPEN",
+  baseUrl: "http://localhost:3000",
 
 };
 

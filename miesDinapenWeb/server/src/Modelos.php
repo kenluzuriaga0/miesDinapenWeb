@@ -225,3 +225,27 @@ class OrganizacionModel {
         $this->Organizacion = $y;
     }
  }
+
+ class AudioModel{
+    public $IDintervencion;
+    public $Audio;
+    public $FechaRegistro;
+
+    public function __construct($x,$y,$z){
+        $this -> IDIntervencion = $x;
+        $this -> Audio=$y;
+        $this -> FechaRegistro=$z;
+    }
+ }
+
+ class FotoModel{
+    public $IDintervencion;
+    public $Foto;
+    public $FechaRegistro;
+
+    public function __construct($x,$y,$z){
+        $this -> IDIntervencion = $x;
+        $this -> Foto=$y;
+        $this -> FechaRegistro=$z;
+    }
+ }
