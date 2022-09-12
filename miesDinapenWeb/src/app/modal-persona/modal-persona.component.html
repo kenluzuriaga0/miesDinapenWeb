@@ -72,8 +72,7 @@
                         <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
                         <div class="col-sm-3">
                             <input class="form-control" name="fechaNacim"  
-                            type="date" 
-                            [(ngModel)]="person.FechaNacim">
+                            type="date" [(ngModel)]="person.FechaNacim">
                         </div>
                         <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
@@ -84,29 +83,31 @@
                     <br>
 
                     <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-3">Parroquia</label>
+                        <label for="email" class="col-form-label col-sm-3">Provincia</label>
                         <div class="col-sm-3">
-                            <select  class="form-select" name="parroquia" [(ngModel)]="person.parroquia">
-                                <option [ngValue]="parr" *ngFor="let parr of listParroquia">
-                                    {{parr.Parroquia}} - {{parr.canton.Canton}} </option>
-                            </select>
-                        </div>
+                            <select  class="form-select" name="provincia" (change)="filtrarCanton($event)" [(ngModel)]="person.provincia">
+                                <option [ngValue]="prov" *ngFor="let prov of listProvincia" >
+                                    {{prov.Provincia}} </option>
+                            </select>                       
+                         </div>
+                                                
                         <label for="email" class="col-form-label col-sm-3">Cantón</label>
                         <div class="col-sm-3">
-                            <input disabled class="form-control" name="canton" [value]="person.parroquia?.canton?.Canton"
-                                type="text">
+                            <select  class="form-select" name="canton" (change)="filtrarParroquia($event)" [(ngModel)]="person.canton">
+                                <option [ngValue]="can" *ngFor="let can of listCantonFiltered">
+                                    {{can.Canton}} </option>
+                            </select>
                         </div>
                     </div>
                     <br>
                     <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-3">Provincia</label>
-                        <div class="col-sm-3">
-                            <input disabled class="form-control" name="provincia" [value]="person.parroquia?.canton?.provincia?.Provincia"
-                            type="text">                       
-                         </div>
-                        <label for="email" class="col-form-label col-sm-3">Barrio</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="text">
+                        
+                            <label for="email" class="col-form-label col-sm-3">Parroquia</label>
+                        <div class="col-sm-6">
+                            <select  class="form-select" name="parroquia" [(ngModel)]="person.parroquia">
+                                <option [ngValue]="parr" *ngFor="let parr of listParroquiaFiltered">
+                                    {{parr.Parroquia}} </option>
+                            </select>
                         </div>
                     </div>
 
@@ -134,14 +135,15 @@
 
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Tiene Discapacidad</label>
-                        <div class="form-check form-switch col-sm-3">
-                            <input class="form-check-input" type="checkbox" id="tieneDiscpacidadCheck">
-                        </div>
-                        <label for="email" class="col-form-label col-sm-3">Tipo Discapacidad</label>
                         <div class="col-sm-3">
-                            <select disabled class="form-select" aria-label="Default select example">
-                                <option disabled selected>-</option>
-                            </select>
+                            <select  class="form-select" name="discapacidad" [(ngModel)]="person.discapacidad">
+                                <option [ngValue]="act"
+                                    *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
+                            </select>  
+                        </div>
+                        <label for="email" class="col-form-label col-sm-3">Nivel Discapacidad</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="number" min="0" max="5" name="nivelDiscapacidad" [(ngModel)]="person.DiscapacidadNivel">
                         </div>
                     </div>
                 </div>

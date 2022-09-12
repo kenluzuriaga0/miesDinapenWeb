@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import {
   CabelloColor, CabelloTipo, Canton, CondicionMedica, Contextura, Discapacidad,
-  EstadoCivil, Estatura, Etnia, Genero, Intervenciones, Nacionalidad, Parroquia, Personas, Provincias
+  EstadoCivil, Estatura, Etnia, Genero, Intervenciones, Nacionalidad, Organizaciones, Parroquia, Personas, Provincias
 } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import swal from 'sweetalert2';
@@ -17,7 +17,10 @@ export class ModalPersonaComponent implements OnInit {
   public person: Personas;
   @Input() public oneList: Map<string, any[]>;
   public listProvincia: Provincias[];
+  public listCanton: Canton[];
+  public listCantonFiltered: Canton[];
   public listParroquia: Parroquia[];
+  public listParroquiaFiltered: Parroquia[];
   public intervencionSelect: Intervenciones;
 
   private initPersona(): void {
@@ -48,20 +51,18 @@ export class ModalPersonaComponent implements OnInit {
   constructor(private listasService: ListasService, private seleccionService: SeleccionService) { }
 
   ngOnInit(): void {
-    this.seleccionService.seleccionadorList.subscribe(data => {
-      this.oneList = data;
-    });
+    this.seleccionService.seleccionadorList.subscribe(data => this.oneList = data);
     this.initPersona();
 
     this.listasService.loadProvincias().subscribe(data => this.listProvincia = data);
+    this.listasService.loadCantones().subscribe(data => this.listCanton = data);
     this.listasService.loadParroquias().subscribe(data => this.listParroquia = data);
 
     this.seleccionService.seleccionador.subscribe(data => this.intervencionSelect = data);
   }
 
   savePerson(): void {
-    this.person.provincia = this.person.parroquia?.canton?.provincia;
-    this.person.canton = this.person.parroquia?.canton;
+   console.log(this.person)
     this.listasService.savePersona(this.person).subscribe(data => {
       this.person.IDPersona = data['insert']; //Se agrega el ID creado recientemente
       swal.fire('Registrado con exito', `Persona "${this.person.Apellido1}" registrado con éxito`, 'success')
@@ -87,5 +88,17 @@ export class ModalPersonaComponent implements OnInit {
     }
     return age;
   }
-
+  public filtrarCanton(e: any): void {
+    if (typeof this.person.provincia !== 'undefined') {
+      this.listCantonFiltered = this.listCanton.filter(x => x.provincia.IDProvincia == this.person.provincia.IDProvincia);
+      this.listParroquiaFiltered = [];
+    } else {
+    }
+  }
+  public filtrarParroquia(e: any): void {
+    if (typeof this.person.canton !== 'undefined') {
+      this.listParroquiaFiltered = this.listParroquia.filter(x => x.canton.IDCanton == this.person.canton.IDCanton);
+    } else {
+    }
+  }
 }
