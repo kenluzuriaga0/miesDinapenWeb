@@ -72,12 +72,10 @@
             $query = "UPDATE Intervenciones SET 
             IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat',
             NumPerGrupo=$NumPerGrupo,DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=$UltAnioEstudio,InsEduEstudio='$InsEduEstudio'
-            ,NumHijos=$NumHijos,IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
+            ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
             WHERE IDIntervencion=$ID";
-            echo $query.'\n';
             $db->query($query);
             if($db->affected_rows>0) {
-                echo "Actualizado";
                 return TRUE;
             }
             echo $db->error."\n";

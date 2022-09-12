@@ -325,20 +325,11 @@
                         </div>
 
                         <label for="nombre" class="col-form-label col-sm-2">Nacionalidad</label>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <select class="form-select" name="nacionalidad" [(ngModel)]="intervencion.persona.nacionalidad.IDNacionalidad">
                                 <option [value]="act['IDNacionalidad']" 
                                     *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
 
-                            </select>
-                        </div>
-                        <label class="col-form-label col-sm-2">Estatus migratorio</label>
-                        <div class="col-sm-3">
-                            <select class="form-select" aria-label="Default select example" >
-                                <option disabled selected>-</option>
-                                <option value="act"> Pasaporte</option>
-                                <option value="act"> Documento de refugio</option>
-                                <option value="act"> Visa MERCOSUR</option>
                             </select>
                         </div>
                     </div>
@@ -462,7 +453,7 @@
                                 
                             </select>
                         </div>
-                        <label for="nombre" class="col-form-label col-sm-3">SI no estudia, ¿Por qué?</label>
+                        <label for="nombre" class="col-form-label col-sm-3">Si no estudia, ¿Por qué?</label>
                         <div class="col-sm-5">
                             <input class="form-control" name="NoEstudio"
                             type="text" [(ngModel)]="intervencion.NoEstudio">

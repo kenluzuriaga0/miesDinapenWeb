@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { FormControl} from '@angular/forms';
+import {  Component,  OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
 import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import swal from 'sweetalert2';
+import { mergeMap } from 'rxjs';
 
 
 @Component({
@@ -35,35 +34,30 @@ export class FormularioComponent implements OnInit {
     this.listasService.loadOrganizaciones().subscribe(data => {
       this.listOrganizaciones = data;
     });
-    
-    this.seleccionService.seleccionadorToForm.subscribe(data => { //llega del modal-incidencia
-      this.selectActividadesIds = ["4","3"]
-      this.intervencion = data;
-      this.unirNombres();
-      this.initOrganizacion();
-      this.cargarActividadesByIntervencion(); // no funciona, no subscribe dentro de un subscribe
-      if(typeof this.intervencion.Latitud !== 'undefined'){
-        this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
-        
-      }else{this.linkMapa='';}
-    });
-    
-   
-    if(this.isUndefined(this.nombreCompleto)){
-      this.nombreCompleto=""; //al cargar la pagina x 1ra vez, no debe salir undefined en el campo "nombres"
+
+    // Usamos mergeMap para combinar observables para subscribirlos en order
+    this.seleccionService.seleccionadorToForm.pipe(
+      mergeMap(data => {
+        this.intervencion = data;
+        this.unirNombres();
+        this.initOrganizacion();
+        if (!this.isUndefined(this.intervencion.Latitud)) {
+          this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
+        } else { this.linkMapa = ''; }
+        return this.listasService.loadIntervencionActividadById(this.intervencion.IDIntervencion)
+      })
+    ).subscribe(idsActividad => { // idsActividad es retornada por el mergeMap de arriba y usada en este subscribe
+      this.selectActividadesIds = []
+      let selectTiposActividades: IntervencionesTipoActividad[] = [];
+      selectTiposActividades = idsActividad;
+      selectTiposActividades.forEach(x => this.selectActividadesIds.push(String(x.IDTipoActividad)));
+    }); // foreach recorre cada idActividad y es metido en un number[]
+
+    if (this.isUndefined(this.nombreCompleto)) {
+      this.nombreCompleto = ""; //al cargar la pagina x 1ra vez, no debe salir undefined en el campo "nombres"
     }
   }
-cargarActividadesByIntervencion(){
-  this.selectActividadesIds = []
-  let selectTiposActividades:IntervencionesTipoActividad[]=[];
-  this.listasService.loadIntervencionActividadById(this.intervencion.IDIntervencion).subscribe(data2=>{
-    selectTiposActividades=data2;
-    console.log(selectTiposActividades)
-    selectTiposActividades.forEach(x=>this.selectActividadesIds.push(String(x.IDTipoActividad)));
-    console.log(this.selectActividadesIds);
-});
-  
-}
+
   private initOrganizacion():void{
     /** Metodo que inicializa objetos internos de Organizacion porque en el
      * seleccionadorService me trae como null todos estos objetos 
@@ -125,19 +119,17 @@ cargarActividadesByIntervencion(){
   }
 
   saveIntervencion():void{
-    if(!this.isUndefined(this.intervencion.organizacion.IDOrganizacion)){ // TODO: evaluar tambien el IDPersona
+    if(!this.isUndefined(this.intervencion.organizacion.IDOrganizacion)&&
+    !this.isUndefined(this.intervencion.persona.IDPersona)){ // TODO: evaluar tambien el IDPersona
       this.intervencion.FechaIntervencion= new Date();
-    
       console.log(this.intervencion)
-      //console.log(this.selectTiposActividades)
-      this.listasService.updateIntervencion(this.intervencion);
-
-      let intervencionesTipoActividad: IntervencionesTipoActividad[]=[];
-     /* for(let act of this.selectTiposActividades){
-        intervencionesTipoActividad.push(new IntervencionesTipoActividad(this.intervencion.IDIntervencion,Number(act)))
-      }*/
-      console.log(intervencionesTipoActividad)
-
+      this.listasService.updateIntervencion(this.intervencion).subscribe(x=>{},error => {
+        swal.fire('Alerta de Error', `Ha ocurrido un error, recargue la página`, 'error')
+      });
+      for(let act of this.selectActividadesIds){ // guardar cada una de las intervencionesTipoActividad
+        this.listasService.saveIntervencionActividades(new IntervencionesTipoActividad(
+          this.intervencion.IDIntervencion,Number(act))).subscribe(console.log);
+      }
 
       console.log("Guardado")
     }else{

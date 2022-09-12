@@ -13,7 +13,6 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Organizacion</th>
                                     <th scope="col">Operador</th>
                                     <th scope="col">Referencia</th>
                                     <th scope="col">Fecha</th>
@@ -23,7 +22,6 @@
                             <tbody>
                                 <tr *ngFor="let inci of listIntervenciones">
                                     <td>{{inci.IDIntervencion}}</td>
-                                    <td>{{inci.organizacion.Organizacion}}</td>
                                     <td>{{inci.operador.OperaApellido1}} {{inci.operador.OperaNombres}}</td>
                                     <td>{{inci.Referencia}}</td>
                                     <td>{{inci.FechaRegistro}}</td>

@@ -10,7 +10,7 @@
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }
-            echo $db->error."\n";
+            //echo $db->error."\n";
             return FALSE;
         }
 

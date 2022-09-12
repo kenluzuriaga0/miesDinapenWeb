@@ -240,12 +240,12 @@ class OrganizacionModel {
 
  class FotoModel{
     public $IDintervencion;
-    public $Foto;
+    public $FotoIncidente;
     public $FechaRegistro;
 
     public function __construct($x,$y,$z){
         $this -> IDIntervencion = $x;
-        $this -> Foto=$y;
+        $this -> FotoIncidente=$y;
         $this -> FechaRegistro=$z;
     }
  }

@@ -54,4 +54,7 @@ export class ListasService {
   loadIntervencionActividadById(id: number): Observable<IntervencionesTipoActividad[]> { //INTERVENCION-ACTIVIDAD BY IDINTERVENCION
     return this.http.get<IntervencionesTipoActividad[]>(`${this.baseUrl}/Incidencias/Actividad/select.php?idIntervencion=${id}`);
   }
+  saveIntervencionActividades(interv:IntervencionesTipoActividad): Observable<IntervencionesTipoActividad> { //SAVE IntervencionesTipoActividad
+    return this.http.post<IntervencionesTipoActividad>(`${this.baseUrl}/Incidencias/Actividad/insert.php`,interv);
+  }
 }
