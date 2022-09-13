@@ -23,10 +23,10 @@
             return $datos;
         }
 
-        public static function insert($Canton, $provincia) {
+        public static function insert($IDCanton,$Canton, $IDprovincia) {
             $db = new Connection();
-            $query = "INSERT INTO ListaIDCantones (Canton,provincia)
-            VALUES('$Canton, $provincia')";
+            $query = "INSERT INTO ListaIDCantones (IDCanton,Canton,IDprovincia)
+            VALUES($IDCanton,'$Canton', $IDprovincia)";
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }

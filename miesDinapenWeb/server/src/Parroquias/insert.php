@@ -9,7 +9,7 @@
     
     $datos = json_decode(file_get_contents('php://input'));
     if($datos != NULL) {
-        if(Parroquias::insert($datos->Parroquia, $datos->canton->IDCanton)) {
+        if(Parroquias::insert($datos->IDParroquia,$datos->Parroquia, $datos->canton->IDCanton)) {
         }else {
             echo json_encode(['insert' => FALSE]);
         }

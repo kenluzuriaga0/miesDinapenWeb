@@ -18,10 +18,10 @@
             }
             return $datos;
         }
-        public static function insert($Provincia, $IDNacionalidad) {
+        public static function insert($IDProvincia,$Provincia, $IDNacionalidad) {
             $db = new Connection();
-            $query = "INSERT INTO ListaIDProvincias (Provincia,IDNacionalidad)
-             VALUES('$Provincia', $IDNacionalidad)";
+            $query = "INSERT INTO ListaIDProvincias (IDProvincia,Provincia,IDNacionalidad)
+             VALUES($IDProvincia,'$Provincia', ".($IDNacionalidad? : 0).")";
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }
