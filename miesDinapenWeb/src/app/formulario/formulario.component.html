@@ -474,6 +474,7 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col-12">
             <div class="row card bg-light text-dark">
@@ -483,8 +484,8 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-2">¿Tiene enfermedad?</label>
                         <div class="col-sm-5">
-                            <select class="form-select"  name="CondicionMedica"  [(ngModel)]="intervencion.persona.condicionMedica.IDCondicionMedica">
-                                <option [value]="act['IDCondicionMedica']"
+                            <select class="form-select"  name="CondicionMedica"  [(ngModel)]="intervencion.persona.condicionMedica">
+                                <option [value]="act"
                                 *ngFor="let act of oneList.get('com')">{{act['CondicionMedica']}}</option>
                                 
                             </select>
@@ -508,4 +509,80 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Actividad Laboral
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-2">Calle donde labora</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" name="DireccionCallePrincial"
+                            type="text" [(ngModel)]="intervencion.DireccionCallePrincial">
+                        </div>
+                        <label for="nombre" class="col-form-label col-sm-2">Días a la semana que labora </label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="DiasLaborales"
+                            type="number" [(ngModel)]="intervencion.DiasLaborales">
+                        </div>
+                    </div>   
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">No. Horas que labora</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="HorasLaborales"  [(ngModel)]="intervencion.HorasLaborales">
+                                <option value="1 a 2 Hrs" >1 a 2 Hrs</option>
+                                <option value="2 a 3 Hrs" >2 a 3 Hrs</option>
+                                <option value="3 a 4 Hrs" >3 a 4 Hrs</option>
+                                <option value="4 a 5 Hrs" >4 a 5 Hrs</option>
+                                <option value="5 a 6 Hrs" >5 a 6 Hrs</option>
+                                <option value="6 a 7 Hrs" >6 a 7 Hrs</option>
+                                <option value="mas de 7 Hrs" >mas de 7 Hrs</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">Ingresos diarios</label>
+                        <div class="col-sm-3">
+                            <select class="form-select"  name="IngresosDiariosLaboral"  [(ngModel)]="intervencion.IngresosDiariosLaboral">
+                                <option value="Hasta $5" >Hasta $5</option>
+                                <option value="De $6 Hasta $10" >De $6 Hasta $10</option>
+                                <option value="De $11 Hasta $20" >De $11 Hasta $20</option>
+                                <option value="De $21 Hasta $40" >De $21 Hasta $40</option>
+                                <option value="De $41 Hasta $60" >De $41 Hasta $60</option>
+                                <option value="De 61 en adelante" >De $61 en adelante</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Tiempo que lleva laborando</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="TiempoLaboral"  [(ngModel)]="intervencion.TiempoLaboral">
+                                <option value="0 a 6 meses" >0 a 6 meses</option>
+                                <option value="7 a 12 meses" >7 a 12 meses</option>
+                                <option value="13 a 18 meses" >13 a 18 meses</option>
+                                <option value="19 a 24 meses" >19 a 24 meses</option>
+                                <option value="25 a 36 meses" >25 a 36 meses</option>
+                                <option value="Mas de 37 meses" >Mas de 37 meses</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">¿Con quién realiza la actividad?</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="GrupoLaboral"  [(ngModel)]="intervencion.GrupoLaboral">
+                                <option value="Solo" >Solo</option>
+                                <option value="En grupo" >En grupo</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">No. personas que le acompañan</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="NumGrupoLaboral"
+                                type="number" [(ngModel)]="intervencion.NumGrupoLaboral">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>

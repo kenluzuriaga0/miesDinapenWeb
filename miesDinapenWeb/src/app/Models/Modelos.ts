@@ -161,6 +161,13 @@ export class Intervenciones {
    NumTelefono: string;
    FechaIntervencion: Date;
    FechaRegistro: Date;
+   DiasLaborales: number;
+   HorasLaborales: number;
+   TiempoLaboral: string;
+   GrupoLaboral: string;
+   NumGrupoLaboral: string;
+   IngresosDiariosLaboral: string;
+   Comentarios: string;
    Estado: string;
 
 }
