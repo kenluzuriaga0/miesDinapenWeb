@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: "https://miesdinapen.cf/api",
+  baseUrl: "https://miesdinapen.tk/api",
 };
