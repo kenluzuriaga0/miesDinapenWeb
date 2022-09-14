@@ -73,6 +73,8 @@ class TipoOrganizacionesModel {
     public $estatura;
     public $condicionMedica;
     public $discapacidad;
+    public $Enfermedad;
+    public $LugarAtencionMedica;
 
     public function __construct(string $a, string $b, string $c, string $d, string $e ) {
         $this->Apellido1 = $a;

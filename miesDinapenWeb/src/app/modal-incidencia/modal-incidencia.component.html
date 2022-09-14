@@ -16,6 +16,7 @@
                                     <th scope="col">Operador</th>
                                     <th scope="col">Referencia</th>
                                     <th scope="col">Fecha</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col">-</th>
                                 </tr>
                             </thead>
@@ -25,9 +26,14 @@
                                     <td>{{inci.operador.OperaApellido1}} {{inci.operador.OperaNombres}}</td>
                                     <td>{{inci.Referencia}}</td>
                                     <td>{{inci.FechaRegistro}}</td>
-                                    <td><button type="button" name="button" data-bs-toggle="modal"
+                                    <td>{{inci.Estado}}</td>
+                                    <td *ngIf="inci.Estado=='Ingresado'"><button type="button" name="button" data-bs-toggle="modal"
                                         data-bs-target="#modalBusqueda" title="Seleccionar Intervención" (click)="selectIncidencia(inci)"
-                                        class="btn btn-primary" ><span class="oi oi-pencil"></span></button>
+                                        class="btn btn-danger" ><span class="oi oi-pencil"></span></button>
+                                    </td>
+                                    <td *ngIf="inci.Estado=='Completado'"><button type="button" name="button" 
+                                        data-bs-dismiss="modal" title="Seleccionar Intervención" (click)="selectIncidenciaCompletada(inci)"
+                                        class="btn btn-primary" ><span class="oi oi-box"></span></button>
                                     </td>
                                 </tr>
                             </tbody>
