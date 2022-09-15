@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Canton, Provincias } from '../Models/Modelos';
+import { Canton, Parroquia, Provincias } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cantones',
@@ -13,7 +14,8 @@ export class CantonesComponent implements OnInit {
   public canton: Canton;
   public listProvincia: Provincias[];
   public listCanton:Canton[];
-
+  public listCantonFiltered: Canton[];
+  public listParroquiaFiltered: Parroquia[];
   private initCanton():void{
     this.canton = new Canton();
     
@@ -35,5 +37,25 @@ export class CantonesComponent implements OnInit {
       console.log(this.listProvincia);
       });
   }
+
+  public filtrarCanton(e: any): void {
+    if (typeof this.canton.provincia !== 'undefined') {
+      this.listCantonFiltered = this.listCanton.filter(x => x.provincia.IDProvincia == this.canton.provincia.IDProvincia);
+      this.listParroquiaFiltered = [];
+    } else {
+    }
+  }
+
+
+  saveCanton(): void {
+    console.log(this.canton)
+     this.listasService.saveCanton(this.canton).subscribe(data => {
+       this.canton.IDCanton = data['insert']; //Se agrega el ID creado recientemente
+       swal.fire('Registrado con exito', `Organizacion "${this.canton.Canton}" registrado con éxito`, 'success')
+     }, error => {
+       swal.fire('Alerta de Error', `Por favor, llene todos los campos`, 'error')
+     });
+     
+   }
 
 }

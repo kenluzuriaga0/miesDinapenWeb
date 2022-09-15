@@ -4,19 +4,27 @@
     <div class="card-body">
         <div class="form-group row">
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Parroquia" type="text">
+                <label for="customSelect" id="labelParroq">Parroquia</label>
+                <select  class="form-select" name="parroquia"  [(ngModel)]="parroq.Parroquia">
+                    <option [ngValue]="parr" *ngFor="let parr of listParroquia">
+                        {{parr.Parroquia}} </option>
+                </select>
             </div>
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Cantón" type="text">
+                <label for="customSelect" id="labelCanton">Cantón</label>
+                <select  class="form-select" name="canton" (change)="filtrarParroquia($event)"  [(ngModel)]="parroq.canton">
+                    <option [ngValue]="can" *ngFor="let can of listCanton">
+                        {{can.Canton}} </option>
+                </select>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-secondary">Buscar</button>
+                <button type="button" class="btn btn-secondary" (click)="saveParroquia()">Guardar</button>
             </div>
         </div>
 
         <br>
                    
-        <div class="form-group row table-responsive ">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar ">
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>

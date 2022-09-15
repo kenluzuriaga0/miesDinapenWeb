@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Canton, Parroquia, Provincias } from '../Models/Modelos';
+import { Canton, Intervenciones, Parroquia, Provincias } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-parroquias',
   templateUrl: './parroquias.component.html',
@@ -10,15 +10,17 @@ import { ListasService } from '../services/listas.service';
 })
 export class ParroquiasComponent implements OnInit {
 
-  public parroquia: Parroquia;
+  public parroq: Parroquia;
   public listParroquia: Parroquia[];
   public listCanton:Canton[];
-
+  public listCantonFiltered: Canton[];
+  public listParroquiaFiltered: Parroquia[];
+  public intervencionSelect: Intervenciones;
   private initParroquia():void{
-    this.parroquia = new Parroquia();
+    this.parroq = new Parroquia();
     
-    this.parroquia.Parroquia;
-    this.parroquia.canton = new Canton();
+    this.parroq.Parroquia;
+    this.parroq.canton = new Canton();
 
 
   }
@@ -37,5 +39,30 @@ export class ParroquiasComponent implements OnInit {
       });
 
   }
+ /* public filtrarCanton(e: any): void {
+    if (typeof this.parroq.Parroquia !== 'undefined') {
+      this.listParroquiaFiltered = this.listParroquia.filter(x => x.IDProvincia == this.parroq.IDParroquia);
+      this.listParroquiaFiltered = [];
+    } else {
+    }
+  }*/
+
+  public filtrarParroquia(e: any): void {
+    if (typeof this.parroq.canton !== 'undefined') {
+      this.listParroquiaFiltered = this.listParroquia.filter(x => x.canton.IDCanton == this.parroq.canton.IDCanton);
+    } else {
+    }
+  }
+
+  saveParroquia(): void {
+    console.log(this.parroq)
+     this.listasService.saveParroquia(this.parroq).subscribe(data => {
+       this.parroq.IDParroquia = data['insert']; //Se agrega el ID creado recientemente
+       swal.fire('Registrado con exito', `Organizacion "${this.parroq.Parroquia}" registrado con éxito`, 'success')
+     }, error => {
+       swal.fire('Alerta de Error', `Por favor, llene todos los campos`, 'error')
+     });
+ 
+    }
 
 }

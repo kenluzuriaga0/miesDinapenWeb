@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -25,6 +25,9 @@ export class ListasService {
   loadCantones(): Observable<Canton[]> { //CANTONES
     return this.http.get<Canton[]>(`${this.baseUrl}/Cantones/select.php`);
   }
+  loadTipOrganizacion(): Observable<TipoOrganizaciones[]> { //CANTONES
+    return this.http.get<TipoOrganizaciones[]>(`${this.baseUrl}/TipoOrganizacion/select.php`);
+  }
 
   loadParroquias(): Observable<Parroquia[]> { //PARROQUIAS
     return this.http.get<Parroquia[]>(`${this.baseUrl}/Parroquias/select.php`);
@@ -43,6 +46,18 @@ export class ListasService {
 
   savePersona(persona:Personas): Observable<any> { //SAVE PERSONAS
     return this.http.post<any>(`${this.baseUrl}/Personas/insert.php`,persona);
+  }// es tipo any para obtener el id creador del response
+
+  saveOrganizacion(organizacion:Organizaciones): Observable<any> { //SAVE Organización
+    return this.http.post<any>(`${this.baseUrl}/Organizaciones/insert.php`,organizacion);
+  }// es tipo any para obtener el id creador del response
+
+  saveCanton(canton:Canton): Observable<any> { //SAVE Organización
+    return this.http.post<any>(`${this.baseUrl}/Cantones/insert.php`,canton);
+  }// es tipo any para obtener el id creador del response
+
+  saveParroquia(parroquia:Parroquia): Observable<any> { //SAVE Parroquia
+    return this.http.post<any>(`${this.baseUrl}/Parroquias/insert.php`,parroquia);
   }// es tipo any para obtener el id creador del response
 
   loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
