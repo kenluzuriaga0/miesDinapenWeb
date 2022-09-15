@@ -38,22 +38,13 @@ export class CantonesComponent implements OnInit {
       });
   }
 
-  public filtrarCanton(e: any): void {
-    if (typeof this.canton.provincia !== 'undefined') {
-      this.listCantonFiltered = this.listCanton.filter(x => x.provincia.IDProvincia == this.canton.provincia.IDProvincia);
-      this.listParroquiaFiltered = [];
-    } else {
-    }
-  }
-
 
   saveCanton(): void {
     console.log(this.canton)
      this.listasService.saveCanton(this.canton).subscribe(data => {
-       this.canton.IDCanton = data['insert']; //Se agrega el ID creado recientemente
-       swal.fire('Registrado con exito', `Organizacion "${this.canton.Canton}" registrado con éxito`, 'success')
+       swal.fire('Registrado con exito', `Canton "${this.canton.Canton}" registrado con éxito`, 'success')
      }, error => {
-       swal.fire('Alerta de Error', `Por favor, llene todos los campos`, 'error')
+       swal.fire('Alerta de Error', `Por favor, llene todos los campos y verifique el ID`, 'error')
      });
      
    }

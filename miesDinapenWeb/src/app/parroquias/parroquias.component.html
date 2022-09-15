@@ -4,20 +4,21 @@
     <div class="card-body">
         <div class="form-group row">
             <div class="col-sm-3">
-                <label for="customSelect" id="labelParroq">Parroquia</label>
-                <select  class="form-select" name="parroquia"  [(ngModel)]="parroq.Parroquia">
-                    <option [ngValue]="parr" *ngFor="let parr of listParroquia">
-                        {{parr.Parroquia}} </option>
-                </select>
+                <label for="customSelect" ></label>
+                <input class="form-control" placeholder="ID Parroquia" type="text"  [(ngModel)]="parroq.IDParroquia">
+            </div>
+            <div class="col-sm-3" id="cnt">
+                <label for="customSelect" id="labelCanton"></label>
+                <input class="form-control" placeholder="Parroquia" type="text"  [(ngModel)]="parroq.Parroquia">
             </div>
             <div class="col-sm-3">
                 <label for="customSelect" id="labelCanton">Cantón</label>
-                <select  class="form-select" name="canton" (change)="filtrarParroquia($event)"  [(ngModel)]="parroq.canton">
+                <select  class="form-select" name="canton"  [(ngModel)]="parroq.canton">
                     <option [ngValue]="can" *ngFor="let can of listCanton">
                         {{can.Canton}} </option>
                 </select>
             </div>
-            <div class="col-sm-2">
+            <div id="btn" class="col-sm-2">
                 <button type="button" class="btn btn-secondary" (click)="saveParroquia()">Guardar</button>
             </div>
         </div>

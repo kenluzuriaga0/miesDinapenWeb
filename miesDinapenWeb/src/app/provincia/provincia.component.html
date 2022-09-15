@@ -4,13 +4,13 @@
     <div class="card-body">
         <div class="form-group row">
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Provincia" type="text">
+                <input class="form-control" placeholder="ID Provincia" type="text" [(ngModel)]="provi.IDProvincia">
             </div>
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Nacionalidad" type="text">
+                <input class="form-control" placeholder="Provincia" type="text" [(ngModel)]="provi.Provincia">
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-secondary">Buscar</button>
+                <button type="button" (click)="saveParroquia()" class="btn btn-secondary">Buscar</button>
             </div>
         </div>
 

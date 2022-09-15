@@ -3,21 +3,22 @@
 <div class="cantones-body">
     <div class="card-body">
         <div class="form-group row">
+            <div class="col-sm-3">
+                <label for="customSelect" ></label>
+                <input class="form-control" placeholder="ID Cantón" type="text"  [(ngModel)]="canton.IDCanton">
+            </div>
             <div class="col-sm-3" id="cnt">
-                <label for="customSelect" id="labelCanton">Cantón</label>
-                <select  class="form-select" name="canton"  [(ngModel)]="canton.Canton">
-                    <option [ngValue]="can" *ngFor="let can of listCantonFiltered">
-                        {{can.Canton}} </option>
-                </select>
+                <label for="customSelect" id="labelCanton"></label>
+                <input class="form-control" placeholder="Cantón" type="text"  [(ngModel)]="canton.Canton">
             </div>
             <div class="col-sm-3">
                 <label for="customSelect" >Provincia</label>
-                <select  class="form-select" name="provincia" (change)="filtrarCanton($event)" [(ngModel)]="canton.provincia">
+                <select  class="form-select" name="provincia"  [(ngModel)]="canton.provincia">
                     <option [ngValue]="prov" *ngFor="let prov of listProvincia" >
                         {{prov.Provincia}} </option>
                 </select>
             </div>
-            <div class="col-sm-2">
+            <div id="btn" class="col-sm-2">
                 <button type="button" class="btn btn-secondary" (click)="saveCanton()">Guardar</button>
             </div>
         </div>
