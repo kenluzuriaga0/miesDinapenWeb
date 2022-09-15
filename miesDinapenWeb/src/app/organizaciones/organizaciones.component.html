@@ -4,64 +4,80 @@
     <div class="card-body">
         <div class="form-group row">
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Organización" type="text">
+                <label for="customSelect" ></label>
+                <input class="form-control" placeholder="Organización" type="text"  [(ngModel)]="organi.Organizacion">
             </div>
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Zona" type="text">
+                <label for="customSelect" >Zona</label>
+                <input class="form-control" placeholder="Zona" type="number" [(ngModel)]="organi.Zona">
+            </div>
+
+            <div class="col-sm-3">
+                <label for="customSelect" >Provincia</label>
+                <select  class="form-select" name="provincia" (change)="filtrarCanton($event)" [(ngModel)]="organi.provincia">
+                    <option [ngValue]="prov" *ngFor="let prov of listProvincia" >
+                        {{prov.Provincia}} </option>
+                </select>
+            </div>
+            <div class="col-sm-3" id="cnt">
+                <label for="customSelect" id="labelCanton">Cantón</label>
+                <select  class="form-select" name="canton" (change)="filtrarParroquia($event)" [(ngModel)]="organi.canton">
+                    <option [ngValue]="can" *ngFor="let can of listCantonFiltered">
+                        {{can.Canton}} </option>
+                </select>
             </div>
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Provincia" type="text">
+                <label for="customSelect" id="labelParroq">Parroquia</label>
+                <select  class="form-select" name="parroquia" [(ngModel)]="organi.parroquia">
+                    <option [ngValue]="parr" *ngFor="let parr of listParroquiaFiltered">
+                        {{parr.Parroquia}} </option>
+                </select>
             </div>
+
+
+            
             <div class="col-sm-3">
-                <input class="form-control" placeholder="Cantón" type="text">
+                <label for="customSelect" id="labeTipoOrganiz">Tipo de Organizaciones</label>
+                <select  class="form-select" name="tipOrganizaciones" [(ngModel)]="organi.tipo">
+                    <option [ngValue]="tp" *ngFor="let tp of listTipoOrganizacion"> {{tp.TipoOrganizacion}}
+                        </option>
+                </select>
             </div>
-            <div class="col-sm-3">
-                <input class="form-control" placeholder="Parroquia" type="text">
-            </div>
-            <div class="col-sm-3">
-                <input class="form-control" placeholder="Tipo Organizaciones" type="text">
-            </div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-secondary">Buscar</button>
+
+
+            <div class="btn"  class="col-sm-2">
+                <button type="button" class="btn btn-secondary"  (click)="saveOrgani()">Guardar</button>
             </div>
         </div>
 
         <br>
-                   
-        <div class="form-group row table-responsive ">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Organización</th>
-                        <th scope="col">Zona</th>
-                        <th scope="col">Provincia</th>
-                        <th scope="col">Cantón</th>
-                        <th scope="col">Parroquia</th>
-                        <th scope="col">TipoOrganizaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let orga of listOrganizacion" >
-                        <td>{{orga.IDOrganizacion}}</td>
-                        <td>{{orga.Organizacion}}</td>
-                        <td>{{orga.Zona}}</td>
-                        <td>{{orga.provincia.Provincia}}</td>
-                        <td>{{orga.canton.Canton}}</td>
-                        <td>{{orga.parroquia.Parroquia}}</td>
-                        <td>{{orga.tipo.TipoOrganizacion}}</td>
-                    </tr>
-                    <!--<tr *ngFor="let org of listCantones">-->
-                        <!--<td>{{org.IDOrganizacion}}</td>-->
-                        <!--<td>{{org.Organizacion}}</td>-->
-                        <!--<td>{{org.Zona}}</td>-->
-                        <!--<td>{{org.provincia}}</td>-->
-                        <!--<td>{{org.canton}}</td>-->
-                        <!--<td>{{org.parroquia}}</td>-->
-                        <!--<td>{{org.TipoOrganizaciones}}</td>-->
-                </tbody>
-            </table>
 
-        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar ">
+    <table id="cutomTableId" class=" table table-striped table-bordered table-hover">
+      <thead id="cutomTableTHeadId">
+        <tr id="cutomTableTHeadTrId">
+            <th scope="col">ID</th>
+            <th scope="col">Organización</th>
+            <th scope="col">Zona</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Cantón</th>
+            <th scope="col">Parroquia</th>
+            <th scope="col">Tipo Organizaciones</th>
+        </tr>
+      </thead>
+      <tbody id="cutomTableTBodyId">
+        <tr *ngFor="let orga of listOrganizacion" >
+            <td>{{orga.IDOrganizacion}}</td>
+            <td>{{orga.Organizacion}}</td>
+            <td>{{orga.Zona}}</td>
+            <td>{{orga.provincia.Provincia}}</td>
+            <td>{{orga.canton.Canton}}</td>
+            <td>{{orga.parroquia.Parroquia}}</td>
+            <td>{{orga.tipo.TipoOrganizacion}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
     </div>
 </div>
