@@ -79,10 +79,9 @@ export class OrganizacionesComponent implements OnInit {
   saveOrgani(): void {
     console.log(this.organi)
      this.listasService.saveOrganizacion(this.organi).subscribe(data => {
-       this.organi.IDOrganizacion = data['insert']; //Se agrega el ID creado recientemente
        swal.fire('Registrado con exito', `Organizacion "${this.organi.Organizacion}" registrado con éxito`, 'success')
      }, error => {
-       swal.fire('Alerta de Error', `Por favor, llene todos los campos`, 'error')
+       swal.fire('Alerta de Error', `Por favor, llene todos los campos y verifique el ID`, 'error')
      });
  
      //se Inicializa si no proviene de una intervencio elegida previamente

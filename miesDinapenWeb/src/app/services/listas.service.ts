@@ -60,6 +60,10 @@ export class ListasService {
     return this.http.post<any>(`${this.baseUrl}/Parroquias/insert.php`,parroquia);
   }// es tipo any para obtener el id creador del response
 
+  saveProvincia(provincia:Provincias): Observable<any> { //SAVE Parroquia
+    return this.http.post<any>(`${this.baseUrl}/Provincias/insert.php`,provincia);
+  }// es tipo any para obtener el id creador del response
+
   loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
     return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);
   }

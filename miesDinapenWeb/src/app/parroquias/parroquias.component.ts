@@ -39,26 +39,10 @@ export class ParroquiasComponent implements OnInit {
       });
 
   }
- /* public filtrarCanton(e: any): void {
-    if (typeof this.parroq.Parroquia !== 'undefined') {
-      this.listParroquiaFiltered = this.listParroquia.filter(x => x.IDProvincia == this.parroq.IDParroquia);
-      this.listParroquiaFiltered = [];
-    } else {
-    }
-  }*/
-
-  public filtrarParroquia(e: any): void {
-    if (typeof this.parroq.canton !== 'undefined') {
-      this.listParroquiaFiltered = this.listParroquia.filter(x => x.canton.IDCanton == this.parroq.canton.IDCanton);
-    } else {
-    }
-  }
-
   saveParroquia(): void {
     console.log(this.parroq)
      this.listasService.saveParroquia(this.parroq).subscribe(data => {
-       this.parroq.IDParroquia = data['insert']; //Se agrega el ID creado recientemente
-       swal.fire('Registrado con exito', `Organizacion "${this.parroq.Parroquia}" registrado con éxito`, 'success')
+       swal.fire('Registrado con exito', `Parroquia "${this.parroq.Parroquia}" registrado con éxito`, 'success')
      }, error => {
        swal.fire('Alerta de Error', `Por favor, llene todos los campos`, 'error')
      });
