@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  //baseUrl: "https://miesdinapen.cf/api",
-  //baseUrl: "http://localhost:4200",
-  baseUrl: "http://localhost:8080/DB_DINAPEN",
+  //baseUrl: "https://miesdinapen.tk/api",
+  baseUrl: "http://localhost:3000",
+
 };
 
 /*

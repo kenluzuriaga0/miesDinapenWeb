@@ -5,14 +5,14 @@
     header("Access-Control-Allow-Headers: X-API-KEY, Origin,  Content-Type, Accept, Access-Control-Request-Method");
    
     include_once "../db.php";
-    require_once "Incidencia.php";
+    require_once "TipoOrganizaciones.php";
     
     $datos = json_decode(file_get_contents('php://input'));
     if($datos != NULL) {
-        if(Incidencia::insert($datos->IDOperador, $datos->IDOrganCooperante, $datos->IDPersonaIntervenida, $datos->Latitud, $datos->Longitud, $datos->FechaRegistro)) {
+        if(TipoOrganizaciones::insert($datos->IDTipoOrganizacion,$datos->TipoOrganizacion)) {
         }else {
-            echo json_encode(['Error' => FALSE]);
+            echo json_encode(['insert' => FALSE]);
         }
     }else {
-        echo json_encode(['Error' => FALSE]);
+        echo json_encode(['insert' => FALSE]);
     }

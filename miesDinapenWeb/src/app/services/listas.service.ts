@@ -72,4 +72,7 @@ export class ListasService {
   saveIntervencionActividades(interv:IntervencionesTipoActividad): Observable<IntervencionesTipoActividad> { //SAVE IntervencionesTipoActividad
     return this.http.post<IntervencionesTipoActividad>(`${this.baseUrl}/Incidencias/Actividad/insert.php`,interv);
   }
+  updatePersona(persona:Personas): Observable<Personas> { //UPDATE Personas
+    return this.http.post<Personas>(`${this.baseUrl}/Personas/update.php`,persona);
+  }
 }

@@ -17,22 +17,24 @@
 
         public static function getAllIntervenciones() {
             $db = new Connection();
+            require_once "../Personas/Personas.php";
+
             $query = "SELECT * FROM Intervenciones AS inte
             INNER JOIN ListaIDOperadores AS ope ON ope.IDOperador = inte.IDOperador
-            INNER JOIN ListaIDOrganizacionesCoope AS org ON inte.IDOrganCooperante = org.IDOrganizacion ORDER BY  inte.FechaRegistro desc";
+            INNER JOIN ListaIDOrganizacionesCoope AS org ON inte.IDOrganCooperante = org.IDOrganizacion ORDER BY inte.Estado desc, inte.FechaRegistro desc";
             $resultado = $db->query($query);
+            
             $datos = [];
             if($resultado->num_rows) {
                 while($row = $resultado->fetch_assoc()) {
                     $operador = new OperadorModel($row['IDOperador'],$row['IDInstitucion'],$row['OperaCargo']
                     ,$row['OperaNCedula'],$row['OperaApellido1'],$row['OperaApellido2'],$row['OperaNombres']);
                     $organizacion = new OrganizacionModel($row['IDOrganCooperante'],$row['Organizacion']);
-                   
                     $datos[]=[
                         'IDIntervencion' => $row['IDIntervencion'],
                         'operador' => $operador,
                         'organizacion' => $organizacion,
-                        'persona' => null, // La incidencia  de origen appmovil no trae persona incluida
+                        'persona' => Personas::getPersonaById($row['IDPersonaIntervenida'])? :null, // La incidencia  de origen appmovil no trae persona incluida
                         'Latitud' => $row['Latitud'],
                         'Longitud' => $row['Longitud'],
                         'NumPerGrupo' => $row['NumPerGrupo'],
@@ -54,7 +56,9 @@
                         'NumHijos' => $row['NumHijos'],
                         'NumTelefono' => $row['NumTelefono'],
                         'FechaIntervencion' => $row['FechaIntervencion'],
-                        'FechaRegistro' => $row['FechaRegistro']
+                        'FechaRegistro' => $row['FechaRegistro'],
+                        'Estado' => $row['Estado']
+
                     ];
                 }
                 return $datos;
@@ -71,8 +75,9 @@
             $db = new Connection();
             $query = "UPDATE Intervenciones SET 
             IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat',
-            NumPerGrupo=$NumPerGrupo,DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=$UltAnioEstudio,InsEduEstudio='$InsEduEstudio'
-            ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
+            NumPerGrupo=".($NumPerGrupo? : '0').",DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=$UltAnioEstudio,InsEduEstudio='$InsEduEstudio'
+            ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL').",
+            Estado = 'Completado' 
             WHERE IDIntervencion=$ID";
             $db->query($query);
             if($db->affected_rows>0) {

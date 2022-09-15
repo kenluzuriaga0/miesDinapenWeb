@@ -1,6 +1,6 @@
 import {  Component,  OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad, CondicionMedica } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import swal from 'sweetalert2';
 import { mergeMap } from 'rxjs';
@@ -111,6 +111,7 @@ export class FormularioComponent implements OnInit {
     this.intervencion.persona.provincia=new Provincias();
     this.intervencion.persona.canton=new Canton();
     this.intervencion.persona.discapacidad=new Discapacidad();
+    this.intervencion.persona.condicionMedica=new CondicionMedica();
 
   }
 
@@ -123,14 +124,16 @@ export class FormularioComponent implements OnInit {
     !this.isUndefined(this.intervencion.persona.IDPersona)){ // TODO: evaluar tambien el IDPersona
       this.intervencion.FechaIntervencion= new Date();
       console.log(this.intervencion)
-      this.listasService.updateIntervencion(this.intervencion).subscribe(x=>{},error => {
+      this.listasService.updateIntervencion(this.intervencion).subscribe(x=>{
+        swal.fire('Intervencion Completada', `Intervención "${this.intervencion.IDIntervencion}" registrado con éxito`, 'success')
+      },error => {
         swal.fire('Alerta de Error', `Ha ocurrido un error, recargue la página`, 'error')
       });
       for(let act of this.selectActividadesIds){ // guardar cada una de las intervencionesTipoActividad
         this.listasService.saveIntervencionActividades(new IntervencionesTipoActividad(
           this.intervencion.IDIntervencion,Number(act))).subscribe(console.log);
       }
-
+      this.listasService.updatePersona(this.intervencion.persona).subscribe();
       console.log("Guardado")
     }else{
       swal.fire('Alerta de Error', `Faltan campos por completar`, 'error')

@@ -11,7 +11,7 @@
                         data-bs-target="#modalIntervencion" title="Cargar Intervencion de la app movil">Cargar Intervención</button>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        <button type="button" disabled class="btn btn-secondary" data-bs-toggle="modal"
                         data-bs-target="#modalBusqueda" title="Crear una nueva intervencion de una persona" >Nueva Intervención</button>
                     </div>
                     <div class="col-sm-3">
@@ -151,11 +151,8 @@
                     <div class="form-group row">
                         <label for="apellido" class="col-form-label col-sm-3">Grupo etário</label>
                         <div class="col-sm-8">
-                            <select class="form-select" name="GrupoEtario" [(ngModel)]="intervencion.persona.GrupoEtario">
-                                <option value="05-11 años">05-11 años</option>
-                                <option value="12-14 años">12-14 años</option>
-                                <option value="15-17 años">15-17 años</option>
-                            </select>
+                            <input type="text" disabled class="form-control" name="GrupoEtario" [(ngModel)]="intervencion.persona.GrupoEtario">
+                           
                         </div>
                     </div>
                 </div>
@@ -304,11 +301,11 @@
                     <div class="form-group row">
                         <label class="col-form-label col-sm-3">Nombres y Apellidos</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" [value]="nombreCompleto">
+                            <input disabled class="form-control" type="text" [value]="nombreCompleto">
                         </div>
                         <label class="col-form-label col-sm-3">Doc. identificación</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" [value]="intervencion.persona?.Cedula">
+                            <input disabled class="form-control" type="text" [value]="intervencion.persona?.Cedula">
                         </div>
                     </div>
 
@@ -317,7 +314,7 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-1">Sexo</label>
                         <div class="col-sm-2">
-                            <select class="form-select"  name="IDGenero" [(ngModel)]="intervencion.persona.genero.IDGenero">
+                            <select disabled class="form-select"  name="IDGenero" [(ngModel)]="intervencion.persona.genero.IDGenero">
                                 <option [value]="act['IDGenero']"
                                     *ngFor="let act of oneList.get('gen')">{{act['Genero']}}</option>
 
@@ -326,7 +323,7 @@
 
                         <label for="nombre" class="col-form-label col-sm-2">Nacionalidad</label>
                         <div class="col-sm-3">
-                            <select class="form-select" name="nacionalidad" [(ngModel)]="intervencion.persona.nacionalidad.IDNacionalidad">
+                            <select disabled class="form-select" name="nacionalidad" [(ngModel)]="intervencion.persona.nacionalidad.IDNacionalidad">
                                 <option [value]="act['IDNacionalidad']" 
                                     *ngFor="let act of oneList.get('nac')">{{act['Nacionalidad']}}</option>
 
@@ -337,12 +334,12 @@
                     <div class="form-group row">
                         <label class="col-form-label col-sm-3">Fecha de nacimiento</label>
                         <div class="col-sm-3">
-                            <input class="form-control" name="fechaNacim"  type="date" pattern="\d{4}-\d{2}-\d{2}"
+                            <input disabled class="form-control" name="fechaNacim"  type="date" pattern="\d{4}-\d{2}-\d{2}"
                             [(ngModel)]="intervencion.persona.FechaNacim">
                         </div>
                         <label class="col-form-label col-sm-3">Edad</label>
                         <div class="col-sm-3">
-                            <input class="form-control" readonly type="text" [value]="calcularEdad()">
+                            <input disabled class="form-control" readonly type="text" [value]="calcularEdad()">
                         </div>
                     </div>
 
@@ -367,7 +364,7 @@
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Barrio</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text" >
+                            <input disabled class="form-control" type="text" name="Barrio" [(ngModel)]="intervencion.persona.Barrio" >
                         </div>
                     </div>
 
@@ -376,14 +373,14 @@
                     <div class="form-group row">
                         <label for="email" class="col-form-label col-sm-3">Etnia</label>
                         <div class="col-sm-3">
-                            <select class="form-select" name="etnia" [(ngModel)]="intervencion.persona.etnia.IDEtnia">
+                            <select disabled class="form-select" name="etnia" [(ngModel)]="intervencion.persona.etnia.IDEtnia">
                                 <option [value]="act['IDEtnia']" *ngFor="let act of oneList?.get('etn')">
                                     {{act['Etnia']}}</option>
                             </select>
                         </div>
                         <label for="email" class="col-form-label col-sm-3">Estado Civil</label>
                         <div class="col-sm-3">
-                            <select class="form-select" name="estadoCivil" [(ngModel)]="intervencion.persona.estadoCivil.IDEstadoCivil">
+                            <select disabled class="form-select" name="estadoCivil" [(ngModel)]="intervencion.persona.estadoCivil.IDEstadoCivil">
                                 <option [value]="act['IDEstadoCivil']" 
                                     *ngFor="let act of oneList.get('eci')">{{act['EstadoCivil']}}</option>
 
@@ -394,15 +391,15 @@
                     <br>
 
                     <div class="form-group row">
-                        <label for="email" class="col-form-label col-sm-3">Tiene Discapacidad</label>
+                        <label for="email" class="col-form-label col-sm-3">¿Tiene Discapacidad?</label>
                         <div class="form-check form-switch col-sm-3">
-                            <select  class="form-select" name="discapacidad" [(ngModel)]="intervencion.persona.discapacidad.IDDiscapacidad">
+                            <select  disabled class="form-select" name="discapacidad" [(ngModel)]="intervencion.persona.discapacidad.IDDiscapacidad">
                                 <option [value]="act['IDDiscapacidad']"
                                     *ngFor="let act of oneList.get('dis')">{{act['Discapacidad']}}</option>
                             </select>                        </div>
                         <label for="email" class="col-form-label col-sm-3">Nivel Discapacidad</label>
                         <div class="col-sm-3">
-                            <input class="form-control" type="text"  name="nivelDiscapacidad" [(ngModel)]="intervencion.persona.DiscapacidadNivel">
+                            <input disabled class="form-control" type="text"  name="nivelDiscapacidad" [(ngModel)]="intervencion.persona.DiscapacidadNivel">
                         </div>
                     </div>
                 </div>
@@ -417,7 +414,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-sm-3">Con quién vive ahora</label>
+                        <label for="nombre" class="col-form-label col-sm-3">¿Con quién vive ahora?</label>
                         <div class="col-sm-4">
                             <select class="form-select"  name="IDviveCon" [(ngModel)]="intervencion.IDViveCon">
                                 <option [value]="act['IDParentezco']"
@@ -476,4 +473,116 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Datos de salud
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-2">¿Tiene enfermedad?</label>
+                        <div class="col-sm-5">
+                            <select class="form-select"  name="CondicionMedica"  [(ngModel)]="intervencion.persona.condicionMedica">
+                                <option [value]="act"
+                                *ngFor="let act of oneList.get('com')">{{act['CondicionMedica']}}</option>
+                                
+                            </select>
+                        </div>
+                        <label for="nombre" class="col-form-label col-sm-1">¿Cuál?</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" name="NoEstudio"
+                            type="text" [(ngModel)]="intervencion.persona.Enfermedad">
+                        </div>
+                    </div>   
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-3">¿Dónde recibe atención médica?</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" name="LugarAtencionMedica"
+                                type="text" [(ngModel)]="intervencion.persona.LugarAtencionMedica">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row card bg-light text-dark">
+                <div class="card-header">Actividad Laboral
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="nombre" class="col-form-label col-sm-2">Calle donde labora</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" name="DireccionCallePrincial"
+                            type="text" [(ngModel)]="intervencion.DireccionCallePrincial">
+                        </div>
+                        <label for="nombre" class="col-form-label col-sm-2">Días a la semana que labora </label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="DiasLaborales"
+                            type="number" [(ngModel)]="intervencion.DiasLaborales">
+                        </div>
+                    </div>   
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">No. Horas que labora</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="HorasLaborales"  [(ngModel)]="intervencion.HorasLaborales">
+                                <option value="1 a 2 Hrs" >1 a 2 Hrs</option>
+                                <option value="2 a 3 Hrs" >2 a 3 Hrs</option>
+                                <option value="3 a 4 Hrs" >3 a 4 Hrs</option>
+                                <option value="4 a 5 Hrs" >4 a 5 Hrs</option>
+                                <option value="5 a 6 Hrs" >5 a 6 Hrs</option>
+                                <option value="6 a 7 Hrs" >6 a 7 Hrs</option>
+                                <option value="mas de 7 Hrs" >mas de 7 Hrs</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">Ingresos diarios</label>
+                        <div class="col-sm-3">
+                            <select class="form-select"  name="IngresosDiariosLaboral"  [(ngModel)]="intervencion.IngresosDiariosLaboral">
+                                <option value="Hasta $5" >Hasta $5</option>
+                                <option value="De $6 Hasta $10" >De $6 Hasta $10</option>
+                                <option value="De $11 Hasta $20" >De $11 Hasta $20</option>
+                                <option value="De $21 Hasta $40" >De $21 Hasta $40</option>
+                                <option value="De $41 Hasta $60" >De $41 Hasta $60</option>
+                                <option value="De 61 en adelante" >De $61 en adelante</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-2">Tiempo que lleva laborando</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="TiempoLaboral"  [(ngModel)]="intervencion.TiempoLaboral">
+                                <option value="0 a 6 meses" >0 a 6 meses</option>
+                                <option value="7 a 12 meses" >7 a 12 meses</option>
+                                <option value="13 a 18 meses" >13 a 18 meses</option>
+                                <option value="19 a 24 meses" >19 a 24 meses</option>
+                                <option value="25 a 36 meses" >25 a 36 meses</option>
+                                <option value="Mas de 37 meses" >Mas de 37 meses</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">¿Con quién realiza la actividad?</label>
+                        <div class="col-sm-2">
+                            <select class="form-select"  name="GrupoLaboral"  [(ngModel)]="intervencion.GrupoLaboral">
+                                <option value="Solo" >Solo</option>
+                                <option value="En grupo" >En grupo</option>
+                            </select>
+                        </div>
+                        <label class="col-form-label col-sm-2">No. personas que le acompañan</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" name="NumGrupoLaboral"
+                                type="number" [(ngModel)]="intervencion.NumGrupoLaboral">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>

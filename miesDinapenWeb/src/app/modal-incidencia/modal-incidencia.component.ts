@@ -20,7 +20,10 @@ export class ModalIncidenciaComponent implements OnInit {
     });
   }
   selectIncidencia(inci:Intervenciones):void{
-    this.seleccionService.seleccionador.emit(inci); //emite para enviar el obj al componente Formulario
+    this.seleccionService.seleccionador.emit(inci); //emite para enviar el obj al componente modal Persona
   }
-
+  
+  selectIncidenciaCompletada(inci:Intervenciones):void{
+    this.seleccionService.seleccionadorToForm.emit(inci); //emite para enviar el obj al componente Formulario
+  }
 }

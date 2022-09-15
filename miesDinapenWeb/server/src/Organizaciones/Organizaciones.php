@@ -36,7 +36,7 @@
         public static function insert($Organizacion, $Zona,$provincia, $canton,$parroquia, $tipo) {
             $db = new Connection();
             $query = "INSERT INTO ListaIDOrganizacionesCoope (Organizacion,Zona,IDProvincia,IDCanton,IDParroquia,IDTipoOrganizacion)
-            VALUES('$Organizacion', ".($Zona? : 0).", $provincia  , $canton, $parroquia , $tipo)";
+            VALUES('$Organizacion', ".($Zona? : 0).", $provincia->IDProvincia  , $canton->IDCanton, $parroquia->IDParroquia , $tipo->IDTipoOrganizacion)";
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }

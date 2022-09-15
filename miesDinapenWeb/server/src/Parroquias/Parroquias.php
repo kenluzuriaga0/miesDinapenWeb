@@ -27,10 +27,10 @@
             return $datos;
         }
 
-        public static function insert($Parroquia, $IDCanton) {
+        public static function insert($IDParroquia,$Parroquia, $IDCanton) {
             $db = new Connection();
-            $query = "INSERT INTO ListaIDParroquias (Parroquia,IDCanton)
-            VALUES('$Parroquia, $IDCanton')";
+            $query = "INSERT INTO ListaIDParroquias (IDParroquia,Parroquia,IDCanton)
+            VALUES($IDParroquia,'$Parroquia', $IDCanton)";
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }
