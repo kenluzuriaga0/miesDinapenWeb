@@ -60,6 +60,13 @@
     </div>
 </div>
 <div class="mt-4"></div>
+
+<div *ngFor="let foto of fotos">
+    <a [href]="foto.FotoIncidente" target="_blank" >Foto Intervención: {{fotos.indexOf(foto)+1}}</a>
+</div>
+
+<div class="mt-4"></div>
+
 <form #clienteForm="ngForm">
     <!--FILA 1 -->
     <div class="row">

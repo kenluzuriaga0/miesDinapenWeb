@@ -178,3 +178,20 @@ export class IntervencionesTipoActividad{
    constructor(x:number,y:number) { this.IDIntervencion = x; this.IDTipoActividad = y; }
 
 }
+
+export class IntervencionesFotos{
+   IDIntervencion: number;
+   FotoIncidente: string;
+   FechaRegistro: Date;
+   constructor(x:number,y:string) { this.IDIntervencion = x; this.FotoIncidente = y; }
+
+}
+
+
+export class IntervencionesAudios{
+   IDIntervencion: number;
+   Audio: string;
+   FechaRegistro: Date;
+   constructor(x:number,y:string) { this.IDIntervencion = x; this.Audio = y; }
+
+}

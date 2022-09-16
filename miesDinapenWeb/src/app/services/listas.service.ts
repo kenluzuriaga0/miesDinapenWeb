@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -78,5 +78,9 @@ export class ListasService {
   }
   updatePersona(persona:Personas): Observable<Personas> { //UPDATE Personas
     return this.http.post<Personas>(`${this.baseUrl}/Personas/update.php`,persona);
+  }
+
+  loadFotosByIntervencion(id:number):Observable<IntervencionesFotos[]>{
+    return this.http.get<IntervencionesFotos[]>(`${this.baseUrl}/Fotos/select.php?IDIntervencion=${id}`);
   }
 }

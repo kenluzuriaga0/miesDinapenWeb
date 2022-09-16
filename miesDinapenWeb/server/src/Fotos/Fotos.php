@@ -14,4 +14,22 @@
             echo $db->error."\n";
             return FALSE;
         }
+
+        public static function getFotosByIntervencion($IDIntervencion) {
+            $db = new Connection();
+            $query = "SELECT * FROM IntervencionesFotos WHERE IDIntervencion = $IDIntervencion";
+            $resultado = $db->query($query);
+            $datos = [];
+            if($resultado->num_rows) {
+                while($row = $resultado->fetch_assoc()) {
+                    $datos[]=[
+                        'IDIntervencion' => $row['IDIntervencion'],
+                        'FotoIncidente' => $row['FotoIncidente'],
+                        'FechaRegistro' => $row['FechaRegistro'],
+                    ];
+                }
+                return $datos;
+            }
+            return $datos;
+        }
     }

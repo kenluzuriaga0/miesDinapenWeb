@@ -1,6 +1,6 @@
 import {  Component,  OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad, CondicionMedica } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad, CondicionMedica, IntervencionesFotos, IntervencionesAudios } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import swal from 'sweetalert2';
 import { mergeMap } from 'rxjs';
@@ -21,8 +21,11 @@ export class FormularioComponent implements OnInit {
   public linkMapa: string;
   public intervencion: Intervenciones;
   public provincia: Provincias;
+  public fotos: IntervencionesFotos[];
+  public audios: IntervencionesAudios[];
   public oneList: Map<string, any[]>;
   
+
   public selectActividadesIds :string[];
 
   constructor(private listasService: ListasService,
@@ -31,9 +34,7 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void { //se llenan las listas cuando carga la vista
     this.init();
 
-    this.listasService.loadOrganizaciones().subscribe(data => {
-      this.listOrganizaciones = data;
-    });
+    this.listasService.loadOrganizaciones().subscribe(data => this.listOrganizaciones = data);
 
     // Usamos mergeMap para combinar observables para subscribirlos en order
     this.seleccionService.seleccionadorToForm.pipe(
@@ -41,6 +42,10 @@ export class FormularioComponent implements OnInit {
         this.intervencion = data;
         this.unirNombres();
         this.initOrganizacion();
+        this.listasService.loadFotosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => {
+          this.fotos = data;
+          console.log(this.fotos);
+        });
         if (!this.isUndefined(this.intervencion.Latitud)) {
           this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
         } else { this.linkMapa = ''; }
@@ -52,6 +57,9 @@ export class FormularioComponent implements OnInit {
       selectTiposActividades = idsActividad;
       selectTiposActividades.forEach(x => this.selectActividadesIds.push(String(x.IDTipoActividad)));
     }); // foreach recorre cada idActividad y es metido en un number[]
+
+
+
 
     if (this.isUndefined(this.nombreCompleto)) {
       this.nombreCompleto = ""; //al cargar la pagina x 1ra vez, no debe salir undefined en el campo "nombres"
