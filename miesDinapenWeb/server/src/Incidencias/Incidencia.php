@@ -57,6 +57,13 @@
                         'NumTelefono' => $row['NumTelefono'],
                         'FechaIntervencion' => $row['FechaIntervencion'],
                         'FechaRegistro' => $row['FechaRegistro'],
+                        'DiasLaborales' => $row['DiasLaborales'],
+                        'HorasLaborales' => $row['HorasLaborales'],
+                        'TiempoLaboral' => $row['TiempoLaboral'],
+                        'GrupoLaboral' => $row['GrupoLaboral'],
+                        'NumGrupoLaboral' => $row['NumGrupoLaboral'],
+                        'IngresosDiariosLaboral' => $row['IngresosDiariosLaboral'],
+                        'Comentarios' => $row['Comentarios'],
                         'Estado' => $row['Estado']
 
                     ];
@@ -68,7 +75,8 @@
 
 
         public static function update($IDOperador, $IDPersonaIntervenida, $IDOrganCooperante, $FechaIntervencion, $ID,
-                                    $NumPerGrupo, $DerivEspecifi,$IDEstudio, $NoEstudio,$UltAnioEstudio, $InsEduEstudio, $NumHijos,$IDViveCon,$IDCircunstancia,$IDCondicion) {
+                                    $NumPerGrupo, $DerivEspecifi,$IDEstudio, $NoEstudio,$UltAnioEstudio, $InsEduEstudio, $NumHijos,$IDViveCon,$IDCircunstancia,$IDCondicion,
+                                    $DireccionCallePrincial,$DiasLaborales,$HorasLaborales,$TiempoLaboral,$GrupoLaboral,$NumGrupoLaboral,$IngresosDiariosLaboral,$Comentarios) {
 
             $FechaIntervencionFormat = date("Y-m-d H:i:s", strtotime($FechaIntervencion));
 
@@ -76,7 +84,9 @@
             $query = "UPDATE Intervenciones SET 
             IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat',
             NumPerGrupo=".($NumPerGrupo? : '0').",DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=$UltAnioEstudio,InsEduEstudio='$InsEduEstudio'
-            ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL').",
+            ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
+            ,DireccionCallePrincial='$DireccionCallePrincial', DiasLaborales=".($DiasLaborales? : '0').", HorasLaborales='$HorasLaborales',TiempoLaboral='$TiempoLaboral', GrupoLaboral='$GrupoLaboral'
+            ,NumGrupoLaboral=".($NumGrupoLaboral? : '0').", IngresosDiariosLaboral='$IngresosDiariosLaboral', Comentarios='$Comentarios',
             Estado = 'Completado' 
             WHERE IDIntervencion=$ID";
             $db->query($query);

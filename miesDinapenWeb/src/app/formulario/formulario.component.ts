@@ -43,10 +43,7 @@ export class FormularioComponent implements OnInit {
         this.unirNombres();
         this.initOrganizacion();
         this.listasService.loadFotosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => this.fotos = data);
-        this.listasService.loadAudiosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => {
-          console.log(data);
-          this.audios = data;
-        });
+        this.listasService.loadAudiosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => this.audios = data);
         if (!this.isUndefined(this.intervencion.Latitud)) {
           this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
         } else { this.linkMapa = ''; }
@@ -128,7 +125,7 @@ export class FormularioComponent implements OnInit {
 
   saveIntervencion():void{
     if(!this.isUndefined(this.intervencion.organizacion.IDOrganizacion)&&
-    !this.isUndefined(this.intervencion.persona.IDPersona)){ // TODO: evaluar tambien el IDPersona
+    !this.isUndefined(this.intervencion.persona.IDPersona)){ 
       this.intervencion.FechaIntervencion= new Date();
       console.log(this.intervencion)
       this.listasService.updateIntervencion(this.intervencion).subscribe(x=>{

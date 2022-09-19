@@ -11,7 +11,8 @@
     if($datos != NULL) {
         if(Incidencia::update($datos->operador->IDOperador,  $datos->persona->IDPersona, $datos->organizacion->IDOrganizacion,$datos->FechaIntervencion,  $datos->IDIntervencion,
         $datos->NumPerGrupo,$datos->DerivEspecifi,$datos->IDEstudio,$datos->NoEstudio,$datos->UltAnioEstudio,$datos->InsEduEstudio,
-        $datos->NumHijos,$datos->IDViveCon,$datos->IDCircunstancia,$datos->IDCondicion)) {
+        $datos->NumHijos,$datos->IDViveCon,$datos->IDCircunstancia,$datos->IDCondicion,$datos->DireccionCallePrincial,$datos->DiasLaborales,$datos->HorasLaborales,$datos->TiempoLaboral
+        ,$datos->GrupoLaboral,$datos->NumGrupoLaboral,$datos->IngresosDiariosLaboral,$datos->Comentarios)) {
         }else {
             echo json_encode(['actualizado' => FALSE]);
         }
