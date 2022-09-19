@@ -42,9 +42,10 @@ export class FormularioComponent implements OnInit {
         this.intervencion = data;
         this.unirNombres();
         this.initOrganizacion();
-        this.listasService.loadFotosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => {
-          this.fotos = data;
-          console.log(this.fotos);
+        this.listasService.loadFotosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => this.fotos = data);
+        this.listasService.loadAudiosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => {
+          console.log(data);
+          this.audios = data;
         });
         if (!this.isUndefined(this.intervencion.Latitud)) {
           this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
@@ -57,8 +58,6 @@ export class FormularioComponent implements OnInit {
       selectTiposActividades = idsActividad;
       selectTiposActividades.forEach(x => this.selectActividadesIds.push(String(x.IDTipoActividad)));
     }); // foreach recorre cada idActividad y es metido en un number[]
-
-
 
 
     if (this.isUndefined(this.nombreCompleto)) {

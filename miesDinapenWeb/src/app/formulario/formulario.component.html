@@ -65,6 +65,10 @@
     <a [href]="foto.FotoIncidente" target="_blank" >Foto Intervención: {{fotos.indexOf(foto)+1}}</a>
 </div>
 
+<div *ngFor="let audio of audios">
+    <a [href]="audio.Audio"  download='file_name' target="_blank" >Audio Intervención: {{audios.indexOf(audio)+1}}</a>
+</div>
+
 <div class="mt-4"></div>
 
 <form #clienteForm="ngForm">

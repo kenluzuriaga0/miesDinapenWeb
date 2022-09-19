@@ -16,4 +16,22 @@
             echo $db->error."\n";
             return FALSE;
         }
+        
+        public static function getAudiosByIntervencion($IDIntervencion) {
+            $db = new Connection();
+            $query = "SELECT * FROM IntervencionesAudios WHERE IDIntervencion = $IDIntervencion";
+            $resultado = $db->query($query);
+            $datos = [];
+            if($resultado->num_rows) {
+                while($row = $resultado->fetch_assoc()) {
+                    $datos[]=[
+                        'IDIntervencion' => $row['IDIntervencion'],
+                        'Audio' => $row['Audio'],
+                        'FechaRegistro' => $row['FechaRegistro'],
+                    ];
+                }
+                return $datos;
+            }
+            return $datos;
+        }
     }

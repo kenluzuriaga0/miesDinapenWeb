@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos, IntervencionesAudios } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -82,5 +82,9 @@ export class ListasService {
 
   loadFotosByIntervencion(id:number):Observable<IntervencionesFotos[]>{
     return this.http.get<IntervencionesFotos[]>(`${this.baseUrl}/Fotos/select.php?IDIntervencion=${id}`);
+  }
+
+  loadAudiosByIntervencion(id:number):Observable<IntervencionesAudios[]>{
+    return this.http.get<IntervencionesAudios[]>(`${this.baseUrl}/Audios/select.php?IDIntervencion=${id}`);
   }
 }
