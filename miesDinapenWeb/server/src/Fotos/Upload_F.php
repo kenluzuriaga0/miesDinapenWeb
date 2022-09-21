@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $nombre = $_POST['nombre'];
 
     // RUTA DONDE SE GUARDARAN LAS IMAGENES
-    $path = "uploads/$nombre.png";
+    $path = "Uploads/$nombre.png";
 
     $actualpath = "https://miesdinapen.tk/api/Archivos/Fotos/$path";
 
