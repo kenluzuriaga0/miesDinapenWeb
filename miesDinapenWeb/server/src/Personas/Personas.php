@@ -175,6 +175,7 @@
             LEFT JOIN ListaIDEstatura as es ON p.IDEstatura = es.IDEstatura
             LEFT JOIN ListaIDContexturas as con ON p.IDContextura = con.IDContextura
             LEFT JOIN ListaIDEtnias as et ON p.IDEtnia = et.IDEtnia
+            LEFT JOIN ListaIDCondicionMedica as condm ON p.IDCondicionMedica = condm.IDCondicionMedica
             LEFT JOIN ListaIDProvincias as prov ON p.NacIDProvincia = prov.IDProvincia
             LEFT JOIN ListaIDCantones as cant ON p.NacIDCanton = cant.IDCanton
             LEFT JOIN ListaIDParroquias as parr ON p.NacIDParroquia = parr.IDParroquia

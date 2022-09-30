@@ -492,8 +492,8 @@
                     <div class="form-group row">
                         <label for="nombre" class="col-form-label col-sm-2">¿Tiene enfermedad?</label>
                         <div class="col-sm-5">
-                            <select class="form-select"  name="CondicionMedica"  [(ngModel)]="intervencion.persona.condicionMedica">
-                                <option [value]="act"
+                            <select class="form-select"  name="CondicionMedica"  [(ngModel)]="intervencion.persona.condicionMedica.IDCondicionMedica">
+                                <option [value]="act['IDCondicionMedica']"
                                 *ngFor="let act of oneList.get('com')">{{act['CondicionMedica']}}</option>
                                 
                             </select>

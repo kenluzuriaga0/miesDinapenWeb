@@ -83,7 +83,7 @@
             $db = new Connection();
             $query = "UPDATE Intervenciones SET 
             IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat',
-            NumPerGrupo=".($NumPerGrupo? : '0').",DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=$UltAnioEstudio,InsEduEstudio='$InsEduEstudio'
+            NumPerGrupo=".($NumPerGrupo? : '0').",DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=".($UltAnioEstudio? : '0').",InsEduEstudio='$InsEduEstudio'
             ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
             ,DireccionCallePrincial='$DireccionCallePrincial', DiasLaborales=".($DiasLaborales? : '0').", HorasLaborales='$HorasLaborales',TiempoLaboral='$TiempoLaboral', GrupoLaboral='$GrupoLaboral'
             ,NumGrupoLaboral=".($NumGrupoLaboral? : '0').", IngresosDiariosLaboral='$IngresosDiariosLaboral', Comentarios='$Comentarios',
