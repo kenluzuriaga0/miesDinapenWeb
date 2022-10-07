@@ -25,7 +25,16 @@ export class Personas {
    Barrio:string;
    Enfermedad:string;
    LugarAtencionMedica:string;
+   Fotos_Personas:string;
 }
+
+export class PhotoPersonUpload {
+   IDPersona: number;
+   Name: string;
+   Base64Encode: string;
+   constructor(IDPersona:number, Name:string, Base64Encode:string) { this.IDPersona = IDPersona; this.Name = Name; this.Base64Encode = Base64Encode }
+}
+
 
 export class CabelloColor {
    IDColorCabello: number;

@@ -53,20 +53,157 @@
 <br>
 
 <div class="card bg-light text-dark">
-    <div class="card-header">FICHA DE OBSERVARCIÓN Y ABORDAJE - <strong style="color:blue"> {{intervencion.FechaRegistro}}</strong>
+    <div class="card-header">FICHA DE OBSERVARCIÓN Y ABORDAJE - <strong style="color:blue"> {{intervencion.FechaRegistro}}</strong></div>
+    <div class="card-body">
+
+        <div *ngIf="intervencion.IDIntervencion == undefined || intervencion.IDIntervencion == null">
+            <div class="d-flex justify-content-center">
+                <div class="text-secondary">Sin Intervención seleccionada</div>
+            </div>
+        </div>
+
+        <div *ngIf="intervencion.IDIntervencion != undefined || intervencion.IDIntervencion != null">
+
+            <!-- Sección Fotos -->
+            <div class="row pb-4">
+                <h6 class="pb-1">Foto del Intervenido</h6>
+                <!-- Si no existe foto en el registro de Persona -->
+                <div *ngIf="!fotoPersona">
+                    <div class="d-flex justify-content-center">
+                        <div class="text-secondary">No existe foto del intervenido</div>
+                    </div>
+                </div>
+                <!-- Si existe registro de persona -->
+                <div *ngIf="fotoPersona">
+                    <div class="d-flex flex-wrap">
+                        <div class="card mx-2 px-2 py-1">
+                            <img src="{{fotoPersona}}" style="height: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Image from directory -->
+                <div class="pt-3">
+                    <input #file type="file" accept='image/*' (change)="openImage(file.files)" />
+                    <div *ngIf="imgBase64Encode != undefined || imgBase64Encode != null" class="py-2">
+                        <button type="button" class="btn btn-primary" (click)="uploadImage()">{{ fotoPersona ? 'Actualizar Foto' : 'Registrar Foto' }}</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Linea Separador -->
+            <hr>
+            <!-- Si no existen cargados fotos y audios de intervencion,mostrar mensaje (FOTOS Y AUDIOS)-->
+            <div *ngIf="fotos == undefined && audios == undefined" class="pb-4">
+                <h6>Fotos y Audios de Intervención</h6>
+                <div class="d-flex justify-content-center">
+                    <div class="text-secondary">Sin recursos de Intervención</div>
+                </div>
+            </div>
+
+            <!-- FOTOS DE INTERVENCION -->
+            <!-- Si existe datos devueltos en la variable fotos, recorrer arreglo-->
+            <div *ngIf="fotos">
+                <div class="row pb-4">
+                    <h6 class="pb-1">Fotos de Intervención</h6>
+                    <!-- Si no existen datos en el arreglo fotos -->
+                    <div *ngIf="fotos.length==0">
+                        <div class="text-secondary">No existen fotos</div>
+                    </div>
+                    <div *ngIf="fotos.length>0">
+                        <div class="d-flex flex-wrap">
+                            <!-- Recorrer arreglo de fotos -->
+                            <div *ngFor="let foto of fotos">
+                                <div class="card mx-2 px-2 py-1">
+                                    <!-- Cargar url ubicada la foto -->
+                                    <img src="{{ foto.FotoIncidente }}" style="height: 150px;">
+                                    <!-- Mostrar descripción de la foto (fecha de registro) -->
+                                    <div class="car-body-wrapper cards-body pt-2">
+                                        <h6 class="card-subtitle">{{ foto.FotoIncidente.split('/').pop() }}</h6>
+                                        <p class="card-text text-secondary">Registrado el {{ foto.FechaRegistro }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUDIOS DE INTERVENCION -->
+            <!-- Si existe audios devueltos en la variable fotos, recorrer arreglo-->
+            <div *ngIf="audios">
+                <div class="row-pb-4">
+                    <h6 class="pb-1">Audios de Intervención</h6>
+                    <!-- Si no existen datos en el arreglo audios -->
+                    <div *ngIf="audios.length==0">
+                        <div class="text-secondary">No existen audios</div>
+                    </div>
+                    <div *ngIf="audios.length>0">
+                        <div class="d-flex flex-wrap">
+                            <!-- Recorrer arreglo de audios -->
+                            <div *ngFor="let audio of audios">
+                                <div class="card mx-2 px-2 py-1">
+                                    <!-- Cargar url ubicada el audio -->
+                                    <audio controls src="{{ audio.Audio }}" type="audio/mp3">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <!-- Mostrar descripción del audio (fecha de registro) -->
+                                    <div class="car-body-wrapper cards-body pt-2">
+                                        <p class="card-text text-secondary">Registrado el {{ audio.FechaRegistro }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
 <div class="mt-4"></div>
 
-<div *ngFor="let foto of fotos">
-    <a [href]="foto.FotoIncidente" target="_blank" >Foto Intervención: {{fotos.indexOf(foto)+1}}</a>
+<!--<div style="text-align:center;">
+    <table class="table">
+        <tr>
+            <th>Foto Del Intervenido</th>
+            <th>Foto</th>
+            <th>Audio Del Intervenido</th>
+        </tr>
+        <tr>
+            <th>
+                <div *ngFor="let foto of fotos; let ima=first">--><!--listPersonas-->
+                    <!--<img *ngIf= "ima" height="150px" width="100px" src="{{foto.FotoIncidente}}">--> <!--foto.Fotos_Personas-->
+                       <!--<a [href]="foto.FotoIncidente" target="_blank" >Foto Intervención: {{fotos.indexOf(foto)+1}}</a>-->
+                <!--</div>
+            </th>
+            <th>
+                <div *ngFor="let audio of audios">
+                    <a class="btn btn-primary" href="audio.Audio.mp3" role="button" download='audio.Audio' target="_blank">Descargar Audio</a>
+                </div>
+            </th> 
+        </tr>
+    </table>
+</div>-->
+
+<!--
+<div *ngFor="let foto of fotos; let ima=first">
+    -->
+    <!--<a [href]="foto.FotoIncidente" target="_blank" >Foto Intervención: {{fotos.indexOf(foto)+1}}</a>-->
+   <!-- <img *ngIf= "ima" height="150px" width="100px" src="{{foto.FotoIncidente}}">
 </div>
 
 <div *ngFor="let audio of audios">
-    <a [href]="audio.Audio"  download='file_name' target="_blank" >Audio Intervención: {{audios.indexOf(audio)+1}}</a>
+    <a [href]="audio.Audio"  download='file_name' target="_blank" >Audio Intervención: {{ audio.Audio }} {{audios.indexOf(audio)+1}}</a>
+    -->
+<!--<p>{{ audio.Audio }}</p>-->
+<!--
 </div>
-
+-->
 <div class="mt-4"></div>
+
 
 <form #clienteForm="ngForm">
     <!--FILA 1 -->

@@ -10,7 +10,7 @@
     $datos = json_decode(file_get_contents('php://input'));
     if($datos != NULL) {
         if(Personas::update($datos->IDPersona,$datos->cabelloColor->IDColorCabello,$datos->cabelloTipo->IDCabelloTipo,
-        $datos->contextura->IDContextura,$datos->estatura->IDEstatura,$datos->condicionMedica->IDCondicionMedica,$datos->Enfermedad,$datos->LugarAtencionMedica)) {
+        $datos->contextura->IDContextura,$datos->estatura->IDEstatura,$datos->condicionMedica->IDCondicionMedica,$datos->Enfermedad,$datos->LugarAtencionMedica,$datos->Fotos_Personas)) {
         }else {
             echo json_encode(['actualizado' => FALSE]);
         }

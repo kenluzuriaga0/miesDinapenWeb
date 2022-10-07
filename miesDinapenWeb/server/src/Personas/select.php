@@ -7,6 +7,8 @@
     include_once "../db.php";
     require_once "Personas.php";
 
+    echo json_encode(Personas::getAllPersonas($_GET['Fotos_Personas']));
+
     if(isset($_GET['cedula'])) {
         echo json_encode(Personas::getPersonaByCedula($_GET['cedula']));
     }elseif(isset($_GET['last']) or isset($_GET['name'])){
@@ -14,3 +16,4 @@
     }else{
         echo json_encode(Personas::getAllPersonas());
     }
+    
