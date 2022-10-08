@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos, IntervencionesAudios } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos, IntervencionesAudios, PhotoPersonUpload } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
 
 @Injectable({
@@ -86,5 +86,14 @@ export class ListasService {
 
   loadAudiosByIntervencion(id:number):Observable<IntervencionesAudios[]>{
     return this.http.get<IntervencionesAudios[]>(`${this.baseUrl}/Audios/select.php?IDIntervencion=${id}`);
+  }
+
+  // nueva funcion para llamar al servicio subir imagen
+  uploadPhotoPerson(photoPersonUpload:PhotoPersonUpload): Observable<any> {
+    const payload = new HttpParams()
+                        .set('IDPersona', photoPersonUpload.IDPersona)
+                        .set('Name', photoPersonUpload.Name)
+                        .set('Base64Encode', photoPersonUpload.Base64Encode);
+    return this.http.post<any>(`${this.baseUrl}/Fotos/upload_photo.php`, payload.toString(), { headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') });
   }
 }

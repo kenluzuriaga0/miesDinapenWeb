@@ -1,6 +1,6 @@
 import {  Component,  OnInit } from '@angular/core';
 import { SeleccionService } from '../modal-busqueda/seleccion.service';
-import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad, CondicionMedica, IntervencionesFotos, IntervencionesAudios } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, TipoOrganizaciones, Personas, EstadoCivil, Etnia, Nacionalidad, Genero, CabelloColor, CabelloTipo, Contextura, Estatura, Parroquia, Discapacidad, Intervenciones, IntervencionesTipoActividad, CondicionMedica, IntervencionesFotos, IntervencionesAudios, PhotoPersonUpload } from '../Models/Modelos';
 import { ListasService } from '../services/listas.service';
 import swal from 'sweetalert2';
 import { mergeMap } from 'rxjs';
@@ -28,6 +28,10 @@ export class FormularioComponent implements OnInit {
 
   public selectActividadesIds :string[];
 
+  public fotoPersona:string;
+  public imgBase64Encode:any;
+  public nameImage:string;
+
   constructor(private listasService: ListasService,
     private seleccionService: SeleccionService) { }
 
@@ -44,6 +48,7 @@ export class FormularioComponent implements OnInit {
         this.initOrganizacion();
         this.listasService.loadFotosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => this.fotos = data);
         this.listasService.loadAudiosByIntervencion(this.intervencion.IDIntervencion).subscribe(data => this.audios = data);
+        this.fotoPersona = this.intervencion.persona.Fotos_Personas;
         if (!this.isUndefined(this.intervencion.Latitud)) {
           this.linkMapa = `https://www.google.es/maps?q=${this.intervencion.Latitud},${this.intervencion.Longitud}`;
         } else { this.linkMapa = ''; }
@@ -181,5 +186,36 @@ export class FormularioComponent implements OnInit {
     }
     return age;
 }
+
+  // Funcion para cargar imagen desde el directorio
+  openImage(files:any): void {
+    if(files.length==0)
+      return;
+    var mineType = files[0].type;
+    if(mineType.match(/image\/*/)==null){
+      return;
+    }
+    var reader = new FileReader;
+    var imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      // codifica la imagen en base64
+      this.imgBase64Encode = reader.result;
+    }
+    // extrae el nombre de la imagen, quitando su extension de imagen (.png, .jpg, etc)
+    this.nameImage = imagePath[0]['name'].split('.').slice(0, -1).join('.');
+  }
+
+  // Funcion para subir al servidor o ruta, y guardar ruta en el campo Foto_Personas
+  uploadImage():void {
+    var idpersona = this.intervencion.persona.IDPersona;
+    this.listasService.uploadPhotoPerson(new PhotoPersonUpload(Number(idpersona), this.nameImage, this.imgBase64Encode)).subscribe((result => {
+      if(!result.Error){
+        var urlPath = result.Path;
+        this.fotoPersona = urlPath;
+        this.imgBase64Encode = null;
+      }
+    }));
+  }
 
 }
