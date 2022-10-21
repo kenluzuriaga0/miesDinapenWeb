@@ -35,7 +35,7 @@
 
         public static function updatePhotoPerson($IDPersona, $urlPath) {
             $db = new Connection();
-            $query = "UPDATE listaidpersonas SET Fotos_Personas = '".$urlPath."' WHERE IDPersona = $IDPersona";
+            $query = "UPDATE ListaIDPersonas SET Fotos_Personas = '".$urlPath."' WHERE IDPersona = $IDPersona";
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }
