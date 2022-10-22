@@ -142,17 +142,19 @@
                     <div *ngIf="audios.length>0">
                         <div class="d-flex flex-wrap">
                             <!-- Recorrer arreglo de audios -->
-                            <div *ngFor="let audio of audios">
+                            <!--div *ngFor="let audio of audios">
                                 <div class="card mx-2 px-2 py-1">
-                                    <!-- Cargar url ubicada el audio -->
                                     <audio controls src="{{ audio.Audio }}" type="audio/mp3">
                                         Your browser does not support the audio element.
                                     </audio>
-                                    <!-- Mostrar descripción del audio (fecha de registro) -->
                                     <div class="car-body-wrapper cards-body pt-2">
                                         <p class="card-text text-secondary">Registrado el {{ audio.FechaRegistro }}</p>
                                     </div>
                                 </div>
+                            </div-->
+                            <div *ngFor="let audio of audios">
+                                <a [href]="audio.Audio" download='file_name' target="_blank">Audio Intervención: {{ audio.Audio }}
+                                    {{audios.indexOf(audio)+1}}</a>
                             </div>
                         </div>
                     </div>
@@ -195,12 +197,7 @@
    <!-- <img *ngIf= "ima" height="150px" width="100px" src="{{foto.FotoIncidente}}">
 </div>
 
-<div *ngFor="let audio of audios">
-    <a [href]="audio.Audio"  download='file_name' target="_blank" >Audio Intervención: {{ audio.Audio }} {{audios.indexOf(audio)+1}}</a>
-    -->
-<!--<p>{{ audio.Audio }}</p>-->
-<!--
-</div>
+
 -->
 <div class="mt-4"></div>
 
