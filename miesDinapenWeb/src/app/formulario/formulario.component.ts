@@ -76,6 +76,7 @@ export class FormularioComponent implements OnInit {
     this.intervencion.organizacion.provincia = new Provincias();
     this.intervencion.organizacion.canton = new Canton();
     this.intervencion.organizacion.parroquia = new Parroquia();
+    this.intervencion.organizacion.IDOrganizacion = 0;
     this.intervencion.organizacion.Zona = 0;
   }
   private init(): void {
@@ -131,6 +132,10 @@ export class FormularioComponent implements OnInit {
   saveIntervencion():void{
     if(!this.isUndefined(this.intervencion.organizacion.IDOrganizacion)&&
     !this.isUndefined(this.intervencion.persona.IDPersona)){ 
+      if(this.intervencion.organizacion.IDOrganizacion==0) {
+        swal.fire('Error', `Organización no encontrada`, 'error')
+        return;
+      }
       this.intervencion.FechaIntervencion= new Date();
       console.log(this.intervencion)
       this.listasService.updateIntervencion(this.intervencion).subscribe(x=>{

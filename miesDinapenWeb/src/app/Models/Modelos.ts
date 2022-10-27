@@ -165,6 +165,7 @@ export class Intervenciones {
    DireccionCallePrincial: string;
    DireccionNumero: string;
    DireccionCalleInterseccion: string;
+   DireccionIntervencion: string;
    NumHijos: number;
    IDViveCon: number;
    NumTelefono: string;

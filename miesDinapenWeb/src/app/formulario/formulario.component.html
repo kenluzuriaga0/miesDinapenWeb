@@ -431,6 +431,13 @@
                 </div>
                 <div class="card-body">
                     Lugar Intervención: <a [href]="linkMapa" target="_blank">{{linkMapa}}</a>
+                    <hr>
+                    <div class="form-group row">
+                        <label class="col-form-label col-sm-3">Dirección de Intervención</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" placeholder="Ingrese Dirección" name="DireccionIntervencion" [(ngModel)]="intervencion.DireccionIntervencion" rows="2"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -637,6 +644,7 @@
                             <input class="form-control" name="NoEstudio"
                             type="text" [(ngModel)]="intervencion.persona.Enfermedad">
                         </div>
+                        <br/>
                     </div>   
                     <br>
                     <div class="form-group row">

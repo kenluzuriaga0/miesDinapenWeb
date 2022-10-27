@@ -53,6 +53,7 @@
                         'DireccionCallePrincial' => $row['DireccionCallePrincial'],
                         'DireccionNumero' => $row['DireccionNumero'],
                         'DireccionCalleInterseccion' => $row['DireccionCalleInterseccion'],
+                        'DireccionIntervencion' => $row['DireccionIntervencion'],
                         'NumHijos' => $row['NumHijos'],
                         'NumTelefono' => $row['NumTelefono'],
                         'FechaIntervencion' => $row['FechaIntervencion'],
@@ -76,7 +77,7 @@
 
         public static function update($IDOperador, $IDPersonaIntervenida, $IDOrganCooperante, $FechaIntervencion, $ID,
                                     $NumPerGrupo, $DerivEspecifi,$IDEstudio, $NoEstudio,$UltAnioEstudio, $InsEduEstudio, $NumHijos,$IDViveCon,$IDCircunstancia,$IDCondicion,
-                                    $DireccionCallePrincial,$DiasLaborales,$HorasLaborales,$TiempoLaboral,$GrupoLaboral,$NumGrupoLaboral,$IngresosDiariosLaboral,$Comentarios) {
+                                    $DireccionCallePrincial,$DireccionIntervencion,$DiasLaborales,$HorasLaborales,$TiempoLaboral,$GrupoLaboral,$NumGrupoLaboral,$IngresosDiariosLaboral,$Comentarios) {
 
             $FechaIntervencionFormat = date("Y-m-d H:i:s", strtotime($FechaIntervencion));
 
@@ -85,7 +86,7 @@
             IDOperador=$IDOperador,IDPersonaIntervenida=$IDPersonaIntervenida,IDOrganCooperante=$IDOrganCooperante,FechaIntervencion='$FechaIntervencionFormat',
             NumPerGrupo=".($NumPerGrupo? : '0').",DerivEspecifi='$DerivEspecifi',IDEstudio=".($IDEstudio? : 'NULL').",NoEstudio='$NoEstudio',UltAñoEstudio=".($UltAnioEstudio? : '0').",InsEduEstudio='$InsEduEstudio'
             ,NumHijos=".($NumHijos? : '0').",IDViveCon=".($IDViveCon? : 'NULL').",IDCircunstancia=".($IDCircunstancia? : 'NULL').",IDCondicion=".($IDCondicion? : 'NULL')."
-            ,DireccionCallePrincial='$DireccionCallePrincial', DiasLaborales=".($DiasLaborales? : '0').", HorasLaborales='$HorasLaborales',TiempoLaboral='$TiempoLaboral', GrupoLaboral='$GrupoLaboral'
+            ,DireccionCallePrincial='$DireccionCallePrincial', DireccionIntervencion='$DireccionIntervencion', DiasLaborales=".($DiasLaborales? : '0').", HorasLaborales='$HorasLaborales',TiempoLaboral='$TiempoLaboral', GrupoLaboral='$GrupoLaboral'
             ,NumGrupoLaboral=".($NumGrupoLaboral? : '0').", IngresosDiariosLaboral='$IngresosDiariosLaboral', Comentarios='$Comentarios',
             Estado = 'Completado' 
             WHERE IDIntervencion=$ID";
