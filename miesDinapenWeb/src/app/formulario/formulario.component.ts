@@ -105,6 +105,7 @@ export class FormularioComponent implements OnInit {
                           .concat(this.intervencion.persona?.Nombre2);
   }
 
+
   private initPersona():void{
     
     this.intervencion.persona = new Personas();
@@ -122,6 +123,7 @@ export class FormularioComponent implements OnInit {
     this.intervencion.persona.canton=new Canton();
     this.intervencion.persona.discapacidad=new Discapacidad();
     this.intervencion.persona.condicionMedica=new CondicionMedica();
+    
 
   }
 

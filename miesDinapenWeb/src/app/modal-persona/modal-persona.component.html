@@ -154,13 +154,50 @@
                         <div class="col-sm-3">
                             <input class="form-control" type="number" min="0" max="5" name="nivelDiscapacidad" [(ngModel)]="person.DiscapacidadNivel">
                         </div>
-                    </div>
+                        <br>
+                        <br>
+                        <hr size="2px" color="black" />
+                        <br>
+                        <h4>Información de Familiar en abordaje</h4>
+                        <br>
+                        <br>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="ape1" class="col-form-label col-sm-2">Apellido:</label>
+                                <div class="col-sm-4">
+                                    <input id="ape1" class="form-control" placeholder="Primer Apellido" type="text"
+                                        [(ngModel)]="person.NombreFamiliar">
+                                </div>
+                                <label for="ape2" class="col-form-label col-sm-2">Nombre:</label>
+                                <div class="col-sm-4">
+                                    <input id="ape2" class="form-control" placeholder="Primer Nombre" type="text"
+                                        [(ngModel)]="person.ApellidoFamiliar">
+                                </div>
+                            </div>
                 </div>
             </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="ape1" class="col-form-label col-sm-2">Cédula del Familiar:</label>
+                        <div class="col-sm-4">
+                            <input id="ape1" class="form-control" placeholder="" type="text"
+                                [(ngModel)]="person.CedulaFamiliar">
+                        </div>
+                        <label for="ape2" class="col-form-label col-sm-2">Parentezco:</label>
+                        <div class="col-sm-4">
+                            <input id="ape2" class="form-control" placeholder="" type="text"
+                                [(ngModel)]="person.Parentezco">
+                        </div>
+                    </div>
+        </div>
+    </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="savePerson()">Guardar</button>
             </div>
         </div>
     </div>
+    
 </div>
