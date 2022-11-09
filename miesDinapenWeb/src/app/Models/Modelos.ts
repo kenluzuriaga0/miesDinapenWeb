@@ -26,6 +26,10 @@ export class Personas {
    Enfermedad:string;
    LugarAtencionMedica:string;
    Fotos_Personas:string;
+   ApellidoFamiliar: string;
+   NombreFamiliar: string;
+   Parentezco: string;
+   CedulaFamiliar: string;
 }
 
 export class PhotoPersonUpload {

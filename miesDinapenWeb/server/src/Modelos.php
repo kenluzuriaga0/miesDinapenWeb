@@ -76,6 +76,10 @@ class TipoOrganizacionesModel {
     public $Enfermedad;
     public $LugarAtencionMedica;
     public $Fotos_Personas;
+    public $NombreFamiliar;
+    public $ApellidoFamiliar;
+    public $Parentezco;
+    public $CedulaFamiliar;
 
     public function __construct(
         string $a, string $b, string $c, string $d, string $e) {
