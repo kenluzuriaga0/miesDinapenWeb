@@ -9,7 +9,7 @@
     
     $datos = json_decode(file_get_contents('php://input'));
     if($datos != NULL) {
-        if(Incidencia::insert($datos->IDOperador, $datos->IDOrganCooperante, $datos->IDPersonaIntervenida, $datos->Latitud, $datos->Longitud, $datos->FechaRegistro)) {
+        if(Incidencia::insert($datos->IDOperador, $datos->IDOrganCooperante, $datos->IDPersonaIntervenida, $datos->Latitud, $datos->Longitud, $datos->FechaRegistro,  $datos->Referencia ,  $datos->NombreRepresentante)) {
         }else {
             echo json_encode(['Error' => FALSE]);
         }

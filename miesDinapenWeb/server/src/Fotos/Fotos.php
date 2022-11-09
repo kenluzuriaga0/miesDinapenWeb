@@ -39,6 +39,7 @@
             if($db->query($query)=== TRUE) {
                 return TRUE;
             }
+           
             return FALSE;
         }
         

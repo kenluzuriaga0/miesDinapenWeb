@@ -62,7 +62,7 @@
                         'canton'=> $canton,
                         'provincia'=> $provincia,
                         'parroquia'=> $parroquia,
-                        'condicionMedica'=> $condicionMedica
+                        'condicionMedica'=> $condicionMedica,
                     ];
                 }
                 return $datos;

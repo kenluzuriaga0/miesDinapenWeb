@@ -3,10 +3,10 @@
     
     class Incidencia{
 
-        public static function insert($IDOperador, $IDOrganCoo, $IDPersona, $Latitud, $Longitud, $FechaRegistro) {
+        public static function insert($IDOperador, $IDOrganCoo, $IDPersona, $Latitud, $Longitud, $FechaRegistro, $Referencia , $NombreRepresentante) {
             $db = new Connection();
-            $query = "INSERT INTO Intervenciones (IDOperador,IDOrganCooperante,IDPersonaIntervenida,Latitud,Longitud,FechaRegistro)
-            VALUES('".$IDOperador."', '".$IDOrganCoo."', '".$IDPersona."', '".$Latitud."', '".$Longitud."', '".$FechaRegistro."')";
+            $query = "INSERT INTO Intervenciones (IDOperador,IDOrganCooperante,IDPersonaIntervenida,Latitud,Longitud,FechaRegistro, Referencia,NombreRepresentante)
+            VALUES('".$IDOperador."', '".$IDOrganCoo."', '".$IDPersona."', '".$Latitud."', '".$Longitud."', '".$FechaRegistro."' , '".$Referencia."' , '".$NombreRepresentante."')";
             if($db->query($query)=== TRUE) {
                 echo $db->insert_id;
                 return TRUE;
@@ -39,6 +39,7 @@
                         'Longitud' => $row['Longitud'],
                         'NumPerGrupo' => $row['NumPerGrupo'],
                         'Referencia' => $row['Referencia'],
+                        'NombreRepresentante' => $row['NombreRepresentante'],
                         'DerivEspecifi' => $row['DerivEspecifi'],
                         'IDCircunstancia' => $row['IDCircunstancia'],
                         'IDCondicion' => $row['IDCondicion'],
@@ -72,6 +73,21 @@
                 return $datos;
             }
             return $datos;
+        }
+
+
+        public static function hasIntervencionByCedula($cedula) {
+            $db = new Connection();
+            require_once "../Personas/Personas.php";
+
+            $query = "SELECT * FROM Intervenciones AS inte
+            INNER JOIN ListaIDPersonas AS per ON per.IDPersona = inte.IDPersonaIntervenida
+            WHERE per.Cedula = '$cedula' ";
+            $resultado = $db->query($query);
+            if($resultado->num_rows) {
+                return TRUE;
+            }
+            return FALSE;
         }
 
 
