@@ -80,6 +80,8 @@ class TipoOrganizacionesModel {
     public $NombreFamiliar;
     public $ParentezcoNNA;
     public $CedulaFamiliar;
+    public $NumFamiliar;
+    public $PasaporteFamiliar;
 
     public function __construct(
         string $a, string $b, string $c, string $d, string $e) {

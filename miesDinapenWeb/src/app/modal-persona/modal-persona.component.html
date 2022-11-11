@@ -187,12 +187,31 @@
                         </div>
                         <label for="ape2" class="col-form-label col-sm-2">Parentezco:</label>
                         <div class="col-sm-4">
-                            <input id="ape2" class="form-control" placeholder="" type="text"
+                            <input id="ape2" class="form-control" placeholder="Ej:Padre" type="text"
                                 [(ngModel)]="person.Parentezco">
                         </div>
                     </div>
         </div>
     </div>
+    <div>
+        <div class="modal-body">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="ape1" class="col-form-label col-sm-2">Numero Celular ☎:</label>
+                    <div class="col-sm-4">
+                        <input id="ape1" class="form-control" placeholder="+593..." type="text"
+                            [(ngModel)]="person.NumFamiliar">
+                    </div>
+                    <label for="ape2" class="col-form-label col-sm-2">Pasaporte:</label>
+                        <div class="col-sm-4">
+                            <input id="ape2" class="form-control" placeholder="Opcional" type="text"
+                                [(ngModel)]="person.PasaporteFamiliar">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="savePerson()">Guardar</button>

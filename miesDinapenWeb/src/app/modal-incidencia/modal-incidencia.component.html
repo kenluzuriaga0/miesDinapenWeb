@@ -15,6 +15,7 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Operador</th>
                                     <th scope="col">Referencia</th>
+                                    <th scope="col">Representante</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">-</th>
@@ -25,6 +26,7 @@
                                     <td>{{inci.IDIntervencion}}</td>
                                     <td>{{inci.operador.OperaApellido1}} {{inci.operador.OperaNombres}}</td>
                                     <td>{{inci.Referencia}}</td>
+                                    <td>{{inci.NombreRepresentante}}</td>
                                     <td>{{inci.FechaRegistro}}</td>
                                     <td>{{inci.Estado}}</td>
                                     <td *ngIf="inci.Estado=='Ingresado'"><button type="button" name="button" data-bs-toggle="modal"

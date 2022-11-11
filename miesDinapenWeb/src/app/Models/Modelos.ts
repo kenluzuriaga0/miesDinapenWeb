@@ -30,6 +30,8 @@ export class Personas {
    NombreFamiliar: string;
    Parentezco: string;
    CedulaFamiliar: string;
+   NumFamiliar: string;
+   PasaporteFamiliar: string;
 }
 
 export class PhotoPersonUpload {
@@ -156,6 +158,7 @@ export class Intervenciones {
    Longitud: number;
    NumPerGrupo: number;
    Referencia: string;
+   NombreRepresentante: string;
    DerivEspecifi: string;
    IDCircunstancia: number;
    IDCondicion: number;
