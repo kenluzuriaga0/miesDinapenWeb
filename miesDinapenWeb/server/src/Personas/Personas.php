@@ -243,7 +243,7 @@
             , '".($fecnac? : 'NULL')."',".$genero->IDGenero.",".($nacionalidad->IDNacionalidad? : 'NULL').",".($parroquia->IDParroquia? : 'NULL')."
             ,".($canton->IDCanton? : 'NULL').",".($provincia->IDProvincia? : 'NULL')."
             ,".($etnia->IDEtnia? : 'NULL').",".($estadoCivil->IDEstadoCivil? : 'NULL').", '".($GrupoEtario? : 'NULL')."
-            ',".($discapacidad->IDDiscapacidad? : 'NULL').",".($public $nivelDiscapacidad;? : 'NULL').", '$Barrio', '$ApellidoFamiliar', '$NombreFamiliar', '$ParentezcoNNA', '$CedulaFamiliar', '$NumFamiliar', '$PasaporteFamiliar')";
+            ',".($discapacidad->IDDiscapacidad? : 'NULL').",".($nivelDiscapacidad? : 'NULL').", '$Barrio', '$ApellidoFamiliar', '$NombreFamiliar', '$ParentezcoNNA', '$CedulaFamiliar', '$NumFamiliar', '$PasaporteFamiliar')";
             //echo $query;
             if($db->query($query)=== TRUE) {
                 echo json_encode(['insert' => $db->insert_id]);
