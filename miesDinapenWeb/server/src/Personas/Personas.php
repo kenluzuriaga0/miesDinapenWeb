@@ -235,7 +235,7 @@
         }
 
         public static function insert($last1, $last2, $name1, $name2, $cedula, $fecnac, $genero, $nacionalidad ,
-        $parroquia,$etnia,$estadoCivil,$GrupoEtario, $canton, $provincia,$discapacidad, $nivelDiscapacidad, $Barrio, $ApellidoFamiliar, $NombreFamiliar,$ParentezcoNNA, $CedulaFamiliar, $NumFamiliar, $PasaporteFamiliar) {
+        $parroquia,$etnia,$estadoCivil,$GrupoEtario, $canton, $provincia,$discapacidad,$nivelDiscapacidad, $Barrio, $ApellidoFamiliar, $NombreFamiliar,$ParentezcoNNA, $CedulaFamiliar, $NumFamiliar, $PasaporteFamiliar) {
             $db = new Connection();
             $query = "INSERT INTO ListaIDPersonas (Apellido1,Apellido2,Nombre1,Nombre2,Cedula,FechaNacim,IDGenero,
             NacIDNacionalidad,NacIDParroquia, NacIDCanton,NacIDProvincia,IDEtnia,IDEstadoCivil,GrupoEtario,IDDiscapacidad,DiscapacidadNivel, Barrio, ApellidoFamiliar, NombreFamiliar, ParentezcoNNA, CedulaFamiliar, NumFamiliar, PasaporteFamiliar)
@@ -243,7 +243,7 @@
             , '".($fecnac? : 'NULL')."',".$genero->IDGenero.",".($nacionalidad->IDNacionalidad? : 'NULL').",".($parroquia->IDParroquia? : 'NULL')."
             ,".($canton->IDCanton? : 'NULL').",".($provincia->IDProvincia? : 'NULL')."
             ,".($etnia->IDEtnia? : 'NULL').",".($estadoCivil->IDEstadoCivil? : 'NULL').", '".($GrupoEtario? : 'NULL')."
-            ',".($discapacidad->IDDiscapacidad? : 'NULL').",".($nivelDiscapacidad? : 'NULL').", '$Barrio', '$ApellidoFamiliar', '$NombreFamiliar', '$ParentezcoNNA', '$CedulaFamiliar', '$NumFamiliar', '$PasaporteFamiliar')";
+            ',".($discapacidad->IDDiscapacidad? : 'NULL').",".($public $nivelDiscapacidad;? : 'NULL').", '$Barrio', '$ApellidoFamiliar', '$NombreFamiliar', '$ParentezcoNNA', '$CedulaFamiliar', '$NumFamiliar', '$PasaporteFamiliar')";
             //echo $query;
             if($db->query($query)=== TRUE) {
                 echo json_encode(['insert' => $db->insert_id]);

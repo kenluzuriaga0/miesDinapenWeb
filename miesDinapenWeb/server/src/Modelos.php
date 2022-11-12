@@ -73,6 +73,7 @@ class TipoOrganizacionesModel {
     public $estatura;
     public $condicionMedica;
     public $discapacidad;
+    public $DiscapacidadNivel;
     public $Enfermedad;
     public $LugarAtencionMedica;
     public $Fotos_Personas;

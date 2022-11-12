@@ -28,7 +28,7 @@ export class Personas {
    Fotos_Personas:string;
    ApellidoFamiliar: string;
    NombreFamiliar: string;
-   Parentezco: string;
+   ParentezcoNNA: string;
    CedulaFamiliar: string;
    NumFamiliar: string;
    PasaporteFamiliar: string;
