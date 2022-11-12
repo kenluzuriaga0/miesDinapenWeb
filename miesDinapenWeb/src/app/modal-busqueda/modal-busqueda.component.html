@@ -4,7 +4,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" *ngIf="conIntervension ;else noMuestra">
-                    Buscar persona intervenida para la intervencion: <b style="color:blue">{{intervencionSelect.IDIntervencion}} </b>
+                    Buscar persona intervenida para la intervencion: <b
+                        style="color:blue">{{intervencionSelect.IDIntervencion}} </b>
                 </h5>
                 <ng-template #noMuestra>
                     <h5>Busque o registre persona Intervenida para nueva intervención</h5>
@@ -15,21 +16,23 @@
                 <div class="card-body">
                     <div class="form-group row">
                         <div class="col-sm-3">
-                            <input class="form-control" placeholder="Primer Apellido" type="text" [(ngModel)]="apellido1">
+                            <input class="form-control" placeholder="Primer Apellido" type="text"
+                                [(ngModel)]="apellido1">
                         </div>
                         <div class="col-sm-3">
                             <input class="form-control" placeholder="Primer Nombre" type="text" [(ngModel)]="nombre1">
                         </div>
                         <div class="col-sm-3">
-                            <input class="form-control" placeholder="Identificación" type="text" [(ngModel)]="identificacion">
+                            <input class="form-control" placeholder="Identificación" type="text"
+                                [(ngModel)]="identificacion">
                         </div>
                         <div class="col-sm-2">
-                            <button type="button" class="btn btn-secondary" (click)="buscarPersona()" >Buscar</button>
+                            <button type="button" class="btn btn-secondary" (click)="buscarPersona()">Buscar</button>
                         </div>
                     </div>
 
                     <br>
-                               
+
                     <div class="form-group row table-responsive ">
                         <table class="table table-bordered table-striped">
                             <thead>
@@ -49,7 +52,9 @@
                                     <td>{{p.Nombre1 + " "+p.Nombre2}}</td>
                                     <td>{{p.Cedula}}</td>
                                     <td>{{p.FechaNacim}}</td>
-                                    <td><button type="button" name="button" data-bs-dismiss="modal"  class="btn btn-primary" (click)="selectPersona(p)"><span class="oi oi-pencil"></span></button>
+                                    <td><button type="button" name="button" data-bs-dismiss="modal"
+                                            class="btn btn-primary" (click)="selectPersona(p)"><span
+                                                class="oi oi-pencil"></span></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -60,35 +65,51 @@
             </div>
             <div class="modal-footer">
                 <div style="margin-right: 20px;">
-                    Si no encuentra a la persona intervenida, puede crearla -> 
+                    Si no encuentra a la persona intervenida, puede crearla ->
                 </div>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#modalPersona" title="Crear nueva persona" >Registrar Persona</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalPersona"
+                    title="Crear nueva persona">Registrar Persona</button>
             </div>
-            <div class="modal-footer">
-                <div style="margin-right: 300px;">
-                    <h6 >Audios de Intervención</h6>
-                    <!-- Si no existen datos en el arreglo audios -->
-                    <div *ngIf="audios.length==0">
-                        <div class="text-secondary">No existen audios</div>
-                    </div>
-                    <div *ngIf="audios.length>0">
-                        <div class="d-flex flex-wrap">
+            <div class="modal-footer" style="display: block;">
+                <div class="row">
+                    <div class="col-6">
+                        <h6>Audios de Intervención</h6>
+                        <!-- Si no existen datos en el arreglo audios -->
+                        <div *ngIf="audios.length==0">
+                            <div class="text-secondary">No existen audios</div>
+                        </div>
+                        <div *ngIf="audios.length>0">
                             <div *ngFor="let audio of audios">
                                 <a [href]="audio.Audio" download='file_name' target="_blank">
-                                    {{audios.indexOf(audio)+1}} -> 
-                                    {{ audio.Audio | slice: audio.Audio.indexOf(audio.IDIntervencion.toString()) :audio.Audio.length }}
-                                   </a>
+                                    {{audios.indexOf(audio)+1}} ->
+                                    {{ audio.Audio | slice: audio.Audio.indexOf(audio.IDIntervencion.toString())
+                                    :audio.Audio.length }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <h6>Fotos de Intervención</h6>
+                        <!-- Si no existen datos en el arreglo audios -->
+                        <div *ngIf="fotos.length==0">
+                            <div class="text-secondary">No existen fotos</div>
+                        </div>
+                        <div *ngIf="fotos.length>0">
+                            <div *ngFor="let foto of fotos">
+                                <a [href]="foto.FotoIncidente" download='file_name' target="_blank">
+                                    {{fotos.indexOf(foto)+1}} ->
+                                    {{ foto.FotoIncidente |
+                                    slice:foto.FotoIncidente.indexOf(foto.IDIntervencion.toString())
+                                    :foto.FotoIncidente.length }}
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-              
             </div>
         </div>
     </div>
 
 
-
 </div>
-<app-modal-persona  [oneList]="oneList"></app-modal-persona> <!-- Input bajó de: Formulario -> Busqueda -> Persona -->
+<app-modal-persona [oneList]="oneList"></app-modal-persona> <!-- Input bajó de: Formulario -> Busqueda -> Persona -->
