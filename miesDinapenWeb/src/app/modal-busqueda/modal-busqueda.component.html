@@ -65,6 +65,26 @@
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                     data-bs-target="#modalPersona" title="Crear nueva persona" >Registrar Persona</button>
             </div>
+            <div class="modal-footer">
+                <div style="margin-right: 300px;">
+                    <h6 >Audios de Intervención</h6>
+                    <!-- Si no existen datos en el arreglo audios -->
+                    <div *ngIf="audios.length==0">
+                        <div class="text-secondary">No existen audios</div>
+                    </div>
+                    <div *ngIf="audios.length>0">
+                        <div class="d-flex flex-wrap">
+                            <div *ngFor="let audio of audios">
+                                <a [href]="audio.Audio" download='file_name' target="_blank">
+                                    {{audios.indexOf(audio)+1}} -> 
+                                    {{ audio.Audio | slice: audio.Audio.indexOf(audio.IDIntervencion.toString()) :audio.Audio.length }}
+                                   </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
         </div>
     </div>
 

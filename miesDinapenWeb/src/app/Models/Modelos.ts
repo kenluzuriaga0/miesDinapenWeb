@@ -29,9 +29,8 @@ export class Personas {
    ApellidoFamiliar: string;
    NombreFamiliar: string;
    ParentezcoNNA: string;
-   CedulaFamiliar: string;
+   IdentificacionFamiliar: string;
    NumFamiliar: string;
-   PasaporteFamiliar: string;
 }
 
 export class PhotoPersonUpload {

@@ -153,8 +153,9 @@
                                 </div>
                             </div-->
                             <div *ngFor="let audio of audios">
-                                <a [href]="audio.Audio" download='file_name' target="_blank">Audio Intervención: {{ audio.Audio }}
-                                    {{audios.indexOf(audio)+1}}</a>
+                                <a [href]="audio.Audio" download='file_name' target="_blank">  {{audios.indexOf(audio)+1}} ->  Audio Intervención:
+                                    {{ audio.Audio | slice: audio.Audio.indexOf(audio.IDIntervencion.toString()) :audio.Audio.length }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -574,9 +575,9 @@
                 </div>
                 <br>
                 <div class="form-group row">
-                    <label class="col-form-label col-sm-3">Cédula del Familiar :</label>
+                    <label class="col-form-label col-sm-3">Identificacion del Familiar :</label>
                     <div class="col-sm-3">
-                        <input disabled class="form-control" type="text" name="CedulaFamiliar" [value]="intervencion.persona?.CedulaFamiliar">
+                        <input disabled class="form-control" type="text" name="IdentificacionFamiliar" [value]="intervencion.persona?.IdentificacionFamiliar">
                     </div>
                     <label class="col-form-label col-sm-3">Parentezco :</label>
                     <div class="col-sm-3">
@@ -589,10 +590,7 @@
                     <div class="col-sm-3">
                         <input disabled class="form-control" type="text" name="NumFamiliar" [value]="intervencion.persona?.NumFamiliar">
                     </div>
-                    <label class="col-form-label col-sm-3">Pasaporte :</label>
-                    <div class="col-sm-3">
-                        <input disabled class="form-control" type="text" name="PasaporteFamiliar" [value]="intervencion.persona?.PasaporteFamiliar">
-                    </div>
+                    
             </div>
         </div>
     </div>
