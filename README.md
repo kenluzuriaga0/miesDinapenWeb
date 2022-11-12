@@ -1,9 +1,9 @@
-# miesDinapenWeb
+# miesDinapenWeb 👦
 Aplicación web para Mies - Dinapen (Proyecto Vinculación-UG)
 
 # Base de datos
 <span align="left">
-<img title="MySQL" alt="MySQL" src="https://raw.githubusercontent.com/Thomas-George-T/Thomas-George-T/master/assets/mysql.svg" width="30" height="30" />
+<img title="MySQL" alt="MySQL" src="https://raw.githubusercontent.com/Thomas-George-T/Thomas-George-T/master/assets/mysql.svg" width="40" height="40" />
 </span>
 
 ### Levantar base en docker
@@ -17,19 +17,16 @@ create database miesdinapen_MiesDinapen;
 
 
 # Backend
-<span align="left">	<img title="Python" alt="Python" src="https://raw.githubusercontent.com/Thomas-George-T/Thomas-George-T/master/assets/python.svg" width="30" height="30" /></span>
+<span align="left">	<img title="Php" alt="Python" src="https://cdn-icons-png.flaticon.com/512/5968/5968332.png" width="60" height="60" /></span>
 
-#### Instalar librerias
+#### Correr apache con php linkeando el container mysql
 ```sh
-pip install -r miesDinapenApiRest/requirements.txt
+docker run -d -p 3000:80 --link mysql -v ($pwd)/src:/var/www/html php-apache
 ```
-#### Levantar servidor
-```sh
-uvicorn main:app --reload
-```
+- El volumen es tipo "binding", es decir, todo lo que haga en la carpeta src se refleja en el var/www/html del apache
 
 # Frontend
-<span align="left"> <img title="Angular" alt="Python" src="https://cdn.worldvectorlogo.com/logos/angular-icon.svg" width="30" height="30" /> </span>
+<span align="left"> <img title="Angular" alt="Python" src="https://cdn.worldvectorlogo.com/logos/angular-icon.svg" width="40" height="40" /> </span>
 
 #### Instalar paquetes
 ```sh
@@ -39,3 +36,15 @@ npm install
 ```sh
 ng serve -o
 ```
+
+## Ramas:
+- prod-php: rama principal Angular + PHP
+- main: rama antigua Angular + Python (FastApi)
+
+## Colaboradores:
+- Ken Luzuriaga
+- Freya López
+- Harry Méndez
+- José López
+- Aldo Nicola
+
