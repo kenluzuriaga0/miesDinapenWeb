@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-07-2022 a las 23:05:18
--- Versión del servidor: 5.7.38-cll-lve
+-- Tiempo de generación: 13-11-2022 a las 03:50:10
+-- Versión del servidor: 5.7.39-cll-lve
 -- Versión de PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `miesdinapen_MiesDinapen`
+-- Base de datos: `miesdinapentk_MiesDinapen`
 --
 
 -- --------------------------------------------------------
@@ -32,11 +32,12 @@ CREATE TABLE `Intervenciones` (
   `IDIntervencion` int(10) UNSIGNED NOT NULL COMMENT 'Identificador único de la Intervecion',
   `IDOperador` smallint(5) UNSIGNED NOT NULL COMMENT 'Operador encargado de la intervecion',
   `IDOrganCooperante` smallint(5) UNSIGNED NOT NULL COMMENT 'Organizacion cooperante en la intervecion',
-  `IDPersonaIntervenida` int(10) UNSIGNED NOT NULL COMMENT 'Persona intervenida',
-  `Latitud` decimal(22,17) DEFAULT NULL COMMENT 'Latitud geográfica donde se hace la intervencion',
-  `Longitud` decimal(22,17) DEFAULT NULL COMMENT 'Longitud geográfica donde se hace la intervencion',
+  `IDPersonaIntervenida` int(10) UNSIGNED DEFAULT NULL COMMENT 'Persona intervenida',
+  `Latitud` decimal(22,18) DEFAULT NULL COMMENT 'Latitud geográfica donde se hace la intervencion',
+  `Longitud` decimal(22,18) DEFAULT NULL COMMENT 'Longitud geográfica donde se hace la intervencion',
   `NumPerGrupo` tinyint(3) DEFAULT '0' COMMENT 'Numero de personas encontradas en el grupo intervenido',
   `Referencia` varchar(200) DEFAULT NULL,
+  `NombreRepresentante` varchar(200) DEFAULT NULL,
   `DerivEspecifi` varchar(200) DEFAULT NULL COMMENT 'Especificar las derivaciones y acciones tomadas de ser el caso',
   `IDCircunstancia` tinyint(3) DEFAULT NULL,
   `IDCondicion` tinyint(3) DEFAULT NULL,
@@ -54,15 +55,121 @@ CREATE TABLE `Intervenciones` (
   `IDViveCon` tinyint(3) DEFAULT NULL COMMENT '¿Con quién vive ahora?',
   `NumTelefono` varchar(22) DEFAULT NULL COMMENT 'Número de telefono del intervenido',
   `FechaIntervencion` date DEFAULT NULL,
-  `FechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `FechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `DiasLaborales` tinyint(4) DEFAULT '0' COMMENT 'Cuantos dias trabaja a la semana',
+  `TiempoLaboral` varchar(50) DEFAULT NULL COMMENT 'Cuanto tiempo que realiza la actividad laboral',
+  `GrupoLaboral` varchar(50) DEFAULT NULL COMMENT 'Con quien realiza la actividad',
+  `NumGrupoLaboral` tinyint(4) DEFAULT '0' COMMENT 'Numero de personas que le acompañan a trabajar',
+  `IngresosDiariosLaboral` varchar(50) DEFAULT NULL COMMENT 'Ingresos diarios',
+  `Comentarios` varchar(200) DEFAULT NULL COMMENT 'Comentarios extras de la intervencion',
+  `Estado` varchar(20) DEFAULT 'Ingresado',
+  `HorasLaborales` varchar(16) DEFAULT NULL,
+  `DireccionIntervencion` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Intervenciones`
 --
 
-INSERT INTO `Intervenciones` (`IDIntervencion`, `IDOperador`, `IDOrganCooperante`, `IDPersonaIntervenida`, `Latitud`, `Longitud`, `NumPerGrupo`, `Referencia`, `DerivEspecifi`, `IDCircunstancia`, `IDCondicion`, `IDEstudio`, `NoEstudio`, `UltAñoEstudio`, `InsEduEstudio`, `RefIDProvincia`, `RefIDCanton`, `RefIDParroquia`, `DireccionCallePrincial`, `DireccionNumero`, `DireccionCalleInterseccion`, `NumHijos`, `IDViveCon`, `NumTelefono`, `FechaIntervencion`, `FechaRegistro`) VALUES
-(0, 1, 1, 1, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '0000-00-00', '2022-06-13 04:24:26');
+INSERT INTO `Intervenciones` (`IDIntervencion`, `IDOperador`, `IDOrganCooperante`, `IDPersonaIntervenida`, `Latitud`, `Longitud`, `NumPerGrupo`, `Referencia`, `NombreRepresentante`, `DerivEspecifi`, `IDCircunstancia`, `IDCondicion`, `IDEstudio`, `NoEstudio`, `UltAñoEstudio`, `InsEduEstudio`, `RefIDProvincia`, `RefIDCanton`, `RefIDParroquia`, `DireccionCallePrincial`, `DireccionNumero`, `DireccionCalleInterseccion`, `NumHijos`, `IDViveCon`, `NumTelefono`, `FechaIntervencion`, `FechaRegistro`, `DiasLaborales`, `TiempoLaboral`, `GrupoLaboral`, `NumGrupoLaboral`, `IngresosDiariosLaboral`, `Comentarios`, `Estado`, `HorasLaborales`, `DireccionIntervencion`) VALUES
+(1, 1, 1, 4, '-2.147336318702489000', '-79.912064051227400000', 3, NULL, '', 'accion a tomar', 2, 1, 1, 'no escuelas cerca', 1, 'unidad educativo sin nombre', NULL, NULL, NULL, 'calle 1', NULL, NULL, 0, 2, NULL, '2022-09-21', '2022-06-13 14:24:26', 0, '', '', 0, '', '', 'Completado', '', NULL),
+(2, 1, 1, 1, '-2.147336318702489000', '-79.912064051227400000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2002-08-11 13:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(3, 1, 1, 1, '-2.147336318702489000', '-79.912064051227400000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2002-08-11 13:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(4, 1, 1, 1, '-2.147336318702489000', '-79.912064051227400000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-08-11 13:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(5, 1, 1, 1, '-2.147336318702489000', '-79.912064051227400000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-08-11 13:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(10, 1, 1, 1, '-2.147336318702489000', '-79.912064051227400000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-04 08:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(42, 2, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 20:03:16', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(43, 2, 1, 1, '-79.904110000000000000', '-2.062676400000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 15:18:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(44, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 21:38:22', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(45, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 22:13:19', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(46, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 22:16:55', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(47, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 22:22:05', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(48, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 02:51:34', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(49, 1, 1, 6, '-2.172464702095616500', '-79.899116273388530000', 4, NULL, '', 'accion a realizar editado', 2, 1, 1, 'no', 5, 'unidad educativa', NULL, NULL, NULL, 'calle1', NULL, NULL, 0, 2, NULL, '2022-09-21', '2022-09-21 04:29:22', 3, '7 a 12 meses', 'Solo', 3, 'De $11 Hasta $20', 'comentarios extras', 'Completado', '5 a 6 Hrs', NULL),
+(50, 2, 1, 1, '-79.919550000000000000', '-2.080966000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-20 23:42:49', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(51, 2, 1, 1, '-79.919530000000000000', '-2.080971700000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 01:29:40', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(52, 2, 1, 1, '-79.919520000000000000', '-2.080983600000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 01:36:54', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(53, 2, 1, 1, '-79.919550000000000000', '-2.080970300000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 01:45:33', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(54, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 06:57:08', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(55, 1, 1, 1, '-79.919530000000000000', '-2.080951200000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 02:04:06', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(56, 1, 1, 1, '-79.898960000000000000', '-2.160375600000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 11:07:52', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(57, 1, 1, 1, '-79.897410000000000000', '-2.162138700000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 11:12:32', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(58, 2, 1, 1, '-79.897750000000000000', '-2.161838500000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 11:17:54', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(59, 1, 1, 1, '-79.904740000000000000', '-2.065247500000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-21 12:50:40', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(60, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-29 04:42:58', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(61, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-29 04:47:33', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(62, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-29 04:56:47', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(63, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-29 04:59:23', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(64, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-09-29 05:01:43', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(65, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-04 00:40:13', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(66, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-04 00:42:51', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(67, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-04 00:49:16', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(68, 1, 1, 7, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', 'prueba', 2, 2, 4, '', 0, '', NULL, NULL, NULL, '', NULL, NULL, 0, 2, NULL, '2022-10-21', '2022-10-04 01:03:25', 0, '13 a 18 meses', 'En grupo', 2, 'De $11 Hasta $20', 'Comentarios extras', 'Completado', '4 a 5 Hrs', NULL),
+(69, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-04 01:13:55', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(70, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-04 01:29:14', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(71, 4, 1, 1, '-79.891200000000000000', '-2.265224200000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-04 21:57:51', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(72, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-05 06:22:01', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(73, 2, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-06 22:04:19', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(74, 4, 1, 1, '-79.919510000000000000', '-2.080888700000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 10:47:54', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(75, 4, 1, 1, '-79.897790000000000000', '-2.161673500000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 14:15:41', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(76, 1, 1, 1, '-79.898026000000000000', '-2.161847600000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 14:40:45', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(77, 1, 1, 1, '-79.898544000000000000', '-2.158121600000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 14:53:30', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(78, 2, 1, 1, '-79.919560000000000000', '-2.080912000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 15:43:55', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(79, 3, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 21:00:33', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(80, 4, 1, 1, '-79.897990000000000000', '-2.161425400000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 16:02:03', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(81, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 21:10:45', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(82, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 21:11:15', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(83, 1, 1, 1, '1.000000000000000000', '1.000000000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2000-01-12 00:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(84, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 21:33:58', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(85, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-21 21:35:40', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(86, 1, 1, 1, '1.000000000000000000', '1.000000000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2000-01-12 00:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(87, 4, 1, 1, '-79.919540000000000000', '-2.080885600000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-25 21:45:12', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(88, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 03:14:30', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(89, 4, 1, 1, '0.000000000000000000', '0.000000000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-25 22:19:48', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(90, 1, 1, 1, '0.000000000000000000', '0.000000000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-25 22:52:35', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(91, 4, 1, 1, '-79.919470000000000000', '-2.080866000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 10:26:42', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(92, 1, 1, 1, '-2.080939500000000000', '-79.919495000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 11:04:10', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(93, 1, 1, 1, '37.421997000000000000', '-122.084000000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 16:09:33', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(94, 1, 1, 1, '37.421997000000000000', '-122.084000000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 16:12:30', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(95, 1, 1, 1, '-2.080870900000000000', '-79.919470000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 11:48:10', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(96, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 16:59:03', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(97, 4, 1, 1, '-79.919490000000000000', '-2.080945500000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 12:07:15', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(98, 4, 1, 1, '-79.919480000000000000', '-2.080892300000000000', 0, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 12:07:22', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(99, 1, 1, 1, '1.000000000000000000', '1.000000000000000000', 0, 'daodaomdo', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2000-01-12 00:00:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(100, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:29:15', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(101, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:35:55', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(102, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:37:01', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(103, 4, 1, 1, '0.000000000000000000', '0.000000000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:37:50', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(104, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, ' 2022-10-26 18:39:03', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:39:03', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(105, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:40:33', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(106, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:40:58', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(107, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'referencia', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 17:41:21', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(108, 1, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'referencia', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 18:43:02', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(109, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 19:26:05', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(110, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 19:45:09', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(112, 4, 2, 9, '-122.084000000000000000', '37.421997000000000000', 0, '', '', '', 3, 2, NULL, '', 0, '', NULL, NULL, NULL, '', NULL, NULL, 0, NULL, NULL, '2022-10-27', '2022-10-26 19:51:31', 0, '', '', 0, '', '', 'Completado', '', NULL),
+(113, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'Alo', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-10-26 22:58:01', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(114, 4, 2, 11, '-122.084000000000000000', '37.421997000000000000', 0, 'a', '', 'prueba810', 3, 1, 1, 'prueba810', 0, 'prueba810', NULL, NULL, NULL, 'prueba810', NULL, NULL, 0, 1, NULL, '2022-11-08', '2022-11-07 20:21:38', 1, '0 a 6 meses', 'Solo', 0, 'Hasta $5', 'prueba810', 'Completado', '1 a 2 Hrs', NULL),
+(117, 1, 1, 1, '-79.805460000000000000', '-2.167158400000000000', 0, 'a', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 20:57:32', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(118, 1, 1, 1, '-79.805504000000000000', '-2.167104500000000000', 0, 'x', 'Freya', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 21:24:20', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(119, 3, 1, 1, '-79.805435000000000000', '-2.167134500000000000', 0, 'pruebaF', 'Freya L', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 21:47:52', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(120, 2, 1, 20, '-79.919464000000000000', '-2.080924300000000000', 4, 'En la calle 9 de octubre', 'Miguel Riofrio', 'acciuona realziar', NULL, 2, NULL, '', 0, '', NULL, NULL, NULL, '', NULL, NULL, 0, NULL, NULL, '2022-11-12', '2022-11-08 22:02:17', 0, '', '', 0, '', 'comments', 'Completado', '', ''),
+(121, 2, 1, 1, '-79.919464000000000000', '-2.080916600000000000', 0, 'hial', 'Miguel riofrio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:08:18', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(122, 2, 1, 1, '-79.919464000000000000', '-2.080916400000000000', 0, 'hial', 'Miguel riofrio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:08:59', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(123, 2, 1, 1, '-79.919464000000000000', '-2.080916600000000000', 0, 'hial', 'Miguel riofrio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:09:05', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(124, 1, 1, 1, '-79.918410000000000000', '-2.046295200000000000', 0, 'gaga', 'Joss', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:15:24', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(125, 4, 1, 1, '0.000000000000000000', '0.000000000000000000', 0, 'asfhv', 'adjdvdv', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:28:16', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(126, 1, 1, 1, '-79.918594000000000000', '-2.045541800000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:24:27', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(127, 1, 1, 1, '-79.918434000000000000', '-2.046180500000000000', 0, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-08 22:31:53', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(128, 1, 1, 16, '-79.918564000000000000', '-2.046269000000000000', 0, '', '', '', NULL, NULL, NULL, '', 0, '', NULL, NULL, NULL, '', NULL, NULL, 0, NULL, NULL, '2022-11-09', '2022-11-08 22:33:19', 0, '', '', 0, '', '', 'Completado', '', NULL),
+(129, 3, 1, 17, '-79.805500000000000000', '-2.167104500000000000', 0, 'PruebaFreya', 'Freya', '', NULL, NULL, NULL, '', 0, '', NULL, NULL, NULL, '', NULL, NULL, 0, NULL, NULL, '2022-11-09', '2022-11-09 01:41:45', 0, '', '', 0, '', '', 'Completado', '', NULL),
+(130, 4, 1, 1, '-79.912220000000000000', '-2.147729600000000000', 0, 'calle 15', 'paul ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-09 10:44:17', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(131, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'Keneth', 'Barcelona', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 04:53:36', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(132, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, '4', '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 04:57:09', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(133, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'a', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:14:54', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(134, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:21:20', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(135, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:21:41', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(136, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:22:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -72,9 +179,65 @@ INSERT INTO `Intervenciones` (`IDIntervencion`, `IDOperador`, `IDOrganCooperante
 
 CREATE TABLE `IntervencionesAudios` (
   `IDIntervencion` int(10) UNSIGNED NOT NULL,
-  `Audio` longblob NOT NULL,
+  `Audio` longtext NOT NULL,
   `FechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `IntervencionesAudios`
+--
+
+INSERT INTO `IntervencionesAudios` (`IDIntervencion`, `Audio`, `FechaRegistro`) VALUES
+(45, 'https://miesdinapen.tk/api/Audios/Uploads/45_Audio_0.mp3', '2022-09-20 22:14:39'),
+(45, 'https://miesdinapen.tk/api/Audios/Uploads/45_Audio_1.mp3', '2022-09-20 22:14:39'),
+(48, 'https://miesdinapen.tk/api/Audios/Uploads/48_Audio_0.mp3', '2022-09-21 02:52:38'),
+(48, 'https://miesdinapen.tk/api/Audios/Uploads/48_Audio_1.mp3', '2022-09-21 02:52:38'),
+(49, 'https://miesdinapen.tk/api/Audios/Uploads/49_Audio_0.mp3', '2022-09-21 04:30:22'),
+(50, 'https://miesdinapen.tk/api/Audios/Uploads/50_Audio_0.mp3', '2022-09-20 23:43:22'),
+(51, 'https://miesdinapen.tk/api/Audios/Uploads/51_Audio_0.mp3', '2022-09-21 01:31:51'),
+(51, 'https://miesdinapen.tk/api/Audios/Uploads/51_Audio_1.mp3', '2022-09-21 01:31:51'),
+(52, 'https://miesdinapen.tk/api/Audios/Uploads/52_Audio_0.mp3', '2022-09-21 01:39:31'),
+(52, 'https://miesdinapen.tk/api/Audios/Uploads/52_Audio_1.mp3', '2022-09-21 01:39:31'),
+(53, 'https://miesdinapen.tk/api/Audios/Uploads/53_Audio_0.mp3', '2022-09-21 01:46:39'),
+(53, 'https://miesdinapen.tk/api/Audios/Uploads/53_Audio_1.mp3', '2022-09-21 01:46:39'),
+(54, 'https://miesdinapen.tk/api/Audios/Uploads/54_Audio_0.mp3', '2022-09-21 06:59:40'),
+(54, 'https://miesdinapen.tk/api/Audios/Uploads/54_Audio_1.mp3', '2022-09-21 06:59:40'),
+(55, 'https://miesdinapen.tk/api/Audios/Uploads/55_Audio_0.mp3', '2022-09-21 02:05:51'),
+(55, 'https://miesdinapen.tk/api/Audios/Uploads/55_Audio_1.mp3', '2022-09-21 02:05:52'),
+(56, 'https://miesdinapen.tk/api/Audios/Uploads/56_Audio_0.mp3', '2022-09-21 11:08:51'),
+(56, 'https://miesdinapen.tk/api/Audios/Uploads/56_Audio_1.mp3', '2022-09-21 11:08:51'),
+(57, 'https://miesdinapen.tk/api/Audios/Uploads/57_Audio_0.mp3', '2022-09-21 11:13:33'),
+(58, 'https://miesdinapen.tk/api/Audios/Uploads/58_Audio_0.mp3', '2022-09-21 11:19:19'),
+(59, 'https://miesdinapen.tk/api/Audios/Uploads/59_Audio_0.mp3', '2022-09-21 12:51:20'),
+(61, 'https://miesdinapen.tk/api/Audios/Uploads/61_Audio_0.mp3', '2022-09-29 04:51:03'),
+(63, 'https://miesdinapen.tk/api/Audios/Uploads/63_Audio_0.mp3', '2022-09-29 05:00:10'),
+(64, 'https://miesdinapen.tk/api/Audios/Uploads/64_Audio_0.mp3', '2022-09-29 05:02:12'),
+(65, 'https://miesdinapen.tk/api/Audios/Uploads/65_Audio_0.mp3', '2022-10-04 00:41:05'),
+(65, 'https://miesdinapen.tk/api/Audios/Uploads/65_Audio_1.mp3', '2022-10-04 00:41:05'),
+(66, 'https://miesdinapen.tk/api/Audios/Uploads/66_Audio_0.mp3', '2022-10-04 00:43:09'),
+(67, 'https://miesdinapen.tk/api/Audios/Uploads/67_Audio_0.mp3', '2022-10-04 00:51:00'),
+(68, 'https://miesdinapen.tk/api/Audios/Uploads/68_Audio_0.mp3', '2022-10-04 01:13:07'),
+(69, 'https://miesdinapen.tk/api/Audios/Uploads/69_Audio_0.mp3', '2022-10-04 01:14:11'),
+(71, 'https://miesdinapen.tk/api/Audios/Uploads/71_Audio_0.mp3', '2022-10-04 21:59:09'),
+(72, 'https://miesdinapen.tk/api/Audios/Uploads/72_Audio_0.mp3', '2022-10-05 06:27:53'),
+(73, 'https://miesdinapen.tk/api/Audios/Uploads/73_Audio_0.mp3', '2022-10-06 22:05:52'),
+(84, 'https://miesdinapen.tk/api/Audios/Uploads/84_Audio_0.mp3', '2022-10-21 21:34:43'),
+(85, 'https://miesdinapen.tk/api/Audios/Uploads/85_Audio_0.mp3', '2022-10-21 21:35:54'),
+(88, 'https://miesdinapen.tk/api/Audios/Uploads/88_Audio_0.mp3', '2022-10-26 03:14:47'),
+(89, 'https://miesdinapen.tk/api/Audios/Uploads/89_Audio_0.mp3', '2022-10-25 22:20:12'),
+(90, 'https://miesdinapen.tk/api/Audios/Uploads/90_Audio_0.mp3', '2022-10-25 22:53:35'),
+(91, 'https://miesdinapen.tk/api/Audios/Uploads/91_Audio_0.mp3', '2022-10-26 10:28:40'),
+(117, 'https://miesdinapen.tk/api/Audios/Uploads/117_Audio_0.mp3', '2022-11-08 21:02:10'),
+(119, 'https://miesdinapen.tk/api/Audios/Uploads/119_Audio_0.mp3', '2022-11-08 21:49:06'),
+(120, 'https://miesdinapen.tk/api/Audios/Uploads/120_Audio_0.mp3', '2022-11-08 22:03:56'),
+(124, 'https://miesdinapen.tk/api/Audios/Uploads/124_Audio_0.mp3', '2022-11-08 22:23:18'),
+(125, 'https://miesdinapen.tk/api/Audios/Uploads/125_Audio_0.mp3', '2022-11-08 22:28:58'),
+(126, 'https://miesdinapen.tk/api/Audios/Uploads/126_Audio_0.mp3', '2022-11-08 22:30:53'),
+(127, 'https://miesdinapen.tk/api/Audios/Uploads/127_Audio_0.mp3', '2022-11-08 22:32:26'),
+(128, 'https://miesdinapen.tk/api/Audios/Uploads/128_Audio_0.mp3', '2022-11-08 22:33:39'),
+(129, 'https://miesdinapen.tk/api/Audios/Uploads/129_Audio_0.mp3', '2022-11-09 01:43:16'),
+(130, 'https://miesdinapen.tk/api/Audios/Uploads/130_Audio_0.mp3', '2022-11-09 10:50:15'),
+(131, 'https://miesdinapen.tk/api/Audios/Uploads/131_Audio_0.mp3', '2022-11-12 04:55:25');
 
 -- --------------------------------------------------------
 
@@ -92,8 +255,8 @@ CREATE TABLE `IntervencionesExposicion` (
 --
 
 INSERT INTO `IntervencionesExposicion` (`IDIntervencion`, `IDExposicion`) VALUES
-(0, 2),
-(0, 3);
+(1, 2),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -103,9 +266,63 @@ INSERT INTO `IntervencionesExposicion` (`IDIntervencion`, `IDExposicion`) VALUES
 
 CREATE TABLE `IntervencionesFotos` (
   `IDIntervencion` int(10) UNSIGNED NOT NULL,
-  `FotoIncidente` longblob NOT NULL,
+  `FotoIncidente` text NOT NULL,
   `FechaRegistro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `IntervencionesFotos`
+--
+
+INSERT INTO `IntervencionesFotos` (`IDIntervencion`, `FotoIncidente`, `FechaRegistro`) VALUES
+(44, 'https://miesdinapen.tk/api/Fotos/Uploads/44_Fotos_0.png', '2022-09-20 21:39:03'),
+(44, 'https://miesdinapen.tk/api/Fotos/Uploads/44_Fotos_1.png', '2022-09-20 21:39:03'),
+(45, 'https://miesdinapen.tk/api/Fotos/Uploads/45_Fotos_0.png', '2022-09-20 22:14:40'),
+(46, 'https://miesdinapen.tk/api/Fotos/Uploads/46_Fotos_0.png', '2022-09-20 22:17:14'),
+(46, 'https://miesdinapen.tk/api/Fotos/Uploads/46_Fotos_1.png', '2022-09-20 22:17:14'),
+(48, 'https://miesdinapen.tk/api/Fotos/Uploads/48_Fotos_0.png', '2022-09-21 02:52:38'),
+(48, 'https://miesdinapen.tk/api/Fotos/Uploads/48_Fotos_1.png', '2022-09-21 02:52:39'),
+(49, 'https://miesdinapen.tk/api/Fotos/Uploads/49_Fotos_0.png', '2022-09-21 04:30:22'),
+(49, 'https://miesdinapen.tk/api/Fotos/Uploads/49_Fotos_1.png', '2022-09-21 04:30:23'),
+(51, 'https://miesdinapen.tk/api/Fotos/Uploads/51_Fotos_0.png', '2022-09-21 01:31:54'),
+(52, 'https://miesdinapen.tk/api/Fotos/Uploads/52_Fotos_0.png', '2022-09-21 01:39:35'),
+(52, 'https://miesdinapen.tk/api/Fotos/Uploads/52_Fotos_1.png', '2022-09-21 01:39:38'),
+(53, 'https://miesdinapen.tk/api/Fotos/Uploads/53_Fotos_0.png', '2022-09-21 01:46:42'),
+(53, 'https://miesdinapen.tk/api/Fotos/Uploads/53_Fotos_1.png', '2022-09-21 01:46:45'),
+(54, 'https://miesdinapen.tk/api/Fotos/Uploads/54_Fotos_0.png', '2022-09-21 06:59:40'),
+(54, 'https://miesdinapen.tk/api/Fotos/Uploads/54_Fotos_1.png', '2022-09-21 06:59:40'),
+(55, 'https://miesdinapen.tk/api/Fotos/Uploads/55_Fotos_0.png', '2022-09-21 02:05:54'),
+(55, 'https://miesdinapen.tk/api/Fotos/Uploads/55_Fotos_1.png', '2022-09-21 02:05:57'),
+(55, 'https://miesdinapen.tk/api/Fotos/Uploads/55_Fotos_2.png', '2022-09-21 02:06:00'),
+(56, 'https://miesdinapen.tk/api/Fotos/Uploads/56_Fotos_0.png', '2022-09-21 11:08:53'),
+(56, 'https://miesdinapen.tk/api/Fotos/Uploads/56_Fotos_1.png', '2022-09-21 11:08:55'),
+(56, 'https://miesdinapen.tk/api/Fotos/Uploads/56_Fotos_2.png', '2022-09-21 11:08:57'),
+(57, 'https://miesdinapen.tk/api/Fotos/Uploads/57_Fotos_0.png', '2022-09-21 11:13:35'),
+(58, 'https://miesdinapen.tk/api/Fotos/Uploads/58_Fotos_0.png', '2022-09-21 11:19:21'),
+(62, 'https://miesdinapen.tk/api/Fotos/Uploads/62_Fotos_0.png', '2022-09-29 04:57:09'),
+(63, 'https://miesdinapen.tk/api/Fotos/Uploads/63_Fotos_0.png', '2022-09-29 05:00:10'),
+(64, 'https://miesdinapen.tk/api/Fotos/Uploads/64_Fotos_0.png', '2022-09-29 05:02:12'),
+(65, 'https://miesdinapen.tk/api/Fotos/Uploads/65_Fotos_0.png', '2022-10-04 00:41:06'),
+(65, 'https://miesdinapen.tk/api/Fotos/Uploads/65_Fotos_1.png', '2022-10-04 00:41:07'),
+(66, 'https://miesdinapen.tk/api/Fotos/Uploads/66_Fotos_0.png', '2022-10-04 00:43:09'),
+(68, 'https://miesdinapen.tk/api/Fotos/Uploads/68_Fotos_0.png', '2022-10-04 01:13:07'),
+(69, 'https://miesdinapen.tk/api/Fotos/Uploads/69_Fotos_0.png', '2022-10-04 01:14:12'),
+(1, 'Pro', '2012-12-01 16:45:52'),
+(1, 'prueba3-10', '2012-12-01 16:45:52'),
+(71, 'https://miesdinapen.tk/api/Fotos/Uploads/71_Fotos_0.png', '2022-10-04 21:59:10'),
+(72, 'https://miesdinapen.tk/api/Fotos/Uploads/72_Fotos_0.png', '2022-10-05 06:27:53'),
+(73, 'https://miesdinapen.tk/api/Fotos/Uploads/73_Fotos_0.png', '2022-10-06 22:05:53'),
+(84, 'https://miesdinapen.tk/api/Fotos/Uploads/84_Fotos_0.png', '2022-10-21 21:34:43'),
+(90, 'https://miesdinapen.tk/api/Fotos/Uploads/90_Fotos_0.png', '2022-10-25 22:53:35'),
+(91, 'https://miesdinapen.tk/api/Fotos/Uploads/91_Fotos_0.png', '2022-10-26 10:28:41'),
+(117, 'https://miesdinapen.tk/api/Fotos/Uploads/117_Fotos_0.png', '2022-11-08 21:02:12'),
+(119, 'https://miesdinapen.tk/api/Fotos/Uploads/119_Fotos_0.png', '2022-11-08 21:49:07'),
+(120, 'https://miesdinapen.tk/api/Fotos/Uploads/120_Fotos_0.png', '2022-11-08 22:03:57'),
+(124, 'https://miesdinapen.tk/api/Fotos/Uploads/124_Fotos_0.png', '2022-11-08 22:23:18'),
+(129, 'https://miesdinapen.tk/api/Fotos/Uploads/129_Fotos_0.png', '2022-11-09 01:43:18'),
+(130, 'https://miesdinapen.tk/api/Fotos/Uploads/130_Fotos_0.png', '2022-11-09 10:50:17'),
+(131, 'https://miesdinapen.tk/api/Fotos/Uploads/131_Fotos_0.png', '2022-11-12 04:55:25'),
+(136, 'https://miesdinapen.tk/api/Fotos/Uploads/136_Fotos_0.png', '2022-11-12 05:22:39');
 
 -- --------------------------------------------------------
 
@@ -123,9 +340,18 @@ CREATE TABLE `IntervencionesTipoActividad` (
 --
 
 INSERT INTO `IntervencionesTipoActividad` (`IDIntervencion`, `IDTipoActividad`) VALUES
-(0, 4),
-(0, 7),
-(0, 12);
+(49, 1),
+(114, 1),
+(46, 2),
+(49, 2),
+(68, 2),
+(128, 2),
+(49, 3),
+(1, 4),
+(68, 4),
+(49, 6),
+(1, 7),
+(1, 12);
 
 -- --------------------------------------------------------
 
@@ -642,7 +868,7 @@ CREATE TABLE `ListaIDGeneros` (
 --
 
 INSERT INTO `ListaIDGeneros` (`IDGenero`, `Genero`) VALUES
-(1, 'Masculino'),
+(1, 'Masculino-1'),
 (2, 'Femenino');
 
 -- --------------------------------------------------------
@@ -742,15 +968,19 @@ CREATE TABLE `ListaIDOperadores` (
   `OperaTelefono1` char(10) DEFAULT NULL COMMENT 'Telefono de la persona responsable',
   `OperaTelefono2` varchar(10) DEFAULT NULL,
   `OperaEmail1` varchar(75) DEFAULT NULL COMMENT 'Correo de la persona responsable',
-  `OperaEmail2` varchar(75) DEFAULT NULL
+  `OperaEmail2` varchar(75) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ListaIDOperadores`
 --
 
-INSERT INTO `ListaIDOperadores` (`IDOperador`, `IDInstitucion`, `OperaCargo`, `OperaNCedula`, `OperaApellido1`, `OperaApellido2`, `OperaNombres`, `OperaTelefono1`, `OperaTelefono2`, `OperaEmail1`, `OperaEmail2`) VALUES
-(1, '1', 'PRUEBA', '0909090909', 'PEREZ', NULL, 'JOSE', NULL, NULL, NULL, NULL);
+INSERT INTO `ListaIDOperadores` (`IDOperador`, `IDInstitucion`, `OperaCargo`, `OperaNCedula`, `OperaApellido1`, `OperaApellido2`, `OperaNombres`, `OperaTelefono1`, `OperaTelefono2`, `OperaEmail1`, `OperaEmail2`, `password`) VALUES
+(1, '1', 'PRUEBA', '0909090909', 'PEREZ', NULL, 'JOSE', NULL, NULL, NULL, NULL, NULL),
+(2, '1', 'PRUEBA2', '0909090000', 'RIOFRIO', NULL, 'MIGUEL', NULL, NULL, NULL, NULL, NULL),
+(3, '1', 'PRUEBA3', '0909090111', 'LUZU', NULL, 'NEK', NULL, NULL, NULL, NULL, 'strong password'),
+(4, '2', 'PRUEBA4', '0909094554', 'Paul', NULL, 'PAU', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -773,7 +1003,8 @@ CREATE TABLE `ListaIDOrganizacionesCoope` (
 --
 
 INSERT INTO `ListaIDOrganizacionesCoope` (`IDOrganizacion`, `Organizacion`, `Zona`, `IDProvincia`, `IDCanton`, `IDParroquia`, `IDTipoOrganizacion`) VALUES
-(1, 'GAD PARROQUIAL PUNA', 8, 1, 1, 1, 1);
+(1, 'GAD PARROQUIAL PUNA', 8, 9, 901, 10150, 1),
+(2, 'gye', 3, 3, 303, 30353, 4);
 
 -- --------------------------------------------------------
 
@@ -1870,16 +2101,44 @@ CREATE TABLE `ListaIDPersonas` (
   `IDCondicionMedica` tinyint(3) DEFAULT NULL COMMENT 'Condición médica del Intervenido',
   `IDDiscapacidad` tinyint(3) DEFAULT NULL COMMENT 'Informacion si tiene alguna discapacidad el Intervenido',
   `DiscapacidadNivel` tinyint(3) DEFAULT NULL,
-  `IngresosAprox` tinyint(3) DEFAULT NULL
+  `IngresosAprox` tinyint(3) DEFAULT NULL,
+  `GrupoEtario` varchar(10) DEFAULT NULL COMMENT 'Rango de edad que se encuentra la persona',
+  `Enfermedad` varchar(150) DEFAULT NULL,
+  `LugarAtencionMedica` varchar(100) DEFAULT NULL,
+  `Barrio` varchar(150) DEFAULT NULL,
+  `Fotos_Personas` text COMMENT 'visualización de personas intervenida',
+  `ParentezcoNNA` varchar(150) DEFAULT NULL,
+  `NumFamiliar` varchar(50) DEFAULT NULL,
+  `IdentificacionFamiliar` varchar(50) DEFAULT NULL,
+  `ApellidoFamiliar` varchar(150) DEFAULT NULL,
+  `NombreFamiliar` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ListaIDPersonas`
 --
 
-INSERT INTO `ListaIDPersonas` (`IDPersona`, `Apellido1`, `Apellido2`, `Nombre1`, `Nombre2`, `Cedula`, `FechaNacim`, `NacIDNacionalidad`, `NacIDProvincia`, `NacIDCanton`, `NacIDParroquia`, `IDGenero`, `IDEtnia`, `IDEstadoCivil`, `IDColorCabello`, `IDCabelloTipo`, `IDContextura`, `IDEstatura`, `IDCondicionMedica`, `IDDiscapacidad`, `DiscapacidadNivel`, `IngresosAprox`) VALUES
-(1, 'Pueblo', NULL, 'Juan', NULL, '9000000001', NULL, 1, 9, NULL, NULL, 1, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Pueblo', NULL, 'Ana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `ListaIDPersonas` (`IDPersona`, `Apellido1`, `Apellido2`, `Nombre1`, `Nombre2`, `Cedula`, `FechaNacim`, `NacIDNacionalidad`, `NacIDProvincia`, `NacIDCanton`, `NacIDParroquia`, `IDGenero`, `IDEtnia`, `IDEstadoCivil`, `IDColorCabello`, `IDCabelloTipo`, `IDContextura`, `IDEstatura`, `IDCondicionMedica`, `IDDiscapacidad`, `DiscapacidadNivel`, `IngresosAprox`, `GrupoEtario`, `Enfermedad`, `LugarAtencionMedica`, `Barrio`, `Fotos_Personas`, `ParentezcoNNA`, `NumFamiliar`, `IdentificacionFamiliar`, `ApellidoFamiliar`, `NombreFamiliar`) VALUES
+(1, 'Pueblo', 'GYE', 'Juan', NULL, '9000000001', NULL, 1, 9, NULL, NULL, 1, 4, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL),
+(2, 'Pueblo', 'uio', 'Ana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL),
+(3, 'Luzuriaga', 'Mejia', 'Ken', 'Nelson', '0953114774', '2000-08-11', 1, 9, 901, 90150, 1, 4, 1, 1, 1, 1, 3, NULL, 1, NULL, NULL, NULL, 'aaaaaa', '', NULL, 'https://miesdinapen.tk/api/Fotos/Uploads/logomies2019.png', NULL, NULL, NULL, NULL, NULL),
+(4, 'Test', 'Test1', 'Test2', 'Test3', '0953121211', '2006-08-11', 1, 3, 301, 30154, 2, 3, 2, 1, 2, 1, 2, NULL, 2, NULL, NULL, '12-14 años', 'enfermedad test', 'institucion centro medica', 'barrio prueba', '', NULL, NULL, NULL, NULL, NULL),
+(5, 'persona ', 'nueva', 'persona', 'test', '0910999435', '2009-08-11', 3, 6, 603, 60353, 1, 3, 2, 2, 1, 1, 1, NULL, 1, NULL, NULL, '12-14 años', '', '', 'barrio h', '', NULL, NULL, NULL, NULL, NULL),
+(6, 'apellido', 'prueba', 'nombre', 'prueba2', '', '2009-08-11', 1, 9, 901, 90150, 2, 1, 1, 2, 1, 1, 2, NULL, 1, NULL, NULL, '12-14 años', 'enfermedad', 'centro medico', 'barrio guayaquil', '', NULL, NULL, NULL, NULL, NULL),
+(7, 'persona', 'persona2', 'perosna3', 'persona4', '', '2008-08-11', 1, 9, 901, NULL, 1, 3, 1, 2, 2, 1, NULL, 2, 1, NULL, NULL, '05-11 años', 'cual', 'medicaaa', 'barrio10', 'https://miesdinapen.tk/api/Fotos/Uploads/image.png', NULL, NULL, NULL, NULL, NULL),
+(8, 'aaa', '', 'bbbb', '', '1231232', '2019-06-01', 4, 3, 302, 30254, 2, 3, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NULL\n     ', NULL, NULL, 'aaaaa', NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'aaaa', '', 'zzzzz', '', '12312321', '2020-07-10', 2, 2, 201, 20150, 1, NULL, NULL, 4, 2, 2, 3, NULL, NULL, NULL, NULL, 'NULL\n     ', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'prueba', 'prueba', 'prueba', 'prueba', '9999999', '2009-04-08', 1, 9, 901, 90150, 2, 2, 1, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, '12-14 años', NULL, NULL, 'prueba', NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'prueba810', 'prueba810', 'prueba810', 'prueba810', '9999999999', '2017-03-08', 1, 9, 901, 90150, 2, 2, 1, 1, 1, 1, 1, 2, 1, NULL, NULL, '05-11 años', '', '', 'prueba810', NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 'pruebax', 'pruebax', 'pruebax', 'pruebax', '012345789', '2013-03-08', 1, 9, 901, 90150, 2, 3, 1, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, '05-11 años', NULL, NULL, 'pruebax', NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 'Prueba9', 'Prueba9', 'Prueba9', 'Prueba9', '0000000', '2015-04-09', 1, 9, 901, 90150, 1, 4, 1, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, '05-11 años', NULL, NULL, 'Prueba9', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 'Prueba9', 'Prueba9', 'Prueba9', 'Prueba9', '0000000', '2015-04-09', 1, 9, 901, 90150, 1, 4, 1, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, '05-11 años', NULL, NULL, 'Prueba9', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'Freya', 'Freya', 'Freya', 'Freya', '098754623', '2005-03-09', 1, 9, 901, 90150, 2, 2, 1, NULL, NULL, NULL, NULL, NULL, 3, NULL, NULL, '15-17 años', NULL, NULL, 'Freya', 'https://miesdinapen.tk/api/Fotos/Uploads/icon.png', NULL, NULL, NULL, NULL, NULL),
+(16, 'test', '', 'test2', '', '', '2018-07-12', 3, 2, 203, 20353, 1, 2, 2, 2, 1, NULL, NULL, NULL, 1, NULL, NULL, 'NULL\n     ', '', '', 'barrio f', NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'tssss', '', 'tssss12', '', '1231232', '1996-08-11', NULL, 2, 203, 20353, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NULL\n     ', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 'Prueba', '', 'Prueba', '', '8888', '2009-11-09', NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NULL\n     ', NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 'paul', 'paul', 'paul', 'paul', '0954444', '2012-04-11', 1, 9, 901, 90150, 1, 3, 1, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, '05-11 años', NULL, NULL, 'paul', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'probando', 'testing', 'aoa', '', '123123', '2002-11-11', NULL, 2, 202, 20251, 1, NULL, NULL, 2, NULL, NULL, NULL, 3, NULL, NULL, NULL, '', 'adasd', '', '', NULL, 'pade', '095631447', '0953114774', 'nomrbre', 'apellido');
 
 -- --------------------------------------------------------
 
@@ -1917,9 +2176,9 @@ CREATE TABLE `ListaIDProvincias` (
 --
 
 INSERT INTO `ListaIDProvincias` (`IDProvincia`, `Provincia`, `IDNacionalidad`) VALUES
-(1, 'AZUAY-01', 0),
+(1, 'AZUAY', 0),
 (2, 'BOLIVAR', 0),
-(3, 'CAÑAR', 0),
+(3, 'CANAR', 0),
 (4, 'CARCHI', 0),
 (5, 'COTOPAXI', 0),
 (6, 'CHIMBORAZO', 0),
@@ -1941,7 +2200,8 @@ INSERT INTO `ListaIDProvincias` (`IDProvincia`, `Provincia`, `IDNacionalidad`) V
 (22, 'ORELLANA', 0),
 (23, 'SANTO DOMINGO DE LOS TSACHILAS', 0),
 (24, 'SANTA ELENA', 0),
-(90, 'ZONAS NO DELIMITADAS', 0);
+(90, 'ZONAS NO DELIMITADAS', 0),
+(91, 'provincia1', 0);
 
 -- --------------------------------------------------------
 
@@ -1965,7 +2225,7 @@ INSERT INTO `ListaIDTipoActividad` (`IDTipoActividad`, `TipoActividad`) VALUES
 (4, 'Comercio Informal '),
 (5, 'Construccion'),
 (6, 'Manofacturas'),
-(7, 'Act. No remuneradas '),
+(7, 'Act. NO remuneradas '),
 (8, 'Mecanica '),
 (9, 'Reciclaje'),
 (10, 'Pesca'),
@@ -2207,7 +2467,8 @@ ALTER TABLE `ListaIDParentezcos`
 -- Indices de la tabla `ListaIDParroquias`
 --
 ALTER TABLE `ListaIDParroquias`
-  ADD PRIMARY KEY (`IDParroquia`);
+  ADD PRIMARY KEY (`IDParroquia`),
+  ADD KEY `ListaIDParroquias_FK` (`IDCanton`);
 
 --
 -- Indices de la tabla `ListaIDPersonas`
@@ -2282,25 +2543,25 @@ ALTER TABLE `ListaPoligonosParroquias`
 -- AUTO_INCREMENT de la tabla `Intervenciones`
 --
 ALTER TABLE `Intervenciones`
-  MODIFY `IDIntervencion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de la Intervecion';
+  MODIFY `IDIntervencion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de la Intervecion', AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT de la tabla `ListaIDOperadores`
 --
 ALTER TABLE `ListaIDOperadores`
-  MODIFY `IDOperador` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDOperador` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `ListaIDOrganizacionesCoope`
 --
 ALTER TABLE `ListaIDOrganizacionesCoope`
-  MODIFY `IDOrganizacion` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDOrganizacion` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ListaIDPersonas`
 --
 ALTER TABLE `ListaIDPersonas`
-  MODIFY `IDPersona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único del Intervenido', AUTO_INCREMENT=3;
+  MODIFY `IDPersona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único del Intervenido', AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -2348,6 +2609,12 @@ ALTER TABLE `IntervencionesTipoActividad`
   ADD CONSTRAINT `IntervencionesTipoActividad_ibfk_2` FOREIGN KEY (`IDIntervencion`) REFERENCES `Intervenciones` (`IDIntervencion`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `ListaIDCantones`
+--
+ALTER TABLE `ListaIDCantones`
+  ADD CONSTRAINT `ListaIDCantones_FK` FOREIGN KEY (`IDProvincia`) REFERENCES `ListaIDProvincias` (`IDProvincia`);
+
+--
 -- Filtros para la tabla `ListaIDOperadores`
 --
 ALTER TABLE `ListaIDOperadores`
@@ -2357,7 +2624,16 @@ ALTER TABLE `ListaIDOperadores`
 -- Filtros para la tabla `ListaIDOrganizacionesCoope`
 --
 ALTER TABLE `ListaIDOrganizacionesCoope`
+  ADD CONSTRAINT `ListaIDOrganizacionesCoope_FK_1` FOREIGN KEY (`IDParroquia`) REFERENCES `ListaIDParroquias` (`IDParroquia`),
+  ADD CONSTRAINT `ListaIDOrganizacionesCoope_FK_2` FOREIGN KEY (`IDCanton`) REFERENCES `ListaIDCantones` (`IDCanton`),
+  ADD CONSTRAINT `ListaIDOrganizacionesCoope_FK_3` FOREIGN KEY (`IDProvincia`) REFERENCES `ListaIDProvincias` (`IDProvincia`),
   ADD CONSTRAINT `ListaIDOrganizacionesCoope_ibfk_1` FOREIGN KEY (`IDTipoOrganizacion`) REFERENCES `ListaIDTipoOrganizacion` (`IDTipoOrganizacion`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `ListaIDParroquias`
+--
+ALTER TABLE `ListaIDParroquias`
+  ADD CONSTRAINT `ListaIDParroquias_FK` FOREIGN KEY (`IDCanton`) REFERENCES `ListaIDCantones` (`IDCanton`);
 
 --
 -- Filtros para la tabla `ListaIDPersonas`
