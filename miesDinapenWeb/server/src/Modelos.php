@@ -212,8 +212,8 @@ class CabelloColorModel {
     public function __construct($x, $y,$z,$a,$b,$c,$d ) {
         $this->IDOperador = $x;
         $this->IDInstitucion = $y;
-        $this->OperaNCedula = $z;
         $this->OperaCargo = $a;
+        $this->OperaNCedula = $z;
         $this->OperaApellido1 = $b;
         $this->OperaApellido2 = $c;
         $this->OperaNombres = $d;

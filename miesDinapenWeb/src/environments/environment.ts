@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //baseUrl: "https://miesdinapen.tk/api",
+ // baseUrl: "https://miesdinapen.tk/api",
   //baseUrl: "http://localhost:80/api",
   baseUrl: "http://localhost:3000",
 };
