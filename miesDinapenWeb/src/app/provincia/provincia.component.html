@@ -10,7 +10,7 @@
                 <input class="form-control" placeholder="Provincia" type="text" [(ngModel)]="provi.Provincia">
             </div>
             <div class="col-sm-2">
-                <button type="button" (click)="saveParroquia()" class="btn btn-secondary">Buscar</button>
+                <button type="button" (click)="saveProvincia()" class="btn btn-secondary">Grabar</button>
             </div>
         </div>
 
@@ -27,11 +27,11 @@
                     <tr *ngFor="let provincy of listProvincia" >
                         <td>{{provincy.IDProvincia}}</td>
                         <td>{{provincy.Provincia}}</td>
+                        <td><button type="button" name="button" data-bs-dismiss="modal"
+                            class="btn btn-primary" (click)="selectProvincia(provincy)"><span
+                                class="oi oi-pencil"></span></button>
+                    </td>
                     </tr>
-                    <!--<tr *ngFor="let pr of listProvincias">-->
-                        <!--<td>{{pr.IDProvincia}}</td>-->
-                        <!--<td>{{pr.Provincia}}</td>-->
-                        <!--<td>{{pr.IDNacionalidad}}</td>-->
                 </tbody>
             </table>
 

@@ -14,32 +14,33 @@
 
             <div class="col-sm-3">
                 <label for="customSelect" >Provincia</label>
-                <select  class="form-select" name="provincia" (change)="filtrarCanton($event)" [(ngModel)]="organi.provincia">
-                    <option [ngValue]="prov" *ngFor="let prov of listProvincia" >
+                <select  class="form-select" name="provincia" (change)="filtrarCanton($event)" [(ngModel)]="organi.provincia.IDProvincia">
+                    <option [ngValue]="prov.IDProvincia" *ngFor="let prov of listProvincia" >
                         {{prov.Provincia}} </option>
                 </select>
             </div>
             <div class="col-sm-3" id="cnt">
                 <label for="customSelect" id="labelCanton">Cantón</label>
-                <select  class="form-select" name="canton" (change)="filtrarParroquia($event)" [(ngModel)]="organi.canton">
-                    <option [ngValue]="can" *ngFor="let can of listCantonFiltered">
+                <select  class="form-select" name="canton" (change)="filtrarParroquia($event)" [(ngModel)]="organi.canton.IDCanton">
+                    <option value="x" selected>-</option>
+                    <option [ngValue]="can.IDCanton" *ngFor="let can of listCantonFiltered">
                         {{can.Canton}} </option>
                 </select>
             </div>
             <div class="col-sm-3">
                 <label for="customSelect" id="labelParroq">Parroquia</label>
-                <select  class="form-select" name="parroquia" [(ngModel)]="organi.parroquia">
-                    <option [ngValue]="parr" *ngFor="let parr of listParroquiaFiltered">
+                <select  class="form-select" name="parroquia" [(ngModel)]="organi.parroquia.IDParroquia">
+                    <option value="x" selected>-</option>
+                    <option [ngValue]="parr.IDParroquia" *ngFor="let parr of listParroquiaFiltered">
                         {{parr.Parroquia}} </option>
                 </select>
             </div>
 
 
-            
             <div class="col-sm-3">
                 <label for="customSelect" id="labeTipoOrganiz">Tipo de Organizaciones</label>
-                <select  class="form-select" name="tipOrganizaciones" [(ngModel)]="organi.tipo">
-                    <option [ngValue]="tp" *ngFor="let tp of listTipoOrganizacion"> {{tp.TipoOrganizacion}}
+                <select  class="form-select" name="tipOrganizaciones" [(ngModel)]="organi.tipo.IDTipoOrganizacion">
+                    <option [ngValue]="tp.IDTipoOrganizacion" *ngFor="let tp of listTipoOrganizacion"> {{tp.TipoOrganizacion}}
                         </option>
                 </select>
             </div>
@@ -63,6 +64,7 @@
             <th scope="col">Cantón</th>
             <th scope="col">Parroquia</th>
             <th scope="col">Tipo Organizaciones</th>
+            <th scope="col">Tipo Organizaciones</th>
         </tr>
       </thead>
       <tbody id="cutomTableTBodyId">
@@ -74,6 +76,10 @@
             <td>{{orga.canton.Canton}}</td>
             <td>{{orga.parroquia.Parroquia}}</td>
             <td>{{orga.tipo.TipoOrganizacion}}</td>
+            <td><button type="button" name="button" data-bs-dismiss="modal"
+                class="btn btn-primary" (click)="selectModelo(orga)"><span
+                    class="oi oi-pencil"></span></button>
+        </td>
         </tr>
       </tbody>
     </table>

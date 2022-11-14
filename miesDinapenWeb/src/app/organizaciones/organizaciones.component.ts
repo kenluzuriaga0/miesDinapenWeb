@@ -22,12 +22,10 @@ export class OrganizacionesComponent implements OnInit {
   public listParroquia: Parroquia[];
   public listTipoOrganizacion: TipoOrganizaciones[];
   public listParroquiaFiltered: Parroquia[];
-  public intervencionSelect: Intervenciones;
   public listOrganizacion: Organizaciones[];
   
   private initOrganizacion():void{
     this.organi = new Organizaciones();
-    
     
     this.organi.Zona;
     this.organi.provincia = new Provincias();
@@ -58,8 +56,10 @@ export class OrganizacionesComponent implements OnInit {
       console.log(this.listProvincia);
       });
     this.initOrganizacion();
-    this.listasService.loadParroquias().subscribe(data => this.listParroquia = data);
-    this.listasService.loadCantones().subscribe(data => this.listCanton = data);
+
+    // lleno las listas normales y filtradas para seleccionar cantones y parroquias, ya que dependen que provincia esté lleno
+    this.listasService.loadParroquias().subscribe(data => {this.listParroquia = data; this.listParroquiaFiltered = data;});
+    this.listasService.loadCantones().subscribe(data =>{ this.listCanton = data;this.listCantonFiltered = data;});
     this.listasService.loadTipOrganizacion().subscribe(data => this.listTipoOrganizacion = data);
   }
 
@@ -76,7 +76,33 @@ export class OrganizacionesComponent implements OnInit {
     } else {
     }
   }
+
+  public selectModelo(o:Organizaciones){
+    /**
+     Seleccionar la organizacion con sus objetos internos
+     Al final filtro los cnatones y parroquias para poder elegir nuevamente esas opciones
+     **/
+    this.organi.IDOrganizacion = o.IDOrganizacion;
+    this.organi.Organizacion = o.Organizacion;
+    this.organi.Zona = o.Zona;
+
+    this.organi.provincia = o.provincia;
+    this.organi.canton = o.canton;
+    this.organi.parroquia = o.parroquia;
+    this.organi.tipo = o.tipo;
+
+    this.filtrarCanton(0);
+    this.filtrarParroquia(0);
+
+    console.log(this.organi)
+  }
+  
   saveOrgani(): void {
+    if (typeof this.organi.IDOrganizacion != 'undefined') {
+      swal.fire('OJO', `AQUI SE DEBE ACTUALIZAR, OJO FREYU`, 'success')
+      // AQUI SE ACTUALIZA
+      return;
+    }
     console.log(this.organi)
      this.listasService.saveOrganizacion(this.organi).subscribe(data => {
        swal.fire('Registrado con exito', `Organizacion "${this.organi.Organizacion}" registrado con éxito`, 'success')
@@ -84,12 +110,6 @@ export class OrganizacionesComponent implements OnInit {
        swal.fire('Alerta de Error', `Por favor, llene todos los campos y verifique el ID`, 'error')
      });
  
-     //se Inicializa si no proviene de una intervencio elegida previamente
-     if (typeof this.intervencionSelect === 'undefined') {
-       this.intervencionSelect = new Intervenciones();
-     }
-     this.intervencionSelect.organizacion = this.organi;
-     this.seleccionService.seleccionadorToForm.emit(this.intervencionSelect); //emite para enviar el obj al componente Formulario
    }
   
   

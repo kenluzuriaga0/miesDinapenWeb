@@ -21,6 +21,10 @@ export class ProvinciaComponent implements OnInit {
 
   }
 
+ public  selectProvincia(p:Provincias){
+    this.provi.IDProvincia = p.IDProvincia;
+    this.provi.Provincia = p.Provincia;
+  }
 
   constructor(private listasService: ListasService, private seleccionService: SeleccionService) { }
 
@@ -32,7 +36,13 @@ export class ProvinciaComponent implements OnInit {
       this.initprovincia()
     });
   }
-  saveParroquia(): void {
+  
+  saveProvincia(): void {
+    if (typeof this.provi.IDProvincia != 'undefined') {
+      swal.fire('OJO', `AQUI SE DEBE ACTUALIZAR, OJO FREYU`, 'success')
+      // AQUI SE LLAMA EL METODO QUE ACTUALIZA
+      return;
+    }
     console.log(this.provi)
      this.listasService.saveProvincia(this.provi).subscribe(data => {
        swal.fire('Registrado con exito', `Parroquia "${this.provi.Provincia}" registrado con éxito`, 'success')
@@ -42,3 +52,4 @@ export class ProvinciaComponent implements OnInit {
  
     }
 }
+
