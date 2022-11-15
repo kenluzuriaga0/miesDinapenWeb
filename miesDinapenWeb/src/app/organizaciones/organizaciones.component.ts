@@ -99,14 +99,36 @@ export class OrganizacionesComponent implements OnInit {
   
   saveOrgani(): void {
     if (typeof this.organi.IDOrganizacion != 'undefined') {
-      swal.fire('OJO', `AQUI SE DEBE ACTUALIZAR, OJO FREYU`, 'success')
+      //swal.fire('OJO', `AQUI SE DEBE ACTUALIZAR, OJO FREYU`, 'success')
       // AQUI SE ACTUALIZA
+      console.log(this.organi)
+      this.listasService.updateOrganizacion(this.organi).subscribe(data => {
+        swal.fire('Registrado con exito', `Organizacion "${this.organi.Organizacion}" registrado con éxito`, 'success')
+      
+       //METODO ACTUALIZAR TABLA
+       this.listasService.loadProvincias().subscribe(data => {
+        this.listProvincia = data;
+        this.initOrganizacion()
+        
+        });
+
+      }, error => {
+        swal.fire('Alerta de Error', `Por favor, Seleccione Organizacion`, 'error')
+      });
       return;
     }
     console.log(this.organi)
      this.listasService.saveOrganizacion(this.organi).subscribe(data => {
        swal.fire('Registrado con exito', `Organizacion "${this.organi.Organizacion}" registrado con éxito`, 'success')
-     }, error => {
+    
+       //METODO ACTUALIZAR TABLA
+       this.listasService.loadProvincias().subscribe(data => {
+       this.listProvincia = data;
+       this.initOrganizacion()
+      
+       });
+    
+      }, error => {
        swal.fire('Alerta de Error', `Por favor, llene todos los campos y verifique el ID`, 'error')
      });
  

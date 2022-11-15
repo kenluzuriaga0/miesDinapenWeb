@@ -33,4 +33,16 @@
             echo $db->error."\n";
             return FALSE;
         }
+        public static function update($IDCanton,$Canton, $IDprovincia) {
+            $db = new Connection();
+            $query = "UPDATE ListaIDCantones SET 
+            IDCanton=".($IDCanton? : 'NULL').",IDprovincia=".($IDprovincia? : 'NULL').", Canton='$Canton'
+            WHERE IDCanton=$IDCanton";
+            $db->query($query);
+            if($db->affected_rows>0) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }
