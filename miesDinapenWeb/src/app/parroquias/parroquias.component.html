@@ -13,8 +13,8 @@
             </div>
             <div class="col-sm-3">
                 <label for="customSelect" id="labelCanton">Cantón</label>
-                <select  class="form-select" name="canton"  [(ngModel)]="parroq.canton">
-                    <option [ngValue]="can" *ngFor="let can of listCanton">
+                <select  class="form-select" name="canton"  [(ngModel)]="parroq.canton.IDCanton">
+                    <option [ngValue]="can.IDCanton" *ngFor="let can of listCanton">
                         {{can.Canton}} </option>
                 </select>
             </div>
@@ -32,6 +32,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Parroquia</th>
                         <th scope="col">Cantón</th>
+                        <th scope="col">Modificar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,10 @@
                         <td>{{parro.IDParroquia}}</td>
                         <td>{{parro.Parroquia}}</td>
                         <td>{{parro.canton.Canton}}</td>
+                        <td><button type="button" name="button" data-bs-dismiss="modal"
+                            class="btn btn-primary" (click)="selectParroquias(parro)"><span
+                                class="oi oi-pencil"></span></button>
+                            </td>
                     </tr>
                     <!--<tr *ngFor="let prrq of listCantones">-->
                         <!--<td>{{prrq.IDParroquia}}</td>-->

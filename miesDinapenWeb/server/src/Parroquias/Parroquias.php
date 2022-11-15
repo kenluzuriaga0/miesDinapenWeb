@@ -37,4 +37,17 @@
             echo $db->error."\n";
             return FALSE;
         }
+        
+        public static function update($IDParroquia,$Parroquia, $IDCanton) {
+            $db = new Connection();
+            $query = "UPDATE ListaIDParroquias SET 
+            IDParroquia=".($IDParroquia? : 'NULL').",IDCanton=".($IDCanton? : 'NULL')." , Parroquia='$Parroquia'
+            WHERE IDParroquia=$IDParroquia";
+            $db->query($query);
+            if($db->affected_rows>0) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }

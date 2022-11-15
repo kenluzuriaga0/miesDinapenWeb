@@ -28,4 +28,17 @@
             echo $db->error."\n";
             return FALSE;
         }
+
+        public static function update($IDProvincia,$Provincia, $IDNacionalidad) {
+            $db = new Connection();
+            $query = "UPDATE ListaIDProvincias SET 
+            IDProvincia=".($IDProvincia? : 'NULL').",IDNacionalidad=".($IDNacionalidad? : 'NULL').", Provincia='$Provincia'
+            WHERE IDProvincia=$IDProvincia";
+            $db->query($query);
+            if($db->affected_rows>0) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
     }

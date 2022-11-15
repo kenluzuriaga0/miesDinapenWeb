@@ -52,20 +52,32 @@ export class ListasService {
     return this.http.post<any>(`${this.baseUrl}/Organizaciones/insert.php`,organizacion);
   }// es tipo any para obtener el id creador del response
 
-  saveCanton(canton:Canton): Observable<any> { //SAVE Organización
+  updateOrganizacion(organizacion:Organizaciones): Observable<any> { //UPDATE Organizacion
+    return this.http.post<any>(`${this.baseUrl}/Organizaciones/update.php`,organizacion); 
+  }// 
+
+  saveCanton(canton:Canton): Observable<any> { //SAVE Canton
     return this.http.post<any>(`${this.baseUrl}/Cantones/insert.php`,canton);
   }// es tipo any para obtener el id creador del response
+
+  updateCanton(canton:Canton): Observable<any> { //UPDATE Canton
+    return this.http.post<any>(`${this.baseUrl}/Cantones/update.php`,canton); 
+  }// 
 
   saveParroquia(parroquia:Parroquia): Observable<any> { //SAVE Parroquia
     return this.http.post<any>(`${this.baseUrl}/Parroquias/insert.php`,parroquia);
   }// es tipo any para obtener el id creador del response
 
-  saveProvincia(provincia:Provincias): Observable<any> { //SAVE Parroquia
+  updateParroquia(parroquia:Parroquia): Observable<any> { //UPDATEParroquia
+    return this.http.post<any>(`${this.baseUrl}/Parroquias/update.php`,parroquia); 
+  }// 
+
+  saveProvincia(provincia:Provincias): Observable<any> { //SAVE Provincia
     return this.http.post<any>(`${this.baseUrl}/Provincias/insert.php`,provincia);
   }// es tipo any para obtener el id creador del response
 
-  updateProvincia(provincia:Provincias): Observable<any> { //SAVE Parroquia
-    return this.http.post<any>(`${this.baseUrl}/Provincias/update.php`,provincia); //Aqui falta crear el php OJO
+  updateProvincia(provincia:Provincias): Observable<any> { //UPDATEProvincia
+    return this.http.post<any>(`${this.baseUrl}/Provincias/update.php`,provincia); 
   }// 
 
   loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES

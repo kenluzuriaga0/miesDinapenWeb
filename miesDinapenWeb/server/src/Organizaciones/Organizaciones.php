@@ -44,4 +44,17 @@
             return FALSE;
         }
 
+        public static function update($IDOrganizacion, $Organizacion, $Zona,$provincia, $canton,$parroquia, $tipo) {
+            $db = new Connection();
+            $query = "UPDATE ListaIDOrganizacionesCoope SET 
+           IDOrganizacion=".($IDOrganizacion? : 'NULL').", Organizacion='$Organizacion' , Zona='$Zona' , provincia='$provincia', canton='$canton' , parroquia='$parroquia' , tipo='$tipo' 
+            WHERE IDOrganizacion=$IDOrganizacion";
+            $db->query($query);
+            if($db->affected_rows>0) {
+                return TRUE;
+            }
+            echo $db->error."\n";
+            return FALSE;
+        }
+
     }
