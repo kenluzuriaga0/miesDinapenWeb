@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-11-2022 a las 03:50:10
+-- Tiempo de generación: 14-11-2022 a las 05:28:53
 -- Versión del servidor: 5.7.39-cll-lve
 -- Versión de PHP: 7.4.30
 
@@ -169,7 +169,9 @@ INSERT INTO `Intervenciones` (`IDIntervencion`, `IDOperador`, `IDOrganCooperante
 (133, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'a', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:14:54', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
 (134, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:21:20', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
 (135, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:21:41', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
-(136, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:22:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL);
+(136, 4, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'e', 'e34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-12 05:22:00', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(138, 3, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'Pedro Carbo', 'Jesus', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-13 18:23:34', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL),
+(139, 3, 1, 1, '-122.084000000000000000', '37.421997000000000000', 0, 'asd', 'a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '2022-11-13 18:28:08', 0, NULL, NULL, 0, NULL, NULL, 'Ingresado', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -237,7 +239,9 @@ INSERT INTO `IntervencionesAudios` (`IDIntervencion`, `Audio`, `FechaRegistro`) 
 (128, 'https://miesdinapen.tk/api/Audios/Uploads/128_Audio_0.mp3', '2022-11-08 22:33:39'),
 (129, 'https://miesdinapen.tk/api/Audios/Uploads/129_Audio_0.mp3', '2022-11-09 01:43:16'),
 (130, 'https://miesdinapen.tk/api/Audios/Uploads/130_Audio_0.mp3', '2022-11-09 10:50:15'),
-(131, 'https://miesdinapen.tk/api/Audios/Uploads/131_Audio_0.mp3', '2022-11-12 04:55:25');
+(131, 'https://miesdinapen.tk/api/Audios/Uploads/131_Audio_0.mp3', '2022-11-12 04:55:25'),
+(138, 'https://miesdinapen.tk/api/Audios/Uploads/138_Audio_0.mp3', '2022-11-13 18:24:19'),
+(139, 'https://miesdinapen.tk/api/Audios/Uploads/139_Audio_0.mp3', '2022-11-13 18:28:38');
 
 -- --------------------------------------------------------
 
@@ -322,7 +326,9 @@ INSERT INTO `IntervencionesFotos` (`IDIntervencion`, `FotoIncidente`, `FechaRegi
 (129, 'https://miesdinapen.tk/api/Fotos/Uploads/129_Fotos_0.png', '2022-11-09 01:43:18'),
 (130, 'https://miesdinapen.tk/api/Fotos/Uploads/130_Fotos_0.png', '2022-11-09 10:50:17'),
 (131, 'https://miesdinapen.tk/api/Fotos/Uploads/131_Fotos_0.png', '2022-11-12 04:55:25'),
-(136, 'https://miesdinapen.tk/api/Fotos/Uploads/136_Fotos_0.png', '2022-11-12 05:22:39');
+(136, 'https://miesdinapen.tk/api/Fotos/Uploads/136_Fotos_0.png', '2022-11-12 05:22:39'),
+(138, 'https://miesdinapen.tk/api/Fotos/Uploads/138_Fotos_0.png', '2022-11-13 18:24:19'),
+(139, 'https://miesdinapen.tk/api/Fotos/Uploads/139_Fotos_0.png', '2022-11-13 18:28:38');
 
 -- --------------------------------------------------------
 
@@ -425,6 +431,7 @@ INSERT INTO `ListaIDCantones` (`IDCanton`, `Canton`, `IDProvincia`) VALUES
 (113, 'SEVILLA DE ORO', 1),
 (114, 'GUACHAPALA', 1),
 (115, 'CAMILO PONCE ENRIQUEZ', 1),
+(122, 'dsdsdsd', 3),
 (201, 'GUARANDA', 2),
 (202, 'CHILLANES', 2),
 (203, 'CHIMBO', 2),
@@ -979,7 +986,7 @@ CREATE TABLE `ListaIDOperadores` (
 INSERT INTO `ListaIDOperadores` (`IDOperador`, `IDInstitucion`, `OperaCargo`, `OperaNCedula`, `OperaApellido1`, `OperaApellido2`, `OperaNombres`, `OperaTelefono1`, `OperaTelefono2`, `OperaEmail1`, `OperaEmail2`, `password`) VALUES
 (1, '1', 'PRUEBA', '0909090909', 'PEREZ', NULL, 'JOSE', NULL, NULL, NULL, NULL, NULL),
 (2, '1', 'PRUEBA2', '0909090000', 'RIOFRIO', NULL, 'MIGUEL', NULL, NULL, NULL, NULL, NULL),
-(3, '1', 'PRUEBA3', '0909090111', 'LUZU', NULL, 'NEK', NULL, NULL, NULL, NULL, 'strong password'),
+(3, '1', 'PRUEBA3', '0909090111', 'LUZU', NULL, 'NEK', NULL, NULL, NULL, NULL, '123'),
 (4, '2', 'PRUEBA4', '0909094554', 'Paul', NULL, 'PAU', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -1003,7 +1010,7 @@ CREATE TABLE `ListaIDOrganizacionesCoope` (
 --
 
 INSERT INTO `ListaIDOrganizacionesCoope` (`IDOrganizacion`, `Organizacion`, `Zona`, `IDProvincia`, `IDCanton`, `IDParroquia`, `IDTipoOrganizacion`) VALUES
-(1, 'GAD PARROQUIAL PUNA', 8, 9, 901, 10150, 1),
+(1, 'GAD PARROQUIAL PUNA', 8, 9, 901, 90150, 1),
 (2, 'gye', 3, 3, 303, 30353, 4);
 
 -- --------------------------------------------------------
@@ -2543,7 +2550,7 @@ ALTER TABLE `ListaPoligonosParroquias`
 -- AUTO_INCREMENT de la tabla `Intervenciones`
 --
 ALTER TABLE `Intervenciones`
-  MODIFY `IDIntervencion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de la Intervecion', AUTO_INCREMENT=137;
+  MODIFY `IDIntervencion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Identificador único de la Intervecion', AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT de la tabla `ListaIDOperadores`
