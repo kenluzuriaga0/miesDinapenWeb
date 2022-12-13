@@ -1,0 +1,9 @@
+#logo_mies_foot{
+    width: 700px;
+}
+
+@media (max-width: 600px) {
+    #logo_mies_foot{
+        width: 350px;
+    }
+}

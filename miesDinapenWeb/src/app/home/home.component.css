@@ -1,0 +1,9 @@
+#logo_mies{
+    width: 750px;
+}
+
+@media (max-width: 600px) {
+    #logo_mies{
+        width: 350px;
+    }
+}
