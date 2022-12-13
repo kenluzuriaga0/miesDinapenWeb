@@ -15,9 +15,14 @@ export class ModalIncidenciaComponent implements OnInit {
   constructor(private listasService:ListasService,private seleccionService:SeleccionService) { }
 
   ngOnInit(): void {
-    this.listasService.loadAllIntervenciones().subscribe(data=>{
-      this.listIntervenciones = data;
+    this.listasService.loadAllIntervenciones().subscribe(result=>{
+      if(result.Success) {
+        this.listIntervenciones = result.Data;
+      }
     });
+    // this.listasService.loadAllIntervenciones().subscribe(data=>{
+    //   this.listIntervenciones = data;
+    // });
   }
   selectIncidencia(inci:Intervenciones):void{
     this.seleccionService.seleccionador.emit(inci); //emite para enviar el obj al componente modal Persona

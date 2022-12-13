@@ -16,6 +16,9 @@
         // RUTA DONDE SE GUARDARAN LAS IMAGENES
         // $path = "C:/Fotos/Uploads/$name.png";
         // $path = "/Uploads/$name.png";
+
+        //echo json_encode(['Error' => TRUE, 'Message' => 'test']);
+
         $actualpath = $_SERVER['DOCUMENT_ROOT']."/api/Fotos/Uploads/$name.png";
         $httpath = "https://miesdinapen.tk/api/Fotos/Uploads/$name.png";
 

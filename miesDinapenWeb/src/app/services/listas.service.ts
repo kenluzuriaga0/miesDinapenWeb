@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos, IntervencionesAudios, PhotoPersonUpload } from '../Models/Modelos';
+import { Provincias, Canton, Organizaciones, Personas, Parroquia, Intervenciones, IntervencionesTipoActividad, TipoOrganizaciones, IntervencionesFotos, IntervencionesAudios, PhotoPersonUpload, Login } from '../Models/Modelos';
 import { environment } from "../../environments/environment"
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { environment } from "../../environments/environment"
 export class ListasService {
   baseUrl = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   loadListasProgramadas(idList:string):Observable<any[]> { // LISTAS PROGRAMADAS
     return this.http.get<any>(`${this.baseUrl}/listasSelect.php?idLista=${idList}`);
@@ -80,9 +81,14 @@ export class ListasService {
     return this.http.post<any>(`${this.baseUrl}/Provincias/update.php`,provincia); 
   }// 
 
-  loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
-    return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);
+  loadAllIntervenciones(): Observable<any> { // ALL INTERVENCIONES
+    const token = this.auth.getToken();
+    const param = `?token=${token}`;
+    return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php${param}`);
   }
+  // loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
+  //   return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);
+  // }
   updateIntervencion(intervencion:Intervenciones): Observable<Intervenciones> { //UPDATE INTERVENCIONES
     return this.http.post<Intervenciones>(`${this.baseUrl}/Incidencias/update.php`,intervencion);
   }
@@ -112,4 +118,5 @@ export class ListasService {
                         .set('Base64Encode', photoPersonUpload.Base64Encode);
     return this.http.post<any>(`${this.baseUrl}/Fotos/upload_photo.php`, payload.toString(), { headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') });
   }
+  
 }

@@ -7,4 +7,10 @@
     include_once "../db.php";
     require_once "Incidencia.php";
 
-    echo json_encode(Incidencia::getAllIntervenciones());
+    //echo json_encode(Incidencia::getAllIntervenciones());
+
+    if(isset($_GET['token'])) {
+        echo json_encode(Incidencia::getAllIntervenciones($_GET['token']));
+    } else {
+        echo json_encode(['Success' => false, 'Message' => 'Access token not found']);
+    }

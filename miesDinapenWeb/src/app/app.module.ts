@@ -22,6 +22,8 @@ import { ModalIncidenciaComponent } from './modal-incidencia/modal-incidencia.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {  MatFormFieldModule } from '@angular/material/form-field';
+import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import {  MatFormFieldModule } from '@angular/material/form-field';
     OrganizacionesComponent,
     ParroquiasComponent,
     ModalIncidenciaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import {  MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,HttpClientModule, BrowserAnimationsModule,MatSelectModule,
     ReactiveFormsModule, MatFormFieldModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -99,6 +99,7 @@ export class OrganizacionesComponent implements OnInit {
   
   saveOrgani(): void {
     if (typeof this.organi.IDOrganizacion != 'undefined') {
+      //swal.fire('OJO', `AQUI SE DEBE ACTUALIZAR, OJO FREYU`, 'success')
       // AQUI SE ACTUALIZA
       console.log(this.organi)
       this.listasService.updateOrganizacion(this.organi).subscribe(data => {

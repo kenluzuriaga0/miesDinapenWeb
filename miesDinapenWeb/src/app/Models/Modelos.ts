@@ -211,3 +211,9 @@ export class IntervencionesAudios{
    constructor(x:number,y:string) { this.IDIntervencion = x; this.Audio = y; }
 
 }
+
+export class Login {
+   usuario: string;
+   clave: string;
+   // constructor(usuario:string, clave:string) { this.usuario = usuario; this.clave = clave; }
+}

@@ -15,9 +15,15 @@
             return FALSE;
         }
 
-        public static function getAllIntervenciones() {
+        // public static function getAllIntervenciones() {
+        public static function getAllIntervenciones($token) {
             $db = new Connection();
             require_once "../Personas/Personas.php";
+            require_once "../Auth/Auth.php";
+            
+            // return [ 'test' => 'Esto es una prueba' ];
+            if(!Auth::checkSession($token))
+                return [ 'Success' => false, 'Access' => false, 'Message' => "Not authorized." ];
 
             $query = "SELECT * FROM Intervenciones AS inte
             INNER JOIN ListaIDOperadores AS ope ON ope.IDOperador = inte.IDOperador
@@ -70,9 +76,14 @@
 
                     ];
                 }
-                return $datos;
+                // return $datos;
             }
-            return $datos;
+            // return $datos;
+            return [
+                'Success' => true,
+                'Access' => true,
+                'Data' => $datos
+            ];
         }
 
         public static function getAllIntervencionesByCedula($cedula) {
