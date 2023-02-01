@@ -11,6 +11,8 @@
 
     if(isset($_GET['token'])) {
         echo json_encode(Incidencia::getAllIntervenciones($_GET['token']));
-    } else {
+    }else if(isset($_GET['idOperador'])){
+        echo json_encode(Incidencia::getAllIntervencionesByOperador($_GET['idOperador']));
+    }else {
         echo json_encode(['Success' => false, 'Message' => 'Access token not found']);
     }

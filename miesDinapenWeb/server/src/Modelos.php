@@ -259,3 +259,15 @@ class OrganizacionModel {
         $this -> FechaRegistro=$z;
     }
  }
+
+ class SesionesUsuariosModel {
+    public $IDOperador;
+    public $tokenWebLogged;
+    public $expiredTokenWeb;
+
+    public function __construct($x,  $y, $z) {
+        $this->IDOperador = $x;
+        $this->tokenWebLogged = $y;
+        $this->expiredTokenWeb = $z;
+    }
+ }
