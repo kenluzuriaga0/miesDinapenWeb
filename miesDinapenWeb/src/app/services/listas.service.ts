@@ -86,6 +86,12 @@ export class ListasService {
     const param = `?token=${token}`;
     return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php${param}`);
   }
+
+  loadIntervencionesByOperador(idOperador: number): Observable<any> { // INTERVENCIONES BY OPERADOR
+    const param = `?idOperador=${idOperador}`;
+    return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php${param}`);
+  }
+
   // loadAllIntervenciones(): Observable<Intervenciones[]> { // ALL INTERVENCIONES
   //   return this.http.get<Intervenciones[]>(`${this.baseUrl}/Incidencias/select.php`);
   // }
@@ -117,6 +123,11 @@ export class ListasService {
                         .set('Name', photoPersonUpload.Name)
                         .set('Base64Encode', photoPersonUpload.Base64Encode);
     return this.http.post<any>(`${this.baseUrl}/Fotos/upload_photo.php`, payload.toString(), { headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded') });
+  }
+
+  loagUserLogged(token_web_logged:string):Observable<any>{
+    const param = `?token_web_logged=${token_web_logged}`;
+    return this.http.get<any[]>(`${this.baseUrl}/SesionesUsuarios/select.php${param}`);
   }
   
 }
